@@ -6,6 +6,11 @@ A monorepo for our apps. Each app lives in its own top-level folder with its own
 | --- | --- | --- |
 | `family-packing/` | Family Packing (working title; the public name is being replaced), the AI family packing app for iOS and Android | Building, launch target week of March 1, 2027 |
 
+## Where things live
+
+- GitHub (this repo): technical work only. Code, specs, design exports, design systems, test data, changelogs. Build tasks are GitHub issues.
+- Google Drive folder KitFactory: the plan and tracker, decisions, accounts, business, legal, brand and meeting notes. Never copy these into the repo.
+
 ## Rules for every app
 
 - Work inside one app folder per task. Read that folder's `CLAUDE.md` before doing anything else.
