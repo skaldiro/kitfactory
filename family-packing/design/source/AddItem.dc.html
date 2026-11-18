@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kitbag · Add an item</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+input::placeholder{color:#7D8B85}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<div aria-hidden="true" style="position: absolute; left: 16px; right: 16px; top: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF"></span><span style="font-size: 30px; font-weight: 900; font-stretch: 64%">Italy</span></div>
+<div style="height: 8px; border-radius: 4px; background: #D9DFD6"></div>
+<div style="height: 120px; border-radius: 20px; background: #FFFFFF"></div>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(14, 42, 35, 0.55)"></div>
+
+<section aria-label="Add an item" style="position: absolute; left: 0; right: 0; top: 150px; bottom: 0; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 10px 20px 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #D9DFD6"></span>
+
+<div style="display: flex; align-items: center; gap: 12px">
+<h1 style="flex: 1; margin: 0; font-size: 34px; line-height: 1; font-weight: 900; font-stretch: 66%">Add to the list</h1>
+<a href="Pack.dc.html" aria-label="Close" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #EEF1EA; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="newItem" style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">TYPE IT OR SAY IT, IN YOUR OWN WORDS</label>
+<div style="display: flex; gap: 8px">
+<input id="newItem" value="{{text}}" onChange="{{onText}}" placeholder="2 binoculars for Leo" style="flex: 1; min-width: 0; height: 56px; box-sizing: border-box; border: 2px solid #0E2A23; border-radius: 16px; padding: 0 14px; font: 650 18px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
+<button type="button" onClick="{{toggleMic}}" aria-pressed="{{micPressed}}" aria-label="{{micAria}}" style="width: 56px; height: 56px; flex: none; border: 0; border-radius: 28px; background: {{micBg}}; display: grid; place-items: center; cursor: pointer"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{micInk}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+</div>
+</div>
+
+<div style="background: #EEF1EA; border-radius: 18px; padding: 12px 14px; display: flex; flex-direction: column; gap: 10px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>SCOUT FILLED IN THE REST</span>
+<div style="display: flex; align-items: center; gap: 10px">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 22px; line-height: 1.05; font-weight: 850; font-stretch: 72%">{{itemName}}</span>
+<span style="font-size: 13px; color: #56665F">{{meta}}</span>
+</span>
+<button type="button" onClick="{{qtyDown}}" aria-label="One fewer" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: #FFFFFF; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">−</button>
+<span style="min-width: 28px; text-align: center; font-size: 30px; font-weight: 900; font-stretch: 64%">{{qty}}</span>
+<button type="button" onClick="{{qtyUp}}" aria-label="One more" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: #FFFFFF; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">+</button>
+</div>
+</div>
+
+<fieldset style="margin: 0; padding: 0; border: 0">
+<legend style="padding: 0; margin-bottom: 8px; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">WHOSE IS IT</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{people}}" as="o" hint-placeholder-count="5">
+<button type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="height: 44px; padding: 0 12px 0 6px; border-radius: 22px; border: 1.5px solid {{o.bd}}; background: {{o.bg}}; color: {{o.fg}}; font: 650 14px Archivo, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 6px; cursor: pointer"><span style="width: 30px; height: 30px; border-radius: 50%; background: {{o.fill}}; color: {{o.ink}}; border: 1.5px solid #FFFFFF; box-sizing: border-box; display: grid; place-items: center; font-size: 11px; font-weight: 800">{{o.short}}</span>{{o.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 0; border: 0">
+<legend style="padding: 0; margin-bottom: 8px; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">DO YOU HAVE IT</legend>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 3px; border-radius: 13px; background: #EEF1EA">
+<sc-for list="{{statuses}}" as="o" hint-placeholder-count="2">
+<button type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="height: 40px; border: 0; border-radius: 10px; background: {{o.bg}}; color: #0E2A23; font: {{o.w}} 14px Archivo, system-ui, sans-serif; cursor: pointer">{{o.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+
+<div style="display: flex; flex-direction: column; gap: 8px">
+<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">OR ONE TAP · FOR THIS TRIP</span>
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<sc-for list="{{quick}}" as="q" hint-placeholder-count="3">
+<button type="button" onClick="{{q.use}}" style="height: 40px; padding: 0 12px; border-radius: 20px; border: 1.5px dashed #FF5B23; background: #FFF9F6; color: #0E2A23; font: 650 13px Archivo, system-ui, sans-serif; cursor: pointer">+ {{q.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<a href="Pack.dc.html" style="margin-top: auto; height: 58px; border-radius: 18px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 750">{{cta}}</a>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const KB_PEOPLE = [['nadia', 'Nadia', 'N', '#3A6BFF', '#FFFFFF'], ['sam', 'Sam', 'S', '#7BE0B5', '#0E2A23'], ['leo', 'Leo', 'L', '#FFC94A', '#0E2A23'], ['ivy', 'Ivy', 'I', '#FF9BAE', '#0E2A23'], ['shared', 'Shared', 'Us', '#0E2A23', '#EEF1EA']];
+const KB_BAGFOR = { nadia: 'Checked case', sam: 'Checked case', leo: "Leo's backpack", ivy: 'Checked case', shared: 'Day bag' };
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { text: '2 binoculars for Leo', who: null, qty: null, status: 'have' };
+  }
+  parse(t) {
+    const s = t.toLowerCase();
+    let who = null;
+    KB_PEOPLE.forEach((p) => { if (new RegExp('\\b' + p[1].toLowerCase() + '\\b').test(s)) who = p[0]; });
+    if (/\b(everyone|all of us|shared|the family)\b/.test(s)) who = 'shared';
+    const m = s.match(/(?:x|×)\s*(\d+)|\b(\d+)\b/);
+    const qty = m ? Math.max(1, Math.min(99, parseInt(m[1] || m[2], 10))) : null;
+    let name = t.replace(/\bfor\s+[\w']+/i, '').replace(/(?:x|×)\s*\d+|\b\d+\b/i, '').replace(/\s+/g, ' ').trim();
+    name = name ? name.charAt(0).toUpperCase() + name.slice(1) : '';
+    let cat = 'Other';
+    if (/binocular|book|game|toy|ball|camera|sketch|puzzle/.test(s)) cat = 'Activities';
+    else if (/shirt|sock|jacket|hat|shoe|pants|sweater|coat|umbrella/.test(s)) cat = 'Clothing';
+    else if (/toothbrush|sunscreen|shampoo|soap|lotion/.test(s)) cat = 'Toiletries';
+    else if (/charger|passport|snack|adapter|bottle/.test(s)) cat = 'Travel-day essentials';
+    else if (/blanket|pillow|night|bunny/.test(s)) cat = 'Sleep and comfort';
+    return { who, qty, name, cat };
+  }
+  renderVals() {
+    const s = this.state;
+    const p = this.parse(s.text);
+    const who = s.who || p.who || 'shared';
+    const qty = s.qty || p.qty || 1;
+    const person = KB_PEOPLE.find((x) => x[0] === who);
+    const people = KB_PEOPLE.map((x) => {
+      const on = x[0] === who;
+      return { label: x[1], short: x[2], fill: x[3], ink: x[4], pressed: on ? 'true' : 'false', bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#D9DFD6', pick: () => this.setState({ who: x[0] }) };
+    });
+    const statuses = [['have', 'Have it'], ['need', 'Need to buy']].map((o) => {
+      const on = s.status === o[0];
+      return { label: o[1], pressed: on ? 'true' : 'false', bg: on ? '#FFFFFF' : 'transparent', w: on ? '750' : '550', pick: () => this.setState({ status: o[0] }) };
+    });
+    const quick = ['Portable charger', 'Zip bags for wet clothes', 'Travel laundry line'].map((q) => ({ label: q, use: () => this.setState({ text: q, who: 'shared', qty: 1 }) }));
+    const owner = who === 'shared' ? 'the shared list' : person[1] + "'s list";
+    return {
+      text: s.text,
+      onText: (e) => this.setState({ text: e.target.value, who: null, qty: null }),
+      itemName: p.name || 'Name your item',
+      meta: p.cat + ' · ' + KB_BAGFOR[who],
+      qty,
+      qtyUp: () => this.setState({ qty: Math.min(99, qty + 1) }),
+      qtyDown: () => this.setState({ qty: Math.max(1, qty - 1) }),
+      people, statuses, quick,
+      cta: 'Add to ' + owner,
+      toggleMic: () => this.setState({ mic: !s.mic }),
+      micPressed: s.mic ? 'true' : 'false',
+      micAria: s.mic ? 'Stop listening' : 'Say it instead of typing',
+      micBg: s.mic ? '#0E2A23' : '#EEF1EA',
+      micInk: s.mic ? '#EEF1EA' : '#0E2A23'
+    };
+  }
+}
+</script>
+</body>
+</html>

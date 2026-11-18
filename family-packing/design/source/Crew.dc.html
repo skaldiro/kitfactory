@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kitbag · Your crew</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<header style="position: absolute; left: 16px; right: 16px; top: 16px; height: 48px; display: flex; align-items: center; justify-content: space-between">
+<a href="Trips.dc.html" aria-label="Back to trips" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<span style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.1em; color: #56665F">FAMILY</span>
+<a href="Profile.dc.html" style="height: 44px; padding: 0 14px; border-radius: 22px; background: #FFFFFF; font-size: 14px; font-weight: 700; display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add</a>
+</header>
+
+<div style="position: absolute; left: 20px; right: 20px; top: 74px">
+<h1 style="margin: 0; font-size: 56px; line-height: 0.9; font-weight: 900; font-stretch: 64%; letter-spacing: -0.01em">Your crew</h1>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 1.4; color: #56665F">Scout uses this on every trip. Nothing new gets remembered without your OK.</p>
+</div>
+
+<div style="position: absolute; left: 16px; right: 16px; top: 178px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{crew}}" as="p" hint-placeholder-count="4">
+<a href="Profile.dc.html" style="height: 128px; box-sizing: border-box; border-radius: 20px; background: #FFFFFF; padding: 12px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; color: #0E2A23">
+<span style="display: flex; align-items: center; gap: 10px; width: 100%">
+<span style="width: 40px; height: 40px; flex: none; border-radius: 50%; background: {{p.fill}}; color: {{p.ink}}; display: grid; place-items: center; font-size: 15px; font-weight: 800">{{p.short}}</span>
+<span style="display: flex; flex-direction: column">
+<span style="font-size: 22px; line-height: 1; font-weight: 900; font-stretch: 64%">{{p.name}}</span>
+<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">{{p.role}}</span>
+</span>
+</span>
+<span style="margin-top: auto; display: flex; flex-wrap: wrap; gap: 4px">
+<sc-for list="{{p.quirks}}" as="q" hint-placeholder-count="2"><span style="height: 24px; padding: 0 8px; border-radius: 8px; background: #EEF1EA; display: inline-flex; align-items: center; font-size: 11px; font-weight: 650; white-space: nowrap">{{q}}</span></sc-for>
+</span>
+</a>
+</sc-for>
+</div>
+
+<span style="position: absolute; left: 20px; top: 458px; display: inline-flex; align-items: center; gap: 8px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.1em; color: #C2410C"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>SCOUT'S MEMORY</span>
+
+<section style="position: absolute; left: 16px; right: 16px; top: 480px; border: 1.5px dashed #FF5B23; background: #FFF9F6; border-radius: 20px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px">
+<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #B23A0B">{{pendLabel}}</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.4">You removed the kids' umbrella from your last 3 trips. Stop suggesting it?</p>
+<sc-if value="{{pendOpen}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{stop}}" style="height: 38px; padding: 0 14px; border: 0; border-radius: 12px; background: #0E2A23; color: #EEF1EA; font: 700 13px Archivo, system-ui, sans-serif; cursor: pointer">Stop suggesting</button>
+<button type="button" onClick="{{keep}}" style="height: 38px; padding: 0 14px; border-radius: 12px; border: 1.5px solid #D9DFD6; background: #FFFFFF; color: #0E2A23; font: 650 13px Archivo, system-ui, sans-serif; cursor: pointer">Keep it</button>
+</div>
+</sc-if>
+<sc-if value="{{pendDone}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{pendReset}}" style="align-self: flex-start; height: 32px; padding: 0; border: 0; background: transparent; color: #B23A0B; font: 700 13px Archivo, system-ui, sans-serif; cursor: pointer">Undo</button>
+</sc-if>
+</section>
+
+<section style="position: absolute; left: 16px; right: 16px; top: 628px; background: #FFFFFF; border-radius: 20px; overflow: hidden">
+<sc-for list="{{saved}}" as="m" hint-placeholder-count="3">
+<div style="display: flex; align-items: center; gap: 10px; padding: 9px 8px 9px 14px; border-top: 1px solid #EDF0EA">
+<span style="width: 10px; height: 10px; flex: none; border-radius: 50%; background: {{m.dot}}"></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 14px; font-weight: 650; color: {{m.color}}; text-decoration: {{m.strike}}">{{m.text}}</span>
+<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; color: #56665F">{{m.src}}</span>
+</span>
+<button type="button" onClick="{{m.toggle}}" style="height: 34px; padding: 0 10px; border: 0; border-radius: 10px; background: #EEF1EA; color: #0E2A23; font: 650 12px Archivo, system-ui, sans-serif; cursor: pointer">{{m.action}}</button>
+</div>
+</sc-for>
+</section>
+
+<a href="Share.dc.html" style="position: absolute; left: 16px; right: 16px; bottom: 10px; height: 44px; border-radius: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; font-weight: 600; color: #0E2A23"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 11a3.5 3.5 0 1 0 0-7M8 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM2 20c.8-4 3.2-6 6-6s5.2 2 6 6M16 14c2.8 0 5.2 2 6 6"/></svg><span>Kids don't need accounts. <span style="text-decoration: underline">Invite another grown-up</span></span></a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { pend: null, gone: {} };
+  }
+  renderVals() {
+    const s = this.state;
+    const crew = [
+      { name: 'Nadia', role: 'ADULT · YOU', short: 'N', fill: '#3A6BFF', ink: '#FFFFFF', quirks: ['Packs light', 'Running kit'] },
+      { name: 'Sam', role: 'ADULT', short: 'S', fill: '#7BE0B5', ink: '#0E2A23', quirks: ['Camera gear', 'Trail shoes'] },
+      { name: 'Leo', role: 'AGE 6', short: 'L', fill: '#FFC94A', ink: '#0E2A23', quirks: ['Runs cold at night', 'Own backpack'] },
+      { name: 'Ivy', role: 'AGE 3', short: 'I', fill: '#FF9BAE', ink: '#0E2A23', quirks: ['The bunny', 'Night-light', '+1'] }
+    ];
+    const mem = [
+      ['leo', 'Leo runs cold at night → warm sleep layer', 'SAVED WHILE PACKING ITALY', '#FFC94A'],
+      ['bunny', "Ivy's bunny → carry-on, never checked", 'SAVED BY YOU', '#FF9BAE'],
+      ['pods', 'Laundry pods on trips over 7 days', 'CONFIRMED AFTER LISBON', '#0E2A23']
+    ];
+    const saved = mem.map((m) => {
+      const g = !!s.gone[m[0]];
+      return {
+        text: m[1], src: g ? 'FORGOTTEN' : m[2], dot: g ? '#D9DFD6' : m[3],
+        color: g ? '#56665F' : '#0E2A23', strike: g ? 'line-through' : 'none',
+        action: g ? 'Undo' : 'Forget',
+        toggle: () => this.setState({ gone: { ...this.state.gone, [m[0]]: !g } })
+      };
+    });
+    return {
+      crew, saved,
+      pendOpen: !s.pend, pendDone: !!s.pend,
+      pendLabel: s.pend === 'stop' ? "OK. I WON'T SUGGEST IT AGAIN" : (s.pend === 'keep' ? 'KEEPING IT ON THE LIST' : 'SCOUT NOTICED A PATTERN'),
+      stop: () => this.setState({ pend: 'stop' }),
+      keep: () => this.setState({ pend: 'keep' }),
+      pendReset: () => this.setState({ pend: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

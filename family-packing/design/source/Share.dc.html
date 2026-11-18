@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kitbag · Pack together</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+input::placeholder{color:#9FB5AC}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 16px 16px 18px; display: flex; flex-direction: column; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<header style="flex: none; height: 48px; display: flex; align-items: center; justify-content: space-between">
+<a href="Pack.dc.html" aria-label="Back to packing" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<span style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.1em; color: #56665F">YOUR HOUSEHOLD</span>
+<span style="width: 44px; height: 44px"></span>
+</header>
+
+<div style="flex: none; margin-top: 8px; padding: 0 4px">
+<h1 style="margin: 0; font-size: 52px; line-height: 0.9; font-weight: 900; font-stretch: 64%; letter-spacing: -0.01em">Pack together</h1>
+<p style="margin: 8px 0 0; font-size: 14px; line-height: 1.4; color: #56665F">Everyone you invite sees every trip and can check things off.</p>
+</div>
+
+<section style="flex: none; margin-top: 14px; background: #FFFFFF; border-radius: 22px; padding: 6px 8px 6px 14px; display: flex; flex-direction: column">
+<sc-for list="{{members}}" as="m" hint-placeholder-count="3">
+<div style="height: 54px; display: flex; align-items: center; gap: 12px; border-top: 1px solid {{m.line}}">
+<span style="width: 36px; height: 36px; flex: none; box-sizing: border-box; border-radius: 50%; background: {{m.fill}}; color: {{m.ink}}; border: 1.5px {{m.ring}}; display: grid; place-items: center; font-size: 13px; font-weight: 800; position: relative">{{m.short}}<sc-if value="{{m.live}}" hint-placeholder-val="{{ false }}"><span style="position: absolute; right: -3px; bottom: -3px; width: 12px; height: 12px; border-radius: 50%; background: #13996A; border: 2px solid #FFFFFF"></span></sc-if></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 15px; font-weight: 750; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{m.name}}</span><span style="font-size: 12px; color: {{m.subColor}}; font-weight: {{m.subWeight}}">{{m.sub}}</span></span>
+<sc-if value="{{m.pending}}" hint-placeholder-val="{{ false }}"><button type="button" style="height: 44px; padding: 0 10px; border: 0; background: transparent; font: 700 13px Archivo, system-ui, sans-serif; color: #B23A0B; cursor: pointer">Resend</button></sc-if>
+</div>
+</sc-for>
+</section>
+
+<section style="flex: none; margin-top: 12px; background: #0E2A23; color: #EEF1EA; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<label for="invite" style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #FF8A5E">INVITE A PARTNER, GRANDPARENT, NANNY</label>
+<div style="display: flex; gap: 8px">
+<input id="invite" value="{{invite}}" onChange="{{onInvite}}" placeholder="Email or phone" style="flex: 1; min-width: 0; height: 50px; box-sizing: border-box; border: 0; border-radius: 14px; padding: 0 14px; background: #163A31; font: 600 16px Archivo, system-ui, sans-serif; color: #EEF1EA; outline: none">
+<button type="button" onClick="{{send}}" style="height: 50px; padding: 0 18px; flex: none; border: 0; border-radius: 14px; background: #FF5B23; color: #0E2A23; font: 750 15px Archivo, system-ui, sans-serif; cursor: pointer">Send</button>
+</div>
+<button type="button" onClick="{{copy}}" style="height: 48px; border: 1.5px solid #3A6457; border-radius: 14px; background: transparent; color: #EEF1EA; font: 650 15px Archivo, system-ui, sans-serif; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>{{copyLabel}}</button>
+<p style="margin: 0; font-size: 12px; line-height: 1.4; color: #B6C8C0">Invite as many grown-ups as you need. Kids are profiles, so they don't need accounts.</p>
+</section>
+
+<span style="flex: none; margin: 16px 4px 0; display: inline-flex; align-items: center; gap: 8px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.1em; color: #56665F"><span style="width: 8px; height: 8px; border-radius: 50%; background: #13996A"></span>LIVE ON THE ITALY LIST</span>
+<ol style="flex: none; margin: 8px 0 0; padding: 0; list-style: none; background: #FFFFFF; border-radius: 20px; overflow: hidden">
+<li style="display: flex; align-items: center; gap: 10px; padding: 11px 14px"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #7BE0B5; display: grid; place-items: center; font-size: 11px; font-weight: 800">S</span><span style="flex: 1; font-size: 14px; line-height: 1.3">Sam packed Ivy's <strong>night-light</strong></span><span style="font: 500 10px 'DM Mono', monospace; color: #56665F">2 MIN</span></li>
+<li style="display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-top: 1px solid #EDF0EA"><span style="width: 28px; height: 28px; flex: none; border-radius: 50%; background: #3A6BFF; color: #FFFFFF; display: grid; place-items: center; font-size: 11px; font-weight: 800">N</span><span style="flex: 1; font-size: 14px; line-height: 1.3">You packed Ivy's <strong>T-shirts ×5</strong></span><span style="font: 500 10px 'DM Mono', monospace; color: #56665F">14 MIN</span></li>
+</ol>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { invite: '', copied: false, extra: [] };
+  }
+  renderVals() {
+    const s = this.state;
+    const base = [
+      { name: 'Nadia', short: 'N', fill: '#3A6BFF', ink: '#FFFFFF', sub: 'You · owner' },
+      { name: 'Sam', short: 'S', fill: '#7BE0B5', ink: '#0E2A23', sub: "Packing Ivy's list now", live: true },
+      { name: 'Rosa (Grandma)', short: 'R', sub: 'Invited 2 days ago · not joined yet', pending: true }
+    ].concat(s.extra.map((e) => ({ name: e, short: e.charAt(0).toUpperCase(), sub: 'Invite sent just now', pending: true })));
+    const members = base.map((m, i) => ({
+      name: m.name, short: m.short, sub: m.sub, live: !!m.live, pending: !!m.pending,
+      fill: m.pending ? 'transparent' : m.fill, ink: m.pending ? '#56665F' : m.ink,
+      ring: m.pending ? 'dashed #8A9892' : 'solid transparent',
+      subColor: m.live ? '#0E5C3E' : '#56665F', subWeight: m.live ? '650' : '400',
+      line: i ? '#EDF0EA' : 'transparent'
+    }));
+    return {
+      members,
+      invite: s.invite,
+      onInvite: (e) => this.setState({ invite: e.target.value }),
+      send: () => { const v = s.invite.trim(); if (v) this.setState({ extra: s.extra.concat(v), invite: '' }); },
+      copy: () => this.setState({ copied: true }),
+      copyLabel: s.copied ? 'Link copied' : 'Copy invite link'
+    };
+  }
+}
+</script>
+</body>
+</html>

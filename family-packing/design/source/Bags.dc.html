@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kitbag · By bag</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<header style="position: absolute; left: 12px; right: 12px; top: 12px; height: 48px; display: flex; align-items: center; gap: 10px">
+<a href="Pack.dc.html" aria-label="Back to packing" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
+<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">ITALY · 4 BAGS</span>
+<span style="font-size: 30px; line-height: 1; font-weight: 900; font-stretch: 64%; letter-spacing: -0.01em">Bags</span>
+</div>
+<a href="Share.dc.html" aria-label="Packing together: Sam is here" style="height: 44px; padding: 0 10px 0 6px; border-radius: 22px; background: #FFFFFF; display: flex; align-items: center; gap: 6px">
+<span style="display: flex">
+<span style="width: 28px; height: 28px; border-radius: 50%; background: #3A6BFF; color: #FFFFFF; border: 2px solid #FFFFFF; display: grid; place-items: center; font-size: 11px; font-weight: 800">N</span>
+<span style="width: 28px; height: 28px; margin-left: -8px; border-radius: 50%; background: #7BE0B5; color: #0E2A23; border: 2px solid #FFFFFF; display: grid; place-items: center; font-size: 11px; font-weight: 800">S</span>
+</span>
+<span style="font-size: 12px; font-weight: 700">Live</span>
+</a>
+<button type="button" aria-label="Trip settings" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E2A23" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></button>
+</header>
+
+<div style="position: absolute; left: 16px; right: 16px; top: 70px; height: 24px; display: flex; align-items: center; gap: 10px">
+<span style="font-size: 24px; font-weight: 900; font-stretch: 64%; line-height: 1">46%</span>
+<span style="flex: 1; height: 8px; border-radius: 4px; background: #D9DFD6; overflow: hidden; display: block"><span style="display: block; height: 8px; border-radius: 4px; width: 46%; background: #0E2A23"></span></span>
+<span style="font: 500 11px 'DM Mono', monospace; color: #56665F">74 of 160 packed</span>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; top: 106px; bottom: 0; overflow-y: auto; padding: 0 16px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+
+<section style="background: #0E2A23; color: #EEF1EA; border-radius: 20px; padding: 14px 14px 14px 16px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; gap: 10px; align-items: flex-start">
+<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 3px">
+<span style="font-size: 16px; font-weight: 750">{{sortTitle}}</span>
+<span style="font-size: 13px; line-height: 1.4; color: #B6C8C0">{{sortBody}}</span>
+</div>
+</div>
+<sc-if value="{{sortIdle}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{preview}}" style="align-self: flex-start; height: 40px; padding: 0 16px; border: 0; border-radius: 12px; background: #FF5B23; color: #0E2A23; font: 750 14px Archivo, system-ui, sans-serif; cursor: pointer">Sort them for me</button>
+</sc-if>
+<sc-if value="{{sortPreview}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-wrap: wrap; gap: 6px">
+<span style="height: 30px; padding: 0 10px; border-radius: 10px; background: #163A31; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600"><span style="font: 500 11px 'DM Mono', monospace; color: #FF8A5E">+30</span>Checked case</span>
+<span style="height: 30px; padding: 0 10px; border-radius: 10px; background: #163A31; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600"><span style="font: 500 11px 'DM Mono', monospace; color: #FF8A5E">+9</span>Carry-on</span>
+<span style="height: 30px; padding: 0 10px; border-radius: 10px; background: #163A31; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600"><span style="font: 500 11px 'DM Mono', monospace; color: #FF8A5E">+5</span>Day bag</span>
+</div>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{apply}}" style="height: 40px; padding: 0 16px; border: 0; border-radius: 12px; background: #FF5B23; color: #0E2A23; font: 750 14px Archivo, system-ui, sans-serif; cursor: pointer">Apply</button>
+<button type="button" onClick="{{cancel}}" style="height: 40px; padding: 0 14px; border: 1.5px solid #3A6457; border-radius: 12px; background: transparent; color: #EEF1EA; font: 650 14px Archivo, system-ui, sans-serif; cursor: pointer">Not now</button>
+</div>
+</sc-if>
+<sc-if value="{{sortDone}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{cancel}}" style="align-self: flex-start; height: 40px; padding: 0 14px; border: 1.5px solid #3A6457; border-radius: 12px; background: transparent; color: #EEF1EA; font: 650 14px Archivo, system-ui, sans-serif; cursor: pointer">Undo</button>
+</sc-if>
+</section>
+
+<sc-for list="{{bags}}" as="b" hint-placeholder-count="4">
+<section style="background: #FFFFFF; border-radius: 20px; padding: 14px; display: flex; flex-direction: column; gap: 12px">
+<button type="button" onClick="{{b.toggle}}" aria-expanded="{{b.expanded}}" style="display: flex; align-items: center; gap: 12px; padding: 0; border: 0; background: transparent; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #EEF1EA; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{b.icon}}"/></svg></span>
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 17px; font-weight: 750">{{b.name}}</span>
+<span style="font-size: 12px; color: #56665F">{{b.who}}</span>
+</span>
+<span style="font-size: 24px; font-weight: 900; font-stretch: 64%">{{b.count}}</span>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{b.rot}}"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+<div aria-hidden="true" style="height: 10px; display: flex; gap: 2px">
+<sc-for list="{{b.mix}}" as="m" hint-placeholder-count="4"><span style="flex: {{m.n}} 1 0; border-radius: 5px; background: {{m.c}}"></span></sc-for>
+</div>
+<sc-if value="{{b.open}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column">
+<sc-for list="{{b.rows}}" as="r" hint-placeholder-count="4">
+<div style="display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid #EDF0EA">
+<span style="width: 22px; height: 22px; flex: none; box-sizing: border-box; border-radius: 50%; border: 2px solid {{r.ring}}; background: {{r.dot}}; display: grid; place-items: center"><sc-if value="{{r.packed}}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if></span>
+<span style="flex: 1; min-width: 0; font-size: 15px; font-weight: 600; color: {{r.nameColor}}">{{r.name}}</span>
+<span style="display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 650; color: #0E2A23"><span style="width: 18px; height: 18px; border-radius: 50%; background: {{r.fill}}; color: {{r.ink}}; display: grid; place-items: center; font-size: 9px; font-weight: 800">{{r.short}}</span>{{r.owner}}</span>
+</div>
+</sc-for>
+<sc-if value="{{b.hasNote}}" hint-placeholder-val="{{ false }}">
+<p style="margin: 2px 0 0; padding: 10px 12px; border-radius: 12px; background: #FFF6F1; font-size: 13px; line-height: 1.4; color: #0E2A23">{{b.note}}</p>
+</sc-if>
+<span style="margin-top: 6px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.06em; color: #56665F">{{b.more}}</span>
+</div>
+</sc-if>
+</section>
+</sc-for>
+
+<section style="border: 1.5px dashed #8A9892; border-radius: 20px; padding: 14px 16px; display: flex; align-items: center; gap: 12px">
+<span style="width: 44px; height: 44px; flex: none; border-radius: 14px; background: #E2E8DF; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></span>
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 17px; font-weight: 750">Unassigned</span><span style="font-size: 12px; color: #56665F">{{unSub}}</span></span>
+<span style="font-size: 24px; font-weight: 900; font-stretch: 64%">{{unCount}}</span>
+</section>
+
+<a href="BagSheet.dc.html" style="flex: none; height: 52px; box-sizing: border-box; border-radius: 16px; border: 1.5px dashed #0E2A23; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 15px; font-weight: 700"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add or rename bags</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const KB_CASE = 'M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8zM9 8V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3M8 12v5M16 12v5';
+const KB_PACK = 'M7 9a5 5 0 0 1 10 0v10a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V9zM10 4.5V3h4v1.5M9.5 14h5v3h-5z';
+const KB_OWN = { N: ['#3A6BFF', '#FFFFFF', 'Nadia'], S: ['#7BE0B5', '#0E2A23', 'Sam'], L: ['#FFC94A', '#0E2A23', 'Leo'], I: ['#FF9BAE', '#0E2A23', 'Ivy'], U: ['#0E2A23', '#EEF1EA', 'Shared'] };
+const KB_BAGLIST = [
+  { id: 'chk', name: 'Checked case', who: 'Goes under the plane', items: 64, packed: 44, add: 30, icon: KB_CASE,
+    mix: [['#3A6BFF', 14], ['#7BE0B5', 12], ['#FFC94A', 16], ['#FF9BAE', 18], ['#0E2A23', 4]],
+    rows: [['T-shirts ×5', 'I', true, ''], ['Pajamas ×3', 'L', true, ''], ['Laundry pods ×6', 'U', true, ''], ['Pajamas', 'N', false, '']] },
+  { id: 'co', name: 'Carry-on', who: 'Sam carries it', items: 22, packed: 14, add: 9, icon: KB_CASE,
+    mix: [['#7BE0B5', 8], ['#3A6BFF', 5], ['#FF9BAE', 5], ['#0E2A23', 4]],
+    rows: [['Camera + spare battery', 'S', false, ''], ['First-aid kit', 'U', true, ''], ['Light cardigan', 'I', false, ''], ['Favorite blanket', 'I', true, '']] },
+  { id: 'leo', name: "Leo's backpack", who: 'Leo carries it', items: 9, packed: 2, add: 0, icon: KB_PACK,
+    mix: [['#FFC94A', 8], ['#FF9BAE', 1]],
+    note: "Ivy's bunny rides in Leo's backpack. It still counts toward Ivy's list.",
+    rows: [['Headlamp', 'L', true, ''], ['Sketchbook & pencils', 'L', false, ''], ['Tablet + headphones', 'L', false, ''], ['Bunny (the one)', 'I', false, '']] },
+  { id: 'day', name: 'Day bag', who: 'Nadia carries it', items: 21, packed: 14, add: 5, icon: KB_PACK,
+    mix: [['#3A6BFF', 7], ['#0E2A23', 9], ['#FFC94A', 3], ['#FF9BAE', 2]],
+    rows: [['Passports ×4', 'U', true, ''], ['Snacks for the flight', 'N', false, ' · to buy'], ['Wet wipes ×3', 'U', true, ''], ['Sun hat', 'I', false, ' · to buy']] }
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: 'leo', sort: 'idle' };
+  }
+  renderVals() {
+    const { open, sort } = this.state;
+    const done = sort === 'done';
+    const bags = KB_BAGLIST.map((b) => {
+      const isOpen = open === b.id;
+      const items = b.items + (done ? b.add : 0);
+      const mix = b.mix.map((m) => ({ c: m[0], n: m[1] }));
+      if (done && b.add) mix.push({ c: '#B7C2BB', n: b.add });
+      return {
+        name: b.name, icon: b.icon, count: b.packed + '/' + items,
+        who: b.who + ' · ' + items + ' items' + (done && b.add ? ' (+' + b.add + ' just sorted)' : ''),
+        open: isOpen, expanded: isOpen ? 'true' : 'false', rot: isOpen ? 'rotate(180deg)' : 'none',
+        toggle: () => this.setState({ open: isOpen ? null : b.id }),
+        mix,
+        hasNote: !!b.note, note: b.note || '',
+        more: '+ ' + (items - b.rows.length) + ' MORE IN THIS BAG',
+        rows: b.rows.map((r) => {
+          const o = KB_OWN[r[1]];
+          return { name: r[0], packed: r[2], ring: r[2] ? '#0E2A23' : '#B7C2BB', dot: r[2] ? '#0E2A23' : '#FFFFFF', nameColor: r[2] ? '#56665F' : '#0E2A23', fill: o[0], ink: o[1], short: r[1] === 'U' ? 'Us' : r[1], owner: (r[1] === 'U' ? 'Shared' : o[2] + "'s") + r[3] };
+        })
+      };
+    });
+    return {
+      bags,
+      sortIdle: sort === 'idle', sortPreview: sort === 'preview', sortDone: done,
+      sortTitle: done ? 'Sorted. 44 items now have a bag.' : (sort === 'preview' ? "Here's my plan. Nothing moves until you apply." : "44 items aren't in a bag yet."),
+      sortBody: done ? 'I put kids’ night things in the checked case and anything you need on the plane in the carry-on.' : 'I can sort them by who carries what and what you need on the plane.',
+      preview: () => this.setState({ sort: 'preview' }),
+      apply: () => this.setState({ sort: 'done' }),
+      cancel: () => this.setState({ sort: 'idle' }),
+      unCount: done ? '0' : '44',
+      unSub: done ? 'Everything has a home' : 'Mostly toiletries and snacks'
+    };
+  }
+}
+</script>
+</body>
+</html>

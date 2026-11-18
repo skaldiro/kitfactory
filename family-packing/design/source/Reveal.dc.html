@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kitbag · Trip home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; display: flex; flex-direction: column; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<section style="flex: none; position: relative; overflow: hidden; background: #0E2A23; color: #EEF1EA; border-radius: 0 0 32px 32px; padding: 12px 16px 18px; display: flex; flex-direction: column">
+<svg width="390" height="440" viewBox="0 0 390 440" fill="none" aria-hidden="true" style="position: absolute; left: 0; top: 0">
+<g stroke="#1F443A" stroke-width="1.25" transform="translate(330 130)">
+<path d="M0-50C32-50 58-28 56 2 54 34 26 54-6 52-38 50-60 26-56-6-52-36-30-50 0-50Z" transform="scale(.5)" vector-effect="non-scaling-stroke"/>
+<path d="M0-50C32-50 58-28 56 2 54 34 26 54-6 52-38 50-60 26-56-6-52-36-30-50 0-50Z" transform="scale(1.1)" vector-effect="non-scaling-stroke"/>
+<path d="M0-50C32-50 58-28 56 2 54 34 26 54-6 52-38 50-60 26-56-6-52-36-30-50 0-50Z" transform="scale(1.8)" vector-effect="non-scaling-stroke"/>
+<path d="M0-50C32-50 58-28 56 2 54 34 26 54-6 52-38 50-60 26-56-6-52-36-30-50 0-50Z" transform="scale(2.6)" vector-effect="non-scaling-stroke"/>
+<path d="M0-50C32-50 58-28 56 2 54 34 26 54-6 52-38 50-60 26-56-6-52-36-30-50 0-50Z" transform="scale(3.5)" vector-effect="non-scaling-stroke"/>
+</g>
+</svg>
+<div style="position: relative; height: 44px; display: flex; align-items: center; gap: 8px">
+<a href="Trips.dc.html" aria-label="All trips" style="width: 44px; height: 44px; border-radius: 22px; background: #163A31; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<span style="flex: 1"></span>
+<a href="TripMenu.dc.html" aria-label="Trip menu" style="width: 44px; height: 44px; border-radius: 22px; background: #163A31; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#EEF1EA" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></a>
+</div>
+<span style="position: relative; margin-top: 14px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.1em; color: #9FB5AC">{{kicker}}</span>
+<h1 style="position: relative; margin: 4px 0 0; font-size: 92px; line-height: 0.85; font-weight: 900; font-stretch: 62%; letter-spacing: -0.01em">Italy</h1>
+<p style="position: relative; margin: 10px 0 0; font-size: 15px; font-weight: 600">Rome · Florence · Cinque Terre</p>
+<p style="position: relative; margin: 4px 0 0; font-size: 13px; color: #B6C8C0">Cool, rain likely · 42–60°F</p>
+
+<div style="position: relative; margin-top: 18px; display: flex; align-items: flex-end; gap: 12px">
+<span style="font-size: 76px; line-height: 0.8; font-weight: 900; font-stretch: 62%; color: #FF5B23">{{pct}}</span>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 7px; padding-bottom: 2px">
+<span style="font-size: 15px; font-weight: 650">{{progress}}</span>
+<span style="display: block; height: 8px; border-radius: 4px; background: #21463B; overflow: hidden"><span style="display: block; height: 8px; border-radius: 4px; width: {{pct}}; background: #FF5B23"></span></span>
+</div>
+</div>
+
+<div style="position: relative; margin-top: 14px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<sc-for list="{{crew}}" as="c" hint-placeholder-count="5">
+<a href="Pack.dc.html" aria-label="{{c.aria}}" style="padding: 4px 0; display: flex; flex-direction: column; align-items: center; gap: 3px; color: #EEF1EA">
+<svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true">
+<circle cx="26" cy="26" r="22" fill="none" stroke="#21463B" stroke-width="4"/>
+<circle cx="26" cy="26" r="22" fill="none" stroke="{{c.stroke}}" stroke-width="4" stroke-linecap="round" stroke-dasharray="{{c.dash}}" transform="rotate(-90 26 26)"/>
+<circle cx="26" cy="26" r="16.5" fill="{{c.fill}}"/>
+<text x="26" y="31" text-anchor="middle" font-family="Archivo, sans-serif" font-size="14" font-weight="800" fill="{{c.ink}}">{{c.short}}</text>
+</svg>
+<span style="font-size: 12px; font-weight: 700">{{c.name}}</span>
+<span style="font: 500 10px 'DM Mono', monospace; color: #9FB5AC">{{c.count}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<div style="flex: 1; min-height: 0; padding: 14px 16px 18px; display: flex; flex-direction: column; gap: 12px">
+
+<section style="flex: none; background: #FFFFFF; border-radius: 20px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; align-items: center; justify-content: space-between">
+<span style="display: inline-flex; align-items: center; gap: 8px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>SCOUT NOTICED</span>
+<span style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">{{pager}}</span>
+</div>
+<sc-if value="{{hasNote}}" hint-placeholder-val="{{ true }}">
+<span style="font-size: 18px; line-height: 1.15; font-weight: 750">{{noteTitle}}</span>
+<span style="font-size: 14px; line-height: 1.4; color: #56665F">{{noteBody}}</span>
+<div style="display: flex; gap: 8px; margin-top: 2px">
+<button type="button" onClick="{{yes}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 12px; background: #0E2A23; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; cursor: pointer">{{yesLabel}}</button>
+<button type="button" onClick="{{no}}" style="height: 44px; padding: 0 14px; border: 0; border-radius: 12px; background: #EEF1EA; color: #0E2A23; font: 650 14px Archivo, system-ui, sans-serif; cursor: pointer">{{noLabel}}</button>
+</div>
+</sc-if>
+<sc-if value="{{caughtUp}}" hint-placeholder-val="{{ false }}">
+<span style="font-size: 18px; line-height: 1.15; font-weight: 750">That's everything I had.</span>
+<a href="ScoutStart.dc.html" style="align-self: flex-start; height: 44px; padding: 0 16px; border-radius: 12px; background: #0E2A23; color: #EEF1EA; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700">Ask Scout something</a>
+</sc-if>
+<sc-if value="{{hasLast}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: center; gap: 8px; padding-top: 6px; border-top: 1px solid #EDF0EA">
+<span style="flex: 1; font-size: 13px; color: #56665F">{{lastText}}</span>
+<button type="button" onClick="{{undo}}" style="height: 36px; padding: 0 8px; border: 0; background: transparent; color: #B23A0B; font: 700 13px Archivo, system-ui, sans-serif; cursor: pointer">Undo</button>
+</div>
+</sc-if>
+</section>
+
+<div style="flex: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+<a href="Pack.dc.html" style="height: 68px; box-sizing: border-box; border-radius: 16px; background: #E2E8DF; padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 26px; line-height: 1; font-weight: 900; font-stretch: 64%">3</span><span style="font-size: 12px; font-weight: 600">to buy</span></a>
+<a href="Bags.dc.html" style="height: 68px; box-sizing: border-box; border-radius: 16px; background: #E2E8DF; padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 26px; line-height: 1; font-weight: 900; font-stretch: 64%">4</span><span style="font-size: 12px; font-weight: 600">bags</span></a>
+<a href="{{thirdHref}}" style="height: 68px; box-sizing: border-box; border-radius: 16px; background: #E2E8DF; padding: 10px 12px; display: flex; flex-direction: column; justify-content: center; gap: 2px"><span style="font-size: 26px; line-height: 1; font-weight: 900; font-stretch: 64%">{{thirdBig}}</span><span style="font-size: 12px; font-weight: 600">{{thirdSmall}}</span></a>
+</div>
+
+<a href="Pack.dc.html" style="flex: none; margin-top: auto; height: 60px; border-radius: 20px; background: #FF5B23; color: #0E2A23; display: flex; align-items: center; justify-content: space-between; padding: 0 9px 0 22px; font-size: 19px; font-weight: 750">{{cta}}<span style="width: 44px; height: 44px; border-radius: 14px; background: #0E2A23; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"firstVisit":{"editor":"boolean","default":false},"$preview":{"width":390,"height":844}}'>
+const KB_HOME = [
+  ['Nadia', 'N', '#3A6BFF', '#FFFFFF', 31, 14],
+  ['Sam', 'S', '#7BE0B5', '#0E2A23', 28, 15],
+  ['Leo', 'L', '#FFC94A', '#0E2A23', 34, 14],
+  ['Ivy', 'I', '#FF9BAE', '#0E2A23', 41, 19],
+  ['Shared', 'Us', '#EEF1EA', '#0E2A23', 26, 12]
+];
+const KB_NOTES = [
+  { id: 'laundry', title: 'I planned around the washer in Florence', body: 'A midway wash means about 5 days of clothes each, not 10.', yes: 'Makes sense', no: 'Pack for 10', yesR: 'Keeping 5 days of clothes each', noR: 'Switched to 10 days of clothes' },
+  { id: 'church', title: 'Church visits', body: 'Many churches in Italy ask for covered shoulders and knees. Add a light layer for each adult?', yes: 'Add it', no: 'Skip', yesR: 'Added a light layer for 2 adults', noR: 'Skipped the church layers' },
+  { id: 'train', title: 'Two train rides between stops', body: 'Add a small activity kit each for Leo and Ivy?', yes: 'Add them', no: 'Skip', yesR: 'Added 2 activity kits', noR: 'Skipped the activity kits' }
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { ans: {}, last: null };
+  }
+  renderVals() {
+    const s = this.state;
+    const first = !!this.props.firstVisit;
+    const C = 2 * Math.PI * 22;
+    let tot = 0, dn = 0;
+    const crew = KB_HOME.map((x) => {
+      const k = first ? 0 : x[5];
+      tot += x[4]; dn += k;
+      return {
+        name: x[0], short: x[1], fill: x[2], ink: x[3], count: k + '/' + x[4],
+        stroke: k ? x[2] : 'transparent',
+        dash: (C * k / x[4]).toFixed(1) + ' ' + C.toFixed(1),
+        aria: x[0] + ', ' + k + ' of ' + x[4] + ' packed'
+      };
+    });
+    const left = KB_NOTES.filter((n) => !s.ans[n.id]);
+    const cur = left[0];
+    const lastNote = s.last ? KB_NOTES.find((n) => n.id === s.last) : null;
+    const answer = (v) => { if (cur) this.setState({ ans: { ...s.ans, [cur.id]: v }, last: cur.id }); };
+    return {
+      crew,
+      kicker: first ? 'YOUR FAMILY PACKING LIST IS READY' : 'NOV 20–29 · IN 9 DAYS',
+      pct: Math.round(dn / tot * 100) + '%',
+      progress: first ? tot + ' things to pack' : dn + ' of ' + tot + ' packed',
+      cta: first ? 'Start packing' : 'Keep packing',
+      hasNote: !!cur, caughtUp: !cur,
+      pager: cur ? (KB_NOTES.length - left.length + 1) + ' OF ' + KB_NOTES.length : 'ALL DONE',
+      noteTitle: cur ? cur.title : '', noteBody: cur ? cur.body : '',
+      yesLabel: cur ? cur.yes : '', noLabel: cur ? cur.no : '',
+      yes: () => answer('yes'), no: () => answer('no'),
+      hasLast: !!lastNote,
+      lastText: lastNote ? (s.ans[lastNote.id] === 'yes' ? lastNote.yesR : lastNote.noR) : '',
+      undo: () => { if (!s.last) return; const a = { ...s.ans }; delete a[s.last]; this.setState({ ans: a, last: null }); },
+      thirdHref: first ? 'SignIn.dc.html' : 'Share.dc.html',
+      thirdBig: first ? 'Save' : '2',
+      thirdSmall: first ? 'this list' : 'packing together'
+    };
+  }
+}
+</script>
+</body>
+</html>
