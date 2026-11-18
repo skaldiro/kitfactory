@@ -2,17 +2,22 @@
 
 An AI-first packing app for families who travel. Parents describe a trip, Scout (the in-app AI) asks a few tailored questions, and the family gets a packing list per person they can work through together on two phones.
 
-Naming: "Kitbag" was the design-stage name and has a legal conflict, so it must not appear in new code, copy or store listings. Until decision 1 picks the new name, use "Family Packing" in docs and the placeholder `APP_NAME` constant in code. The AI assistant is "Scout" (may also change). The wordmark and logo in `design/source/` are placeholders until the new name and logo are chosen.
+Naming: "Kitbag" was the design-stage name and has a legal conflict, so it must not appear in new code, copy or store listings. Until the new name is chosen, use "Family Packing" in docs and the placeholder `APP_NAME` constant in code. The AI assistant is "Scout" (may also change). The wordmark and logo in `design/source/` are placeholders until the new name and logo are chosen.
+
+## Where things live
+
+- This folder holds technical work only: code, the requirements spec, designs exported from the design canvas, the design system, test trips and the changelog.
+- The plan, the task tracker, product and business decisions, and accounts live in the shared Google Drive (KitFactory). You don't need them to build.
+- Build work arrives as GitHub issues, one per task, created at the start of each week. When asked to work on an issue, read it first; it links the spec sections and screens it covers.
+- When a decision changes how the app behaves, it is written into `docs/spec-v2.md` (until that exists, `docs/prd.md` plus `design/screens.md`). The spec in this folder is always the version to build.
 
 ## Read these first, in this order
 
-1. The project tracker (Google Sheet in the shared Drive, mirrored weekly to `docs/plan.md`): the 16-week plan. Every week has numbered tasks marked Selman, Daniel or Claude. When asked to "do the week N tasks", do the Claude tasks for that week in order.
-2. `docs/decisions.md`: open and closed product decisions. A closed decision overrides anything older.
-3. `docs/spec-v2.md` once it exists (week 2): the signed requirements. Until then, `design/screens.md` plus `docs/prd.md`.
+1. The GitHub issue you were asked to work on.
+2. `docs/spec-v2.md` once it exists (week 2). Until then, `design/screens.md` plus `docs/prd.md`.
+3. `docs/architecture.md`: how the app, Supabase and the Claude API fit together.
 4. `design/screens.md`: every screen, its route, states and where each control goes.
 5. `design/README.md`: how to read the design source files.
-
-Paths in `docs/plan.md` such as `/design` and `docs/plan.md` are relative to this `family-packing/` folder. The plan mentions a repo named `kitbag-app`; the app lives here instead, in `kitfactory/family-packing/`.
 
 ## Stack
 
@@ -47,7 +52,7 @@ Paths in `docs/plan.md` such as `/design` and `docs/plan.md` are relative to thi
 - Before opening a pull request: type check, lint, run tests, and start the app once. Say in the pull request which of these ran.
 - Start each session by reading open GitHub issues labeled `blocker`, then `next`.
 - Explain anything the founders must do (accounts, consoles, approvals) as numbered steps with exact menu names, and stop until they confirm.
-- Write a short entry in `docs/changelog.md` for each merged task.
+- Write a short entry in `docs/changelog.md` for each merged task, and close the issue from the pull request ("Closes #N").
 
 ## Commands
 
