@@ -1,6 +1,6 @@
 # Kitmunk requirements spec v2
 
-Status: **draft for review** (tracker W1-16, reviewed in W2-09, signed at the W2-13 meeting on Fri Nov 27 by approving its pull request).
+Status: **draft for review**, complete (tracker W1-16, W1-15, W2-16, W2-17, W2-18, W2-26). Reviewed in one sitting in W2-09 on Tue Nov 24; signed by approving its pull request.
 Built from: design v1.0 (`design/source/`, exported Nov 21 2026), `design/DESIGN.md`, `docs/prd.md` v1.0, `docs/architecture.md` and the tracker's Decisions tab as of Nov 21 2026.
 
 ## How to use this spec
@@ -17,7 +17,7 @@ Built from: design v1.0 (`design/source/`, exported Nov 21 2026), `design/DESIGN
 1. Open questions for the founders
 2. Scope, design vs PRD conflicts, glossary
 3. Rules that hold on every screen
-4. Sections written by W2-16, W2-17, W2-18 and W2-26
+4. Intake and data model (W2-16), Scout (W2-17), memory (W2-18), privacy (W2-26)
 5. Screens: start a trip (S01a, S02, S02b, V1, V2, S03, S04, S04b, S04c)
 6. Screens: pack it (S05, S06, S06b, S07, S07b, S08a, S08, S10, S10b, M1, D1)
 7. Screens: home and family memory (S01b, S01c, S01d, S01e, S09, S09b, S09c, S12)
@@ -30,11 +30,11 @@ Built from: design v1.0 (`design/source/`, exported Nov 21 2026), `design/DESIGN
 
 ## 1. Open questions for the founders
 
-Answer these in W2-09 (comment on the pull request or tell Claude in the Project). Each has a recommendation; a question that maps to a tracker decision is closed there, not here. Every design vs PRD conflict is in section 2.2; the open ones point here (Q2, Q7, Q9, Q15 to Q19).
+Answer these in W2-09 (one sitting, Tue Nov 24; comment on the pull request or tell Claude in the Project). Each has a recommendation; a question that maps to a tracker decision is closed there, not here. Every design vs PRD conflict is in section 2.2; the open ones point here (Q2, Q7, Q9, Q15 to Q19).
 
 | # | Question | Where it bites | Recommendation |
 | --- | --- | --- | --- |
-| Q1 | Children's data: the tracker's proposal for decision 13 is "first name and age", but the design (S09b, A2) stores **birth month and year** so ages update on their own. Which? | S02, S09b, A2, data model | Birth month and year for kids, no full dates (matches the design and the W2-26 proposal). Close in decision 13. |
+| Q1 | Children's data: the tracker's proposal for decision 13 is "first name and age", but the design (S09b, A2) stores **birth month and year** so ages update on their own. Which? | S02, S09b, A2, data model (4.1.5, 4.4.3) | Birth month and year for kids, no full dates (matches the design and 4.4.3). Close in decision 13. |
 | Q2 | Trips entered by **length** ("10 days") instead of dates: what does Scout use for the weather on S03? | S02, S03 | Ask for the month in S02 when length mode is on ("Roughly when?", month picker, optional). With no month, S03 shows no weather card and Scout asks one weather question instead. |
 | Q3 | Bags show "Sam carries it" (S10). Is a carrier per bag in scope, given decision 5 (no packing assignment)? S10b has no carrier field. | S10, S10b | Out of scope at launch. Show the bag type ("Checked", "Carry-on") in that line. Revisit with packing assignment. |
 | Q4 | Who can delete a trip, remove a person, or invite? Today every adult in the household can do everything. | M1, C1, S11 | Every adult can do everything, and every destructive action names the household impact in its confirm. No roles at launch. |
@@ -44,15 +44,30 @@ Answer these in W2-09 (comment on the pull request or tell Claude in the Project
 | Q8 | D1 (All packed) is listed with a "door checklist" in screens.md, but the canvas shows only the crew. Is a last-minute door checklist (passports, chargers, keys) wanted at launch? | D1 | Not at launch. D1 ships as drawn; door checklist is in Later (2.1). |
 | Q9 | S04b's stages show real trip details ("Rome 46 to 60°F"). The PRD says loading text must not claim model steps it didn't do. | S04b | Stage text is built from the trip and the run's real results where they exist (weather, counts); timing is cosmetic (one stage per 1.8 s) and the last stage waits for the real result. |
 | Q10 | "Default packing style" in A1 and the style question in S03 overlap. | S03, A1 | When a default is set, Scout does not ask the style question; S04 shows the style as a fact with Change. |
-| Q11 | Guest Scout limit (W6-03): how many Scout runs before sign-in? | S02 to S08 for guests | Proposed: 3 list builds and 10 change requests per phone per 30 days. Set with decisions 6 and 11. |
+| Q11 | Guest Scout limit (W6-03): how many Scout runs before sign-in? | S02 to S08 for guests | Proposed: 3 list builds and 10 change requests per phone per 30 days (4.2.5, Q32). Set with decisions 6 and 11. |
 | Q12 | Temperatures are drawn in °F and A1 has a °F/°C switch. Default unit? | S03, S04, S05, A1 | Depends on decision 10. Until then: °F if the phone's region is US, else °C; the A1 switch overrides. |
-| Q13 | A2 promises "deletes them within 30 days" for Anthropic and "never used to train AI models". | A2, W2-26 | Keep the copy, but W2-26 must confirm the vendor terms (and whether to ask for zero data retention) before beta. A promise we can't back is removed, not softened. |
+| Q13 | A2 promises "deletes them within 30 days" for Anthropic and "never used to train AI models". | A2, 4.4.8 | Checked in 4.4: no training holds; the 30 days has exceptions, so the copy changes (Q25). A promise we can't back is removed, not softened. |
 | Q14 | Limits and timings this draft had to pick, none from a decision: item name 60 and note 300 characters; quantities 1 to 99; trip name 40; person name 30; invite valid 7 days; list result within 20 s at p95; tap response within 100 ms; magic link 15 minutes (from the design); sync retries 3 times before showing "Not synced yet". | Throughout | Accept as drafted unless one looks wrong. Latency budgets per Scout job are replaced by W2-17's. |
-| Q15 | Confirm the four cuts in section 2.1: Scout bag sort and bag suggestion, memory pattern suggestions, presence and the Recent feed, and in-app voice. | S10, S10b, S09c, S11, S01b, V1, V2 | Cut all four. Voice is closed by decision 8; recommend keyboard dictation for launch. |
+| Q15 | Confirm the four cuts in section 2.1: Scout bag sort and bag suggestion, memory pattern suggestions, presence and the Recent feed, and in-app voice. | S10, S10b, S09c, S11, S01b, V1, V2 | Cut all four. Voice is decided by decision 8 (open); recommend keyboard dictation for launch. Cutting bag sort also removes "Sort them for me (S10)" from decision 29. |
 | Q16 | Trip creation: the PRD's single free-text box or the design's form with a note (P5)? | S02 | The form. It works offline and without Scout, which a free-text-first flow can't. "Rather just talk?" covers the free-text feel. |
 | Q17 | Where a new trip lands: trip home (S05) or straight into packing (S06)? (P8) | S04b, S05 | S05. Scout noticed cards need a place to be seen once; every later visit is one tap from packing. |
 | Q18 | Is an "All items" view (every person's items in one list) needed? (P10) | S06 | No. The To buy tile and per-person filters cover the real uses; Later if testers ask. |
 | Q19 | Should guest data expire? (P15) | Guest storage | No expiry. Deleting the app deletes it. |
+| Q20 | W2-16 was to check the data model against the 10 test trips, which don't exist yet (W2-11, W2-12 due Nov 29). | 4.1.5, W3-03 | Move the check to W3-03: catalog v1 must show every item on the 20 trips traces to a fact in 4.1.2 or is custom. |
+| Q21 | Scout arrives in week 6, accounts in week 9. How do guests call Scout with limits? | 4.2.5, W6-02 | A Supabase anonymous session per phone: it identifies the phone for limits, creates no account, and the guest's trips stay on the phone. At sign-in the session becomes the account. |
+| Q22 | Not collected on purpose: sizes, gender, exact birth dates, home address, flight and hotel details, budget (4.1.2). | 4.1.2 | Confirm. Add any only with a list change it drives. |
+| Q23 | W2-18 asked for "keep or forget" after unused trips; the S09c card for it is Later. | 4.3.2 | At launch: after 3 unused trips a memory stops going to Scout and S09c tags it "Not used on the last 3 trips". No prompt, no auto-delete. |
+| Q24 | Health details: "Leo needs his EpiPen" can be packed and remembered as an item; "Leo has a peanut allergy" is never stored. | 4.1.4, 4.3.2, 4.4.4 | Confirm. It keeps the app out of health-data rules and the A2 promises simple. |
+| Q25 | Anthropic deletes API data within 30 days except when flagged under its usage policy or required by law. Zero data retention needs an agreement with Anthropic's sales team. | A2, 4.4.7 | No zero data retention at launch. A2 copy: "deletes them within 30 days, except if flagged for misuse." |
+| Q26 | Keep Scout's validated answers, with names replaced by tokens, for 30 days to debug bad lists? | 4.2.6, 4.4.1 | Yes, 30 days. Metrics (no text) kept 13 months. |
+| Q27 | Crash reporting vendor (W12-01). | 4.4.5, A2 | EAS Observe (Expo, a paid EAS service) so no new vendor; Sentry as the fallback. Listed on A2 either way. |
+| Q28 | Supabase plan at beta, which sets the backup window the policy can promise. | 4.4.6 | Decide in W9-01 with the production project; the policy states the real window. |
+| Q29 | The question bank: 11 questions (4.1.3), with K1 (pull-ups) and K4 (car seats) unskippable. | S03, 4.1.3 | Confirm, or name a question to add or cut. |
+| Q30 | Per-day caps by style: Light 5, Balanced 8, Ready 12. | 4.1.2, 4.1.5 | Accept as starting values; W3-03 tunes them against the test trips. |
+| Q31 | Working cost targets until decision 11 closes in week 8: $0.05 per new trip, $0.01 per change request. | 4.2.5 | Accept as planning numbers (not measured). |
+| Q32 | Limits: guests 3 builds and 10 changes per 30 days; households 30 builds and 200 changes; a $5 daily spend stop. | 4.2.5 | Accept as starting values; revisit with beta numbers. |
+| Q33 | J1 reads the note while the user types (S02-4 needs chips within 2 s), which costs more calls than reading only on Continue. | 4.2.1 | Keep reading while typing, throttled (1 s idle and 10 changed characters). |
+| Q34 | Starting model per job before the W7-03 sweep: Haiku for J1 and J2, Sonnet for J3 and J4. | 4.2.1, decision 31 | Accept; decision 31 closes in W8-05. |
 
 ---
 
@@ -211,16 +226,352 @@ Three conflicts inside the design, not with the PRD, are settled here by DESIGN.
 
 ---
 
-## 4. Sections written by other tasks
+## 4. Intake, Scout, memory and privacy
 
-These are added to this file by the tasks named. Screen sections below refer to them by name.
+Written for W2-16, W2-17, W2-18 and W2-26 on Nov 21, 2026, in the same pull request as the rest of the spec so it is reviewed once (W2-09). Questions these sections raise are Q20 to Q34 in section 1. Where an open decision matters, the text gives the recommended answer and says **Depends on decision N**.
 
-- **4.1 Intake questions and the trip data model**: W2-16 (due Wed Nov 25).
-- **4.2 Scout: follow-ups, building lists, changing lists**: W2-17, detail in `docs/scout-design.md`.
-- **4.3 Memory and context fed to Scout**: W2-18.
-- **4.4 Privacy and data handling**: W2-26.
+### 4.1 Intake questions and the trip data model (W2-16)
 
-Until they land, screens use the behavior written in sections 5 to 9 and `docs/architecture.md`.
+**Principle.** Every fact the app collects must change the list. A fact that changes nothing is not asked, not stored and not sent to Scout. The table in 4.1.2 is the complete list; adding a fact or a question needs a spec change.
+
+#### 4.1.1 Where facts come from, in order of trust
+
+| Source | Example | Shown as | Scout may override? |
+| --- | --- | --- | --- |
+| The user said it in the form (S02) or answered a question (S03) | Laundry: once, in Florence | Solid | No |
+| The user confirmed or edited a Scout value | Tapped the dashed Luggage row and kept it | Solid | No |
+| A confirmed memory (4.3) | Ivy: needs pull-ups at night | Solid, with the memory tag | No; it can ask if the trip makes it doubtful |
+| An adult's default (A1) | Packing style: Light | Solid | No |
+| Read from the note, voice or add-item text (job J1, 4.2) | "the apartment has a washer" becomes Laundry in Florence | Scout caught chip, then dashed on S04 | Yes, until confirmed |
+| Scout's assumption on a skipped question or an unasked fact | Luggage: 2 checked bags, 4 carry-ons | Dashed | Yes |
+| The rule default when nothing else exists | Laundry unknown: plan for none | Dashed "not sure" on S04 | Yes |
+
+A higher source always wins. A lower source never silently replaces a higher one; Scout can only ask (S03) or propose (S08).
+
+#### 4.1.2 The facts the list needs
+
+The six facts S04 counts ("All 6 covered"), plus the per-stop and per-person facts.
+
+| Fact | Values | Asked in | When unknown (rule default) | What it changes in the list |
+| --- | --- | --- | --- | --- |
+| Getting there | any of flying, driving, train, ferry | S02 chips | Not driving | Flying: liquids bag, travel-day kit, carry-on comfort items. Driving: car kit, car seats question. Train or ferry: motion sickness items when a child is under 10. |
+| Staying in | any of hotel, rental, family or friends, camping, cruise; per stop when the note says so | S02 chips, note | Hotel | Rental or family: kitchen and laundry basics are not packed, toiletries are. Hotel: no towels. Camping: shared camping gear (4.1.4). Cruise: formal night outfit, lanyard. |
+| Laundry | none, once (with the stop), whenever | Note, S03 question L1 | None | Caps per-day clothing at the days until the first wash plus a spare. |
+| Luggage | follows packing style and getting there: Light means carry-ons only, Balanced one checked bag, Ready checked bags as needed | Derived; editable through style | From style | Quantity caps; liquids under 100 ml when carry-ons only and flying. Bags are not created from it (S10b stays manual). |
+| Doing | any of the nine S02 activity chips, plus events read from the note | S02 chips, note | Sightseeing | Each activity adds its catalog group (swim, hike, ski, formal, theme park). Some trigger a question (4.1.3). |
+| Packing style | light, balanced, ready | A1 default, S03 question S1 | Balanced | Multiplies optional items and caps quantities (Light 5 of a per-day item, Balanced 8, Ready 12; starting values for W3-03). |
+| Per stop: place | free text; resolved to latitude, longitude, place label and country by J1 | S02 | Required | Climate (below), plug adapter when the country differs from home (**depends on decision 10**). |
+| Per stop: dates or length | start and end dates, or nights, or nights plus a month (Q2) | S02, S02b | Required: dates or nights | Days per stop, total days, per-day quantities, climate months. |
+| Per stop: usual weather | low and high temperature, wet days per week, a short sky line | Fetched (decision 7), never asked unless unavailable | Question W1, else "mild with rain" | Warm, cold and rain clothing groups and their quantities. |
+| Per person: age at the trip | computed from birth month and year on the first stop's start date; adults "Adult" | S02, S09b | Adult | Age bands (under 1, 1 to 2, 3 to 5, 6 to 12, 13 to 17, adult) pick the catalog variants: diapers, wipes, pull-ups, swim diapers, snacks, comfort items, sizes. **Depends on decision 13** (birth month and year recommended). |
+| Per person: travels with | stroller, pull-ups, car seat, travel crib, high chair, blackout shade (S09b chips) | S09b memory, S03 questions K1 to K4 | Not brought | Adds the gear to Shared, and removes the matching question. |
+| Per person: always pack | items the household confirmed (memory) | S09b, S08 memory | None | Adds those lines to the person on every new trip. |
+
+Facts that are **not** collected because they change nothing at launch: home address, exact birth dates, gender, clothing sizes, flight numbers, hotel names, budget. Sizes: the "Check size" tag on S12 is enough.
+
+#### 4.1.3 The question bank (S03)
+
+Scout picks at most three of these per trip (job J2, 4.2). Each question is asked only when its trigger holds and its fact is not already known from a higher source (4.1.1). "Skip" saves the assumption shown and marks it dashed; questions marked **no skip** must be answered, because a wrong guess would leave out something a family can't buy at the airport or that matters for safety.
+
+| ID | Question (as shown) | Trigger | Options | Skip assumes | Changes |
+| --- | --- | --- | --- | --- | --- |
+| K1 | Does {kid} still need pull-ups? | A child aged 2 to 5, not known | Nights only · Day and night · Not anymore | **No skip** | Pull-up count; under 2 always gets diapers with no question |
+| K2 | How does {kid} get around on sightseeing days? | A child under 5, and sightseeing, theme park or hiking | Stroller · Carrier · On foot · A mix | Stroller | Stroller or carrier and its accessories, the day bag |
+| K3 | Where will {kid} sleep? | A child under 3 and any stay not camping | Crib there · We bring a travel crib · Shares a bed | Crib there | Travel crib, crib sheets, blackout shade |
+| K4 | Car seats: bringing them or renting? | A child under 8 and driving (or a rental car in the note) | Bringing · Renting there · Not needed | **No skip** | Car seats on Shared, with the count of children |
+| L1 | Can you do laundry on this trip? | 5 or more nights and laundry not known | No · Once, at {stop} · Whenever we want | No | Per-day clothing caps |
+| S1 | How do you like to pack? | No default in A1, and 2 or more stops or flying | Light · Balanced · Ready | Balanced | Caps and optional items; Luggage fact |
+| E1 | What's the dress code for the {event}? | A wedding or event | Formal · Smart casual · Casual | Smart casual | Formal outfit group per person, shoes |
+| H1 | What kind of hikes? | Hiking | Short walks · Day hikes | Day hikes | Hiking boots vs trainers, day packs, water, layers |
+| X1 | Renting ski gear there? | Skiing | Renting skis and boots · Bringing our own · Clothes only | Renting skis and boots | Ski gear group vs clothing only |
+| G1 | Camping gear: bringing it or is it there? | Camping | Bringing our own · It's provided | It's provided | Tent, sleeping bags, mats, stove on Shared |
+| W1 | What weather are you expecting? | Climate unavailable for a stop, or a length-mode trip with no month (Q2) | Warm · Mild · Cold · A mix | A mix | Climate groups as if the range were known |
+
+Rules for the bank:
+- Kid questions name the child and say why ("Asking because Ivy is 3"). With two children in the same band, one question covers both ("Do Ivy and Max still need pull-ups?") with per-child answers.
+- A question never asks for health information. Medicines, allergies and conditions are things a parent types in the note or adds as items; Scout turns them into items, never into stored facts about the person (4.4).
+- **Fallback set** when Scout fails (S03 rule): the triggered questions in this order, first three only: no-skip questions (K1, K4), then L1, S1, W1, K2, K3, then the rest. The same order is the tie-break for J2.
+- An answer can make another question irrelevant (K2 "On foot" drops nothing else; S1 "Light" drops nothing); Change on S03 re-runs the triggers.
+
+#### 4.1.4 Read from the parent's own words (job J1)
+
+From the S02 note, the voice transcript and the S07b text, J1 extracts only these, each as a Scout caught chip the user can remove:
+
+| What | Example text | Becomes |
+| --- | --- | --- |
+| Laundry and where | "the apartment in Florence has a washer" | Laundry: once, in Florence |
+| A stop's stay type | "camping the last two nights" | Staying in: camping, at that stop |
+| Rental car | "renting a car in Tuscany" | Getting there adds driving (triggers K4) |
+| Gear there | "the cabin has a crib", "renting skis" | Answers K3, X1 |
+| Gear the family brings | "bringing the stroller", "she naps in the stroller" | Travels with: stroller (this trip) |
+| Events | "my cousin's wedding on the 25th" | Doing: a wedding or event (triggers E1) |
+| Things to pack | "Leo needs his EpiPen", "don't forget the bunny" | Item lines for this trip, with the person; not stored as facts about the person (4.4) |
+| Things not to pack | "no need for swimwear" | A removal applied to the generated list as a proposal card on S05 |
+| Places | "Rome, then Florence, then Cinque Terre" (voice) | Stops, in order, dashed until confirmed |
+
+J1 never extracts or stores: health conditions, diagnoses, names of people not on the trip, addresses, phone numbers, emails, booking references. If it sees them, it ignores them; the note text itself stays only on the phone until sign-in and in the trip record after (4.4).
+
+#### 4.1.5 The data model
+
+This is what W2-08 builds as TypeScript types and on-phone storage, and what W5-02 and W9-02 build as Postgres tables. Every row carries `household_id`; access rules check it on every read and write. Guests have the same shapes on the phone, with a local household id that becomes the server household id at sign-in (R1). IDs are UUIDs made on the phone, so nothing is renumbered when it moves.
+
+**Household**: `id`, `created_at`, `owner_adult_id` (Q5), `home_country` (**depends on decision 10**; used for plug adapters).
+
+**Adult** (an account; none for guests): `id`, `household_id`, `first_name` (1 to 30), `email` (sign-in only), `joined_at`, `settings` (`temp_unit` F or C, `default_style` or none, `suggest_memories` boolean, `email_on_join` boolean), `crew_person_id` (the adult's own crew profile).
+
+**Person** (a crew profile, adult or child): `id`, `household_id`, `kind` (adult or child), `first_name` (1 to 30), `birth_month` and `birth_year` (children; optional for adults; **depends on decision 13**), `color` (one of six), `removed_at` (kept as a name on past trips).
+
+**Trip**: `id`, `household_id`, `name` (1 to 40), `name_source` (scout or user), `status` (draft, building, ready, archived), `created_by`, `created_at`, `updated_at`, `getting_there[]`, `staying_in[]`, `activities[]`, `note` (up to 2,000), `style`, `facts` (one entry per fact in 4.1.2: `value`, `source` from 4.1.1, `confirmed`), `answers` (S03 question id, option, `assumed`), `people[]` (person ids on this trip), `from_trip_id` (S12), `digest` (written when the trip ends, 4.3), `d1_shown_on` (date).
+
+**Stop**: `id`, `trip_id`, `position`, `place_text`, `place` (`label`, `country`, `lat`, `lon`, `resolved_by` J1 or user), `start_date` and `end_date`, or `nights` with optional `month` (Q2), `stay_type` (override of the trip's), `climate` (`low`, `high`, `unit` C, `wet_days_per_week`, `sky`, `source`, `fetched_at`).
+
+**Bag**: `id`, `trip_id`, `name` (1 to 30), `type` (checked, carry-on, backpack, tote), `position`.
+
+**Item line**: `id`, `trip_id`, `owner_person_id` or null for Shared, `catalog_item_id` or null for custom, `name` (1 to 60), `renamed` (boolean), `category` (the six in S06), `need` (1 to 99), `packed` (0 to need), `shopping` (have, to_buy, bought), `bag_id` or null, `note` (up to 300), `source` (rule, scout, user, past_trip, always_pack, memory), `reason` (Scout lines only, up to 120 characters), `scout_run_id`, `size_check` (S12), `updated_at`, `updated_by`. A removed line is deleted; undo keeps it on the phone for the 5-second window and re-inserts it with the same id.
+
+**Memory**: see 4.3.2.
+
+**Scout card** (S05 "Scout noticed"): `id`, `trip_id`, `title`, `body`, `proposal` (the change set, same shape as J4's), `memory_proposal` or null, `state` (open, accepted, declined), `position` (1 to 3).
+
+**Scout run**: see 4.2.6.
+
+**Catalog item** (shared, read-only, not owned by a household; W3-03 writes it): `id`, `name`, `category`, `scope` (per person or shared), `age_bands[]`, `when` (conditions over the facts in 4.1.2, for example `activities has beach and age_band in [under1, 1to2]`), `quantity` (rule from the list below), `style_min` (light, balanced or ready: the lightest style that packs it), `tags[]` (for J3's catalog subset).
+
+**Quantity rules** the catalog uses (W4-01 implements them; W3-03 tunes the numbers):
+- `fixed n`: always n (toothbrush 1).
+- `per_day`: days = nights + 1; quantity = min(days, days until the first wash + 1 spare when laundry is once or whenever), capped by style (Light 5, Balanced 8, Ready 12).
+- `per_n_days k`: one per k days, at least 1 (pajamas every 3 days).
+- `per_night_child`: diapers and pull-ups by age band and K1 answer; this is the one rule with no cap.
+- `per_person_shared`: one per traveler, owned by Shared (passports are out of scope; adapters are per 2 people).
+- Every quantity is then bounded to 1 to 99.
+
+**Not in the model on purpose**: who packs an item (decision 5), item photos, prices, shopping links, a per-item weight.
+
+**Check against the test trips** (W2-16 step 4): moved to W3-03, which builds catalog v1 from the 20 trips and must show every item on those trips traces back to a fact above or is a custom item. Q20.
+
+### 4.2 Scout: follow-ups, building lists, changing lists (W2-17)
+
+The detail (schemas, prompt layout, eval set, cost model) is in `docs/scout-design.md`. This section is the behavior every build task must follow.
+
+#### 4.2.1 What Scout is
+
+Scout is four bounded jobs, each one model call inside a Supabase Edge Function, with a JSON schema for its answer and a validator after it. It is not an agent: it never calls tools, never loops, never writes to the database itself. The function writes, and only what the validator passes. Architecture.md's five jobs map onto these four: "propose memories" is part of J3 and J4's answers, not a separate call.
+
+| Job | What it does | Runs when | Built in | Starting model (decision 31) | p95 latency budget | Retry inside budget |
+| --- | --- | --- | --- | --- | --- | --- |
+| J1 Read | Turns free text (S02 note, voice transcript, S07b text, S09b "Tell Scout") into structured facts, stops with coordinates, people and items (4.1.4) | 1 s after typing stops, at most once per 10 changed characters, and on Continue | W6-02, W8-02 | Haiku | 2 s | No |
+| J2 Ask | Picks 0 to 3 questions from the bank (4.1.3), states each skip assumption, fills assumed facts, suggests up to 3 trip names | S02 Continue | W6-02 | Haiku | 4 s | Once |
+| J3 Build | Adds lines and adjusts quantities on top of the rule list, with a reason on each; returns up to 3 Scout noticed cards; may propose memories inside cards | S04 Create our packing list; S12 (from a past trip) | W7-01, W10-04 | Sonnet | 15 s (S04b's 20 s includes the rule list) | Once, if 8 s remain |
+| J4 Change | Turns a request (S08, M1 edits) into a change set: add, change, remove, each with a reason; may add one memory proposal | S08 send; saving trip edits in M1 | W8-01 | Sonnet | 8 s | Once, if 4 s remain |
+
+Model names are the current Claude models (Haiku 5.5, Sonnet 5.5, Opus 5.5 as of Nov 2026). The W7-03 sweep runs every job on all three and decision 31 picks per job by eval score per dollar.
+
+#### 4.2.2 Follow-ups (J2)
+
+- Input: the trip draft (facts with sources, stops, people with age bands, activities), the triggered questions from 4.1.3 with their impact counts (how many lines and quantities each answer would change, computed by the rule engine on the phone or in the function), confirmed memories for these people (4.3), the default style.
+- Scout chooses the questions whose answers change the most lines, highest first, no-skip questions always first. It asks none when every triggered question's fact is already known or would change fewer than 2 lines. Ties follow the fallback order in 4.1.3.
+- Output: `questions[]` (bank id, the "Asking because" line, the question text with names filled, option labels from the bank, the skip assumption), `assumed_facts[]` (fact, value, one-line reason), `trip_names[]` (1 to 3, rule R15).
+- The validator rejects any question not in the bank or not triggered, any option not in the bank, and any assumed fact that would override a higher source (4.1.1). Rejected questions are replaced from the fallback order.
+
+#### 4.2.3 Building the list (J3)
+
+1. The phone or function builds the **rule list** first from the catalog and the facts (W4-01). This always exists and is the fallback.
+2. J3 receives a compact rule list (catalog ids and quantities per person), the trip summary, the household summary (4.3.3) and a catalog subset (items whose tags match the trip; about 150 at most).
+3. Scout may: **add** lines (catalog item by id, or custom with a flag), **adjust** the quantity of a rule line up or down, each with a reason of at most 120 characters that names the fact it used ("Three because of a wash around day 5, plus a spare."). It may not remove rule lines; a removal is a Scout noticed card (a proposal, R2).
+4. It returns up to 3 **Scout noticed cards**: things worth a yes or no ("Rain most days in Florence. Add a rain cover for the stroller?"), each with its change set and, where something is lasting, a memory proposal.
+5. Limits: at most 40 additions, at most 40 adjustments, quantities 1 to 99, owners only people on the trip or Shared, no duplicate of a line already there (it adjusts instead).
+6. The validator drops invalid lines. If more than 20% of Scout's lines are dropped, or the call runs past its budget, the run is a **fallback**: the rule list ships with the honest fallback line (3.5) (**decision 32**). Otherwise dropped lines are logged as `partial`.
+
+#### 4.2.4 Changing the list (J4)
+
+- Input: the request text, the current list compact (line ids, names, owners, quantities, packed, bag), the trip summary, the household summary, the catalog subset.
+- Output: `changes[]`, each `add` (catalog id or custom, owner, need, reason), `change` (line id, the new need, name or note, reason) or `remove` (line id, reason); optionally one `memory_proposal`; or `no_change` with a one-line answer ("Your list already covers that.").
+- Every change is shown as a row in S08 and applies only on Apply (R2). A remove of a line that is already packed says so in its row ("Packed already: take it out of the bag").
+- Limits: at most 30 changes per request; changes only to this trip; never changes to the crew, other trips, settings or memories.
+- Validation as in J3. If more than 20% of the changes are dropped, S08 shows "I couldn't work that out. Try saying it another way." with the message kept (fallback). Otherwise the valid rows show, with "I left out 2 changes I wasn't sure about." when any were dropped.
+- M1 edits (dates, stops, people, activities) call J4 with a generated request ("Trip changed: 9 nights to 5 nights"), so the preview follows the same rules (M1-1). Before W8-01, the rule list diff is shown as the preview.
+
+#### 4.2.5 Cost and spending limits
+
+- **Decision 11** sets the ceiling per generated list in week 8 from real numbers. Until then the working target is: one new trip (J1 a few times, J2 once, J3 once) costs at most **$0.05**, and one S08 request at most **$0.01**. These are planning numbers, not measured; W7-03 reports the real cost per job and the decision replaces them. (Low confidence.)
+- Prompt caching for the fixed part of every prompt (instructions and the catalog subset format) is required, because it is most of each request.
+- Guest limits (Q11, set with decision 6): per guest phone, 3 list builds and 10 change requests per 30 days; J1 and J2 are not limited beyond a rate limit of 30 calls per minute. Signed-in households: 30 builds and 200 changes per 30 days. A limit reached means the fallback with the Limit state (3.5), never an error.
+- Server-side daily spend stop: when the day's Scout cost passes a threshold set in Supabase secrets (start: $5 a day), every job returns the fallback with `fallback: limit` until midnight UTC. The Console's monthly limit (W6-01, $50) is the backstop.
+- Guests call Scout through a Supabase anonymous session (Q21), which gives the limits an identity without creating an account or putting the guest's trip on the server.
+
+#### 4.2.6 What every run logs (`scout_runs`)
+
+`id`, `household_id` (or the anonymous session id), `trip_id`, `job`, `prompt_version`, `model`, `effort`, `started_at`, `latency_ms`, `input_tokens`, `output_tokens`, `cached_tokens`, `cost_usd`, `outcome` (ok, repaired, partial, fallback), `reason` (timeout, schema, quality, empty, limit, error), `lines_proposed`, `lines_dropped`, `drop_reasons` (counts by rule), `questions_asked` (bank ids), `retry_count`. Never logged: names, the note or request text, item names typed by the user, emails, account ids beyond the household id (4.4). For debugging, the validated output with names replaced by role tokens ("child_1") is kept for 30 days in `scout_run_outputs`, then deleted (Q26).
+
+#### 4.2.7 How each job is graded (feeds W7-03 and the week 8 pass mark)
+
+Detail in `docs/scout-design.md`. Summary:
+
+| Job | Code graders (every run of the eval) | Founders grade | Pass mark (set in W8-05) |
+| --- | --- | --- | --- |
+| J1 | Fields extracted vs the labels on 40 sample notes: precision and recall per field; no forbidden fields (4.1.4) | No | Proposed: 95% precision, 85% recall |
+| J2 | Never asks a known fact; never more than 3; no-skip questions present when triggered; question chosen is among the founders' top 3 for that trip | Top 3 questions per test trip, once | Proposed: 0 known-fact questions; 80% agreement |
+| J3 | Schema valid; invented items (not catalog, not flagged custom); quantity outside the rule band; duplicates; must-have items present (founder-labeled per trip); fallback and partial rates; p95 latency; cost | Each list: missing, wrong, excess (W8-03, W8-04) | Set in week 8 |
+| J4 | The 30 parent requests plus adversarial cases: expected change set precision and recall; no change outside the trip; no silent memory | Spot-check 10 | Set in week 8 |
+
+Held out: 5 of the 20 trips are never used while writing prompts. About 15 adversarial cases (instructions hidden in a note, a 30-night trip with 6 kids, a request in another language, contradictory facts, a note with health details and an email address, a request to delete everything) run on every Scout change.
+
+#### 4.2.8 Things Scout must never do
+
+Mirrored in the W6-04 rulebook and checked by the validator or the adversarial set:
+- Change a list, trip or memory without a yes (R2), or save a memory itself.
+- Follow instructions found in a note, a request, a past trip or a memory. Those are data.
+- Add items for someone not on the trip, quantities outside 1 to 99, or more lines than the limits.
+- Give medical, dosing, legal or safety advice beyond what to pack. "Pack the EpiPen" is fine; how to use it is not.
+- Put health conditions, diagnoses, emails, addresses or account ids in a memory, a reason or a log.
+- Name brands, prices, shops or links.
+- Present the rule list as its own work (3.5).
+
+### 4.3 Memory and the context fed to Scout (W2-18)
+
+#### 4.3.1 Four layers
+
+| Layer | What it holds | Where it lives | Who writes it | Lifetime |
+| --- | --- | --- | --- | --- |
+| Trip draft | Everything typed in S02 to S04 before Create | Phone only | The user | Until created or discarded |
+| Past trips | Each finished trip's lists plus a **digest** (4.3.4) | Phone for guests; Supabase after sign-in | The app, when the trip ends | Until the trip is deleted |
+| Household memory | Confirmed facts about people or the household (4.3.2) | Phone for guests; Supabase after sign-in | Only a person's yes | Until forgotten |
+| Adult preferences | A1 settings: temperature unit, default style, memory suggestions, emails | Supabase (phone copy for guests: unit and style only) | The adult | Until changed |
+
+#### 4.3.2 What a memory is
+
+A memory is one sentence Scout may use on future trips, tied to a person or to the household, that a person said yes to.
+
+| Kind | Example | Effect on future trips |
+| --- | --- | --- |
+| `always_pack` | Ivy: always pack Bunny | Adds the line to Ivy on every new trip (S09-4) |
+| `never_pack` | Sam: never pack a hairdryer | Removes the line from rule lists and J3 additions |
+| `travels_with` | Ivy travels with a stroller | Adds the gear; answers K2 |
+| `habit` | Leo runs cold at night | J3 reads it; usually adds or raises a warm layer, with a reason that cites it |
+| `quantity` | We always want 2 extra socks per kid | J3 adjusts quantities |
+| `household` | We always pack a first-aid kit | Adds the line to Shared |
+
+Fields: `id`, `household_id`, `person_id` or null, `kind`, `text` (up to 120 characters, written by Scout, editable by the user), `item_ref` (catalog id or a custom name, for the item kinds), `status` (proposed, confirmed, declined), `source` (S08 prompt, S05 card, S09b Scout heard, S09b typed), `source_trip_id`, `created_by`, `confirmed_at`, `last_used_trip_id`, `use_count`, `trips_since_used`.
+
+Rules:
+- Only `confirmed` memories are ever sent to Scout or shown as facts. `proposed` ones live only in their card or prompt until answered; `declined` ones are kept 30 days so Scout doesn't ask the same thing again on the next trip, then deleted.
+- A memory never holds a health condition, diagnosis, medicine name tied to a condition, religion, or anything in 4.4.4. "Leo: always pack his EpiPen" is an `always_pack` item, allowed; "Leo has a peanut allergy" is not stored. The validator rejects memory proposals that contain condition words from a blocklist and Scout's instructions forbid them (Q24).
+- "Just this trip" (S08) saves nothing to memory; the change applies to the trip only.
+- Editing a memory's text (S08 Change, S09b) keeps its kind and item.
+- Forget (S09b, S09c) deletes the row at once; the phone keeps a copy for the 5-second undo. Forget everything (C1) deletes every memory row for the household. Forgetting never changes existing lists (S09 rules).
+- **Unused memories**: `trips_since_used` counts new trips that included that person and did not use the memory. At 3, the memory stops being sent to Scout and S09c shows it with "Not used on the last 3 trips" and Forget. It is never deleted automatically. The "keep or forget" prompt that W2-18 asked for is the S09c "Waiting for your OK" card, which is Later (2.1), so at launch the tag replaces it (Q23).
+- The A1 toggle "Let Scout suggest things to remember", when off, stops all memory proposals; confirmed memories are still used.
+
+#### 4.3.3 What Scout receives on each call
+
+Scout never receives the full history. The Edge Function builds a **household summary** per call from the database (or, for guests, the phone sends it), within a budget per job:
+
+| Job | Trip summary | People | Memories | Past trips | Current list | Budget (input tokens, excluding cached instructions) |
+| --- | --- | --- | --- | --- | --- | --- |
+| J1 | Stops and people only | First names and age bands | None | None | None | 800 |
+| J2 | All facts with sources | First names, age bands, travels with | Confirmed, for people on the trip, at most 8 | None | None | 1,500 |
+| J3 | All facts, climate per stop | As J2 | Confirmed, for people on the trip plus household kind, at most 15, ranked by relevance to the trip's facts then by recency | Digests of up to 2 most similar past trips | The rule list, compact | 5,000 plus the cached catalog subset |
+| J4 | All facts | As J2 | As J3, at most 10 | Digest of the trip this one came from, if any | The current list, compact | 4,000 plus the cached catalog subset |
+
+- People are sent as first name and age band; ages, not birth dates. No emails, no account ids, no adult surnames (4.4.2).
+- When a summary would exceed its budget, the lowest-ranked memories and the past-trip digests are dropped first, then the list is compressed to counts per category for lines Scout can't change (packed ones).
+- The summary is rebuilt on every call, so a forgotten memory is gone from the next call with no cache to clear.
+- `last_used_trip_id` and `use_count` are updated when J3 or J4 cites a memory in a reason that the user keeps.
+
+#### 4.3.4 Past trips and "Pack like a past trip"
+
+- When a trip ends (the day after its last stop), the app writes its **digest**: kind of trip (activities, stay types, getting there), nights, climate band per stop, crew with age bands at the time, lines the family added themselves, lines they removed, quantities they changed by more than 1, items left unpacked (likely unneeded), and which memories were used. No free text from notes.
+- S12 sends J3 the past trip's kept lines and its digest plus the new trip; Scout's output is the Swapped, Added and Dropped groups (S12 rules). Quantities scale with nights (S12-3). Kids who passed a birthday or a year get "Check size" on clothing and shoes.
+- J3 on a new trip uses the 2 most similar digests (same activities and climate band first) to adjust, citing them ("You took 2 extra sweaters to Tahoe and used them").
+
+#### 4.3.5 Where memory and context live for a guest
+
+Everything stays on the phone: crew, memories, digests. J2, J3 and J4 calls send the summary built on the phone, under the same budgets. At sign-in, all of it moves to the household unchanged (R1). A guest who deletes the app loses it (Q19).
+
+### 4.4 Privacy and data handling (W2-26)
+
+Written to be checked against the shipped app in W12-07 (data map), W12-03 (policy), W14-02 (store privacy answers) and the attorney review (W12-04). Every promise on A2 must be true of the build; a promise we can't back is removed, not softened (Q13).
+
+#### 4.4.1 Data inventory
+
+| Data | About | Where it lives | Who can read it | Kept | Deleted by |
+| --- | --- | --- | --- | --- | --- |
+| Email address | Adult with an account | Supabase Auth | That adult; Supabase as processor | While the account exists | Delete account |
+| First names, crew colors | Adults and children | Phone (guest); Supabase (household) | Every adult in the household | While the person is in the crew; as a name on past trips after removal | Remove person; delete account (if last adult) |
+| Birth month and year | Children (adults optional) | Same as above | Same | Same | Same. **Depends on decision 13** |
+| Trips, stops, lists, bags, check marks, notes | Household | Same as above | Same | Until the trip is deleted | Delete trip; delete account |
+| Memories | People and household | Same as above | Same | Until forgotten | Forget; Forget everything; delete account |
+| Adult settings | Adult | Supabase | That adult | While the account exists | Delete account |
+| Invites | The invited email or link | Supabase | Household adults | 7 days, then deleted | Expiry |
+| What Scout receives per call | Trip and household summary (4.3.3) | Sent to Anthropic's API | Anthropic as processor | Anthropic deletes API inputs and outputs within 30 days, longer only if flagged under its usage policy or required by law | Automatic |
+| `scout_runs` metrics | Household id, no names or text | Supabase | Founders | 13 months | Automatic; delete account removes the household id link |
+| `scout_run_outputs` | Scout's validated answer with names replaced by role tokens | Supabase | Founders | 30 days | Automatic |
+| Usage events (4.4.5) | Random install id, household id once signed in | Supabase | Founders | 13 months | Automatic; delete account |
+| Crash reports (4.4.5) | Device model, OS, app version, stack trace | The crash service | Founders, the service as processor | 90 days | Automatic |
+| Voice | Adult | Never leaves the phone as audio | No one | Not kept | n/a. **Depends on decision 8** |
+
+What Anthropic's API does with our requests is from Anthropic's published commercial data retention policy: inputs and outputs are deleted within 30 days unless a zero data retention agreement applies, a usage-policy flag requires longer, or the law does; API data is not used for training without the customer's permission. W12-04 has the attorney confirm the wording.
+
+#### 4.4.2 What Scout receives, and what it never receives
+
+- Receives: the trip (places, dates or nights, activities, stays, getting there, the facts and their sources), climate per stop, the people on the trip as first name and age band, confirmed memories, past-trip digests, the current list, and the user's own words for J1 and J4.
+- Never receives: emails, account or device ids, surnames, exact birth dates, the household's other trips, other households' data, location from the phone (we never ask for location).
+- The user's own words can contain anything (a note might include an address). J1 is instructed to ignore personal details, and nothing from the text is stored except the extracted facts and the text itself on the trip, which only the household can read.
+
+#### 4.4.3 Children (decision 13)
+
+Recommendation: **first name plus birth month and year**, no photos, no full birth dates, no gender, no school, no health details as facts. Kids are profiles, never accounts (R6). Ages update on their own (S09b). The app is for parents, and parents enter everything about their children; no child uses the app with their own account. Whether COPPA applies is a question for the attorney (4.4.8), with this design as the facts.
+
+#### 4.4.4 Never stored as a fact about a person
+
+Health conditions, allergies, diagnoses, medicines tied to a condition, religion, ethnicity, sexual orientation, gender, precise location, photos, government ids, passport numbers. Items the family wants packed (an EpiPen, a prescription, a kippah) are item lines and `always_pack` memories by item name only, never with the reason.
+
+#### 4.4.5 Usage events and crash reporting (decision 13, second half)
+
+- No ad or tracking SDKs, no third-party analytics. Events go to our own Supabase table through an Edge Function.
+- Event list (complete; adding one needs a spec change): `app_opened`, `trip_started`, `trip_created` (stop count, nights bucket, crew size, kids count), `questions_answered` (count asked, count skipped), `list_generated` (outcome, line count bucket), `list_opened`, `item_packed` (sent as one count per session, not per tap), `scout_change_requested`, `scout_change_applied` (count), `scout_card_answered` (yes or no), `memory_saved`, `memory_forgotten`, `trip_all_packed`, `signed_in` (method), `invite_sent`, `invite_joined`, `data_exported`, `account_deleted`. No names, no free text, no item names in any event.
+- They exist to measure the launch gates (overview section 6) and beta questions, nothing else.
+- Crash reporting: recommended **EAS Observe** (Expo's error and performance reporting; a paid EAS service, price checked in W12-01) so no vendor is added beyond Expo, with user and device identifiers off; the fallback is Sentry with PII scrubbing. Either way the vendor is listed on A2 (Q27). W12-01 builds it.
+- Events and crash reports start only after the first launch screen; there is no consent prompt in the US at launch (**depends on decision 10**; launching in the EU or UK would need one).
+
+#### 4.4.6 Retention and deletion
+
+- Guest data never leaves the phone except Scout calls (4.4.2). Deleting the app deletes it (Q19).
+- **Delete my account and data** (A1, A2): deletes the adult's account, their settings and invites at once. If they are the last adult, it deletes the household: trips, crew, memories, lists. If other adults remain, the household and its trips stay, the leaving adult's crew profile stays as a person (so lists keep working) unless they remove it first, and ownership passes on (Q5). Supabase backups age out on the plan's backup schedule; the policy says "removed from backups within 30 days" only if the plan's window is 30 days or less (Q28).
+- **Download all my data** (A2): one JSON file (household, people, trips with stops and lines, bags, memories, settings) and one CSV per trip (person, category, item, need, packed, shopping, bag), zipped, through the share sheet. No Scout logs (they hold no personal data).
+- Remove person, Delete trip, Forget: delete the rows at once; undo only within the 5-second window on the phone.
+
+#### 4.4.7 Vendors
+
+| Vendor | Gets | Terms to check before beta (W12-07) |
+| --- | --- | --- |
+| Supabase | Everything a signed-in household stores | Data processing addendum; region (West US, W5-01); encryption at rest; backup window (Q28) |
+| Anthropic | The Scout summary per call (4.4.2) | Commercial terms and data processing addendum; 30-day deletion and no training (confirmed in the published policy as of Nov 2026); zero data retention is available only by agreement with Anthropic's sales team, so it is not planned for launch (Q25) |
+| Expo (EAS) | Builds, updates, crash reports if EAS Observe is chosen | Data processing terms for EAS Observe |
+| Apple and Google | Sign-in only, if chosen | Their sign-in terms |
+| Climate data source | Coordinates of each stop and the months, no personal data | License for commercial use (decision 7) |
+
+#### 4.4.8 The promises on A2 and what each depends on
+
+| Promise (A2 copy) | True when | Status |
+| --- | --- | --- |
+| We never sell your data. | Policy and contracts | Ours to keep |
+| No ads, and no ad or tracking tools in the app. | No ad or analytics SDK in the dependency list; checked in W12-02 | Holds if 4.4.5 is followed |
+| Your trips are never used to train AI models. | Anthropic API terms; we don't train anything | Holds (published policy) |
+| Scout only remembers what you approve. | R2 and 4.3.2 | Holds by design |
+| Delete everything, any time, in two taps. | A1, then C1 | Holds by design |
+| Crew: "First names, a color, and birth month and year for kids. No photos, no full birth dates." | Decision 13 as recommended | Depends on decision 13 |
+| Voice: "Turned into text on your phone. The audio is never uploaded or saved." | Only if we build the in-app mic with on-device recognition. With keyboard dictation (recommended), the line becomes "We never receive audio. Use your keyboard's dictation to talk instead of type." | Depends on decision 8 |
+| Anthropic: "It does not train on them and deletes them within 30 days." | Anthropic's published policy, which has exceptions (usage-policy flags, legal holds) | Change to "deletes them within 30 days, except if flagged for misuse" (Q25) |
+| Supabase: "encrypted, with access only for your household" | Access rules (W5-02, W9-04 test); encryption at rest per Supabase | Verify in W12-07 |
+
+#### 4.4.9 Questions for the attorney (W12-04)
+
+1. Does COPPA apply when parents enter a child's first name and birth month and year, and the service is directed at adults?
+2. Which US state privacy laws apply at our size, and what must the policy say (California in particular)?
+3. Is a consent screen needed for first-party usage events in the US?
+4. What changes if we launch outside the US (decision 10)?
+5. Is the A2 wording of the vendor promises accurate enough to publish?
 
 ---
 
