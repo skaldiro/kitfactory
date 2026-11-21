@@ -9,7 +9,7 @@ A monorepo for our apps. Each app lives in its own top-level folder with its own
 ## Where things live
 
 - GitHub (this repo): technical work only. Code, specs, design exports, design systems, test data, changelogs. Build tasks are GitHub issues.
-- Google Drive folder KitFactory: the plan and tracker, decisions, accounts, business, legal, brand and meeting notes. Never copy these into the repo, except the build-facing decisions each app's `CLAUDE.md` lists under "Decided" with a sync date.
+- Google Drive folder Kitmunk: the plan and tracker, decisions, accounts, business, legal, brand and meeting notes. Never copy these into the repo, except the build-facing decisions each app's `CLAUDE.md` lists under "Decided" with a sync date.
 - Shared Claude Code setup lives in `.claude/` (agents, skills, the `/loop` command and safety hooks). Changing it needs a founder's yes.
 
 ## Rules for every app
@@ -25,5 +25,5 @@ A monorepo for our apps. Each app lives in its own top-level folder with its own
 
 - Selman: technical owner. Owns GitHub, Expo, Supabase, the Claude Console and everything in this repo.
 - Daniel: business and operations owner. Owns the company (LLC planned for January 2027), domains, email, the business plan, and the Apple and Google store accounts once the LLC exists.
-- Shared: the Google Drive folder KitFactory (tracker, notes, business docs) and a free Bitwarden organization for passwords.
+- Shared: the Google Drive folder Kitmunk (tracker, notes, business docs) and a free Bitwarden organization for passwords.
 - Neither of us writes production code. Claude Code does, and we review on our phones.
