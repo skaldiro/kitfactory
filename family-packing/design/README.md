@@ -1,6 +1,7 @@
 # Design files
 
 - `screens.md`: every screen, its route, where it goes and which states to build. Start here.
+- `DESIGN.md` (from the design system task, W1-13): the visual identity for agents, with tokens and rules. Once it exists, `tokens.json` is generated from it.
 - `tokens.json`: colors, type, radii, spacing. The only allowed source of visual values.
 - `source/*.dc.html`: one file per artboard from the design canvas. These are reference, not code to ship.
 - `screens/*.png`: one image per screen. Added in a later export.
@@ -23,4 +24,4 @@ The design canvas lives in the founders' Claude chat. When a design changes ther
 
 ## Brand placeholders
 
-The "kitbag" wordmark and the logo on these screens are placeholders. The name has a legal conflict and will be replaced (decision 1), with a new logo after it (decision 2).
+The "kitbag" wordmark and the logo on these screens are placeholders. The name is now Kitmunk (decision 1) and the logo is option A, the Case (decision 2); the next canvas export replaces them. Never ship "kitbag" anywhere.

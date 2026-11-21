@@ -2,6 +2,7 @@
 
 One line per merged task, newest first.
 
+- 2026-11-21: Build harness: Kitmunk name, "Decided" section, working style, approvals, definition of done and loop stop rules in CLAUDE.md; checker and repo-search agents; /loop; secret and push guard hook; session-start, session-end, screen-from-design, scout-change and pr-checklist skills; PR and build-task templates; lessons.md; architecture.md gains the data model, Scout failure table, evals and the drift map.
 - 2026-11-17: Moved the plan, decisions and Claude Project instructions to Google Drive; added docs/architecture.md.
 - 2026-11-17: Added design sources, tokens and screen inventory.
 
