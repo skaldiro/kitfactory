@@ -1,0 +1,12 @@
+<!-- @dsCard group="Packing" height=200 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CategoryCard — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{style:{padding:'16px'}},h(K.CategoryCard,{name:'Sleep and comfort',left:2},h(K.ItemRow,{name:'Bunny (the one)',qty:1,crew:'pink',bag:'Carry-on'}),h(K.ItemRow,{name:'Night-light',qty:1,packed:1,crew:'pink'}))));
+</script>
+</body>
+</html>

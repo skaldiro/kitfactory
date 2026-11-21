@@ -1,0 +1,12 @@
+<!-- @dsCard group="Selection" height=72 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Switch — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-pad'},h(K.Switch,{on:true,label:'Trip reminders'}),h(K.Switch,{on:false,label:'Weekly tips'})));
+</script>
+</body>
+</html>

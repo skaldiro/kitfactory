@@ -1,0 +1,12 @@
+<!-- @dsCard group="Packing" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>PackCheck — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-pad'},h(K.PackCheck,{crew:'pink',state:'empty',label:'Mark packed: Sun hat'}),h(K.PackCheck,{crew:'pink',state:'partial',label:'Mark packed: Pajamas'}),h(K.PackCheck,{crew:'pink',state:'done',label:'Unpack T-shirts'}),h(K.PackCheck,{crew:'blue',state:'done',label:'Unpack Tops'}),h(K.PackCheck,{crew:'shared',state:'done',label:'Unpack Passports'})));
+</script>
+</body>
+</html>
