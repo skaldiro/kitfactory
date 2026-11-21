@@ -15,7 +15,7 @@ Built from: design v1.0 (`design/source/`, exported Nov 21 2026), `design/DESIGN
 ## Contents
 
 1. Open questions for the founders
-2. Scope (W1-15) and glossary
+2. Scope, design vs PRD conflicts, glossary
 3. Rules that hold on every screen
 4. Sections written by W2-16, W2-17, W2-18 and W2-26
 5. Screens: start a trip (S01a, S02, S02b, V1, V2, S03, S04, S04b, S04c)
@@ -30,7 +30,7 @@ Built from: design v1.0 (`design/source/`, exported Nov 21 2026), `design/DESIGN
 
 ## 1. Open questions for the founders
 
-Answer these in W2-09 (comment on the pull request or tell Claude in the Project). Each has a recommendation; a question that maps to a tracker decision is closed there, not here. Design vs PRD conflicts that change scope are added by W1-15.
+Answer these in W2-09 (comment on the pull request or tell Claude in the Project). Each has a recommendation; a question that maps to a tracker decision is closed there, not here. Every design vs PRD conflict is in section 2.2; the open ones point here (Q2, Q7, Q9, Q15 to Q19).
 
 | # | Question | Where it bites | Recommendation |
 | --- | --- | --- | --- |
@@ -40,22 +40,110 @@ Answer these in W2-09 (comment on the pull request or tell Claude in the Project
 | Q4 | Who can delete a trip, remove a person, or invite? Today every adult in the household can do everything. | M1, C1, S11 | Every adult can do everything, and every destructive action names the household impact in its confirm. No roles at launch. |
 | Q5 | The household creator is shown as "owner" (S11). What happens when the owner leaves or deletes their account? | S11, A1, C1 | Ownership passes to the adult who joined earliest. If no adult is left, the household and its trips are deleted with the account (the confirm says so). |
 | Q6 | A guest with their own trip on the phone accepts an invite to another household (S13b). What happens to the guest's trip and crew? | S13b, data model | The guest's trips and crew move into the household they join; nothing is dropped. The join screen says "Your Italy trip comes with you" when there is one. |
-| Q7 | Item quantity zero: screens.md lists a "zero warning" on S07, the canvas clamps Need at 1, and the PRD says zero-quantity items are removed. | S07 | Need never goes below 1. Pressing minus at 1 shows "Remove from list?" inline, which opens C1 Remove item. |
-| Q8 | D1 (All packed) is listed with a "door checklist" in screens.md, but the canvas shows only the crew. Is a last-minute door checklist (passports, chargers, keys) wanted at launch? | D1 | Not at launch. D1 ships as drawn. Add to Later in W1-15. |
+| Q7 | Item quantity zero: screens.md lists a "zero warning" on S07, the canvas clamps Need at 1, and the PRD says zero-quantity items are removed. | S07 | Need never goes below 1. Pressing minus at 1 shows "Remove from list?" inline; tapping it removes the line with undo (2.2). |
+| Q8 | D1 (All packed) is listed with a "door checklist" in screens.md, but the canvas shows only the crew. Is a last-minute door checklist (passports, chargers, keys) wanted at launch? | D1 | Not at launch. D1 ships as drawn; door checklist is in Later (2.1). |
 | Q9 | S04b's stages show real trip details ("Rome 46 to 60°F"). The PRD says loading text must not claim model steps it didn't do. | S04b | Stage text is built from the trip and the run's real results where they exist (weather, counts); timing is cosmetic (one stage per 1.8 s) and the last stage waits for the real result. |
 | Q10 | "Default packing style" in A1 and the style question in S03 overlap. | S03, A1 | When a default is set, Scout does not ask the style question; S04 shows the style as a fact with Change. |
 | Q11 | Guest Scout limit (W6-03): how many Scout runs before sign-in? | S02 to S08 for guests | Proposed: 3 list builds and 10 change requests per phone per 30 days. Set with decisions 6 and 11. |
 | Q12 | Temperatures are drawn in °F and A1 has a °F/°C switch. Default unit? | S03, S04, S05, A1 | Depends on decision 10. Until then: °F if the phone's region is US, else °C; the A1 switch overrides. |
 | Q13 | A2 promises "deletes them within 30 days" for Anthropic and "never used to train AI models". | A2, W2-26 | Keep the copy, but W2-26 must confirm the vendor terms (and whether to ask for zero data retention) before beta. A promise we can't back is removed, not softened. |
-| Q14 | Limits and timings this draft had to pick, none from a decision: item name 60 and note 300 characters; quantities 1 to 99; trip name 40; person name 30; invite valid 7 days; presence and "packing now" window 2 minutes; Recent shows 10 changes; list result within 20 s at p95; tap response within 100 ms; magic link 15 minutes (from the design); sync retries 3 times before showing "Not synced yet". | Throughout | Accept as drafted unless one looks wrong. Latency budgets per Scout job are replaced by W2-17's. |
+| Q14 | Limits and timings this draft had to pick, none from a decision: item name 60 and note 300 characters; quantities 1 to 99; trip name 40; person name 30; invite valid 7 days; list result within 20 s at p95; tap response within 100 ms; magic link 15 minutes (from the design); sync retries 3 times before showing "Not synced yet". | Throughout | Accept as drafted unless one looks wrong. Latency budgets per Scout job are replaced by W2-17's. |
+| Q15 | Confirm the four cuts in section 2.1: Scout bag sort and bag suggestion, memory pattern suggestions, presence and the Recent feed, and in-app voice. | S10, S10b, S09c, S11, S01b, V1, V2 | Cut all four. Voice is closed by decision 8; recommend keyboard dictation for launch. |
+| Q16 | Trip creation: the PRD's single free-text box or the design's form with a note (P5)? | S02 | The form. It works offline and without Scout, which a free-text-first flow can't. "Rather just talk?" covers the free-text feel. |
+| Q17 | Where a new trip lands: trip home (S05) or straight into packing (S06)? (P8) | S04b, S05 | S05. Scout noticed cards need a place to be seen once; every later visit is one tap from packing. |
+| Q18 | Is an "All items" view (every person's items in one list) needed? (P10) | S06 | No. The To buy tile and per-person filters cover the real uses; Later if testers ask. |
+| Q19 | Should guest data expire? (P15) | Guest storage | No expiry. Deleting the app deletes it. |
 
 ---
 
 ## 2. Scope and glossary
 
-**Scope (must have, later, never) and the amendment rule are written by W1-15 into this section.** Until then, scope is: every screen in sections 5 to 9 is must-have for launch, except where marked **Depends on decision N** or **Should**.
+### 2.1 Scope for launch (week of March 1, 2027)
 
-Glossary (W1-15 may extend it):
+Sized to the tracker's 16 weeks: 9 build weeks (3 to 11, with weeks 6 and 7 over the holidays), feature freeze at the W11-07 meeting on Sat Jan 30, then beta and launch. About 24 build issues fit if each lands in its week; the heavy weeks are 5 (four screen issues), 8 (Scout changes plus voice) and 11 (Apple sign-in, invites, live packing, concurrent edits). The cuts below take load out of exactly those weeks.
+
+**Amendment rule.** An item moves up from Later or Never only with evidence from at least 3 testers (beta notes, tester calls or filed issues), recorded on the tracker's Decisions tab and changed here by pull request. After feature freeze (W11-07), nothing moves up before launch; it goes to the first post-launch cycle. Must-have items can move down at any time by a founders' decision, to protect the date.
+
+**Must have** (every screen in sections 5 to 9 unless listed below)
+
+| Area | What | Built in |
+| --- | --- | --- |
+| Start a trip | S01a, S02 (form, stops with dates or length, crew, activities, note), S02b, S04 | W3-01, W3-02 |
+| Rule-based list | Catalog v1, quantity rules, list for every traveler plus Shared, works offline | W3-03, W4-01 |
+| Packing | S05, S06, S06b, S07, S07b, D1; progress by item lines; undo everywhere | W4-02, W5-03, W5-04 |
+| Bags | S10 and S10b, manual only (no Scout sort, no Scout bag suggestion) | W5-03 |
+| Trips | M1, S01b, S01c, S01d, S01e; archive, restore, delete | W5-04, W5-05, W10-04 |
+| Scout: intake | Notes become Scout caught chips; up to 3 tailored questions; usual weather per stop (source per decision 7) | W6-02, W6-03 |
+| Scout: list | Additions with reasons on top of the rule list; S04b, S04c; every fallback in architecture.md | W7-01, W7-02, W7-03 |
+| Scout: changes | S08a, S08 with per-line preview, apply, undo; S05 Scout noticed cards (up to 3) | W8-01, W8-02 |
+| Accounts | S13 with Apple (iOS), Google and email link; guest move with no rebuild; A1, A2; export; delete | W9-02, W9-03, W11-02 |
+| Crew and memory | S09, S09b, S09c; memories only from an explicit yes in S08, S09b or S09c; forget with undo | W10-03 |
+| Pack like a past trip | S12 with kept, swapped, added, dropped and per-line toggles | W10-04 |
+| Sharing | S11 invites by link and email, S13b join, live check marks between phones, concurrent-edit rule, offline check marks | W11-04, W11-05 |
+| Quality | Crash reporting, the agreed usage events (decision 13), scout_runs logging and alerts, accessibility pass (R18 to R22), security pass | W5-05, W12-01, W12-02 |
+
+**Cut to Later to fit 16 weeks** (recommendation; confirm in W2-09, see Q15)
+
+| Item | Why it goes | Effect on issues |
+| --- | --- | --- |
+| Scout "Sort them for me" in S10 and the Scout bag suggestion in S10b | A sixth Scout job with its own eval, for a screen decision 5 already moved off the main path | W5-03 unchanged; nothing added to W8 |
+| Pattern suggestions in S09c ("You removed the umbrella from your last 3 trips") | Needs history across trips that beta families won't have yet; memory from explicit yes covers launch | W10-03 smaller |
+| Presence ("Sam is packing now", "Packing Ivy's list now") and the Recent feed in S11 | Nice, not needed for two phones to pack one list; Realtime presence is extra work in the busiest week | W11-04 smaller |
+| In-app voice (V1, V2), if decision 8 picks keyboard dictation | Native speech module needs a development build (week 11) and a permission flow; dictation on the keyboard already works in every text field | W8-02 loses voice; mics removed |
+
+**Later** (not at launch; each needs the amendment rule to move up)
+
+- Everything in the cut list above.
+- Web version (decision 12, proposed later) and tablet layouts (decision 9).
+- Packing assignment, "who packs it", and a carrier per bag (decision 5, Q3).
+- Door checklist on D1 (Q8).
+- Quick adds in S07b; moving an item to another person; drag to reorder; cancel a pending invite.
+- Roles or permissions between adults (Q4).
+- Place autocomplete in S02 (depends on decision 7's provider).
+- Weather forecasts close to departure (if decision 7 picks climate averages).
+- Push notifications (no prompts at launch).
+- Paywall and purchases, if decision 6 is free at launch.
+- Languages other than the launch language (decision 10).
+
+**Never** (conflicts with a product rule or isn't this product)
+
+- Scout changing a list, a trip or a memory without a yes (R2).
+- Child accounts, child photos, full birth dates (R6).
+- Ads, ad or tracking SDKs, selling data, using trips to train models (A2 promises).
+- Uploading or storing voice audio.
+- Itinerary planning, reservations, flight imports, passport storage, price comparison and shopping integrations, jet-lag advice, photo recognition of items (PRD "Not in this MVP"; none of them is packing).
+
+### 2.2 Design vs PRD conflicts
+
+The PRD (`docs/prd.md`) is v1.0 and its copy stops partway through S06; for S07 to S13 there is nothing to compare, and the design is the only source. Every conflict found is listed. **Resolved** means a closed decision, the stack, or a DESIGN.md rule already settles it and this spec follows that; **Open** points to a question in section 1.
+
+| # | PRD says | Design or decisions say | Status | This spec does |
+| --- | --- | --- | --- | --- |
+| P1 | Mobile-first web app or PWA, not native | Native iOS and Android with Expo | Resolved by the stack (CLAUDE.md); web is decision 12 | Native only; web Later |
+| P2 | No voice in v1 | Mic on S02, S07, S07b, S08a, S09b with V1 and V2 | Open: decision 8, Q15 | R17; cut to dictation recommended |
+| P3 | Up to two collaborating adults | No cap on adults | Resolved by decision 15 | Any number of adults |
+| P4 | No live weather APIs | Usual weather per stop on S03, S04, S05 | Open: decision 7, Q2 | Climate per stop, source per decision 7 |
+| P5 | Trip creation is one free-text box ("Tell me about your trip"), AI parses it, manual form only as a failure fallback | Structured form with a note field and "Rather just talk?" voice | Open: Q16 | Follows the design: form first, Scout reads the note |
+| P6 | Clarification asks who is coming, laundry and weather as questions | Crew and activities are in S02; weather is automatic; Scout asks only what's left | Resolved by the design (fewer questions, same facts) | S03 rules |
+| P7 | Clarification may group related details in one round | One question per screen, at most 3 | Resolved by the design | S03 rules |
+| P8 | After creating a trip, the checklist is the primary screen; overview is optional | Generating lands on trip home (S05), then Open the packing list | Open: Q17 | S05 first on a new trip; reopening a trip goes to S05 too |
+| P9 | S05 actions "Start packing", "Make changes with AI", "Add family details"; a per-person preview | Scout noticed cards, Everyone's lists, To buy, Bags, Open the packing list; no "Add family details" | Resolved by the design | S05 as drawn; crew editing lives in S09 |
+| P10 | Packing views By person, By bag, All items | By person only; bags on their own screen | Resolved by decision 5 for bags; "All items" is Open: Q18 | No All items view |
+| P11 | Filters All, Unpacked, Packed, Need to buy | To pack, Packed, To buy; tap again for all | Resolved (same filters, different words) | S06 rules |
+| P12 | Item row shows an optional responsibility label | No responsibility; packing assignment out | Resolved by decision 5 | No responsibility label |
+| P13 | Zero-quantity items are removed or excluded | Need stepper stops at 1; screens.md lists a "zero warning" | Open: Q7 | Need ≥ 1; minus at 1 offers remove |
+| P14 | Trip card actions: open, duplicate, edit, archive | Card opens S05; menu has edit, new trip from this one, archive, delete; past trips have Pack like this | Resolved by the design (duplicate is S12) | M1, S01e |
+| P15 | Guest drafts discarded after migration **or expiration** | No expiry in the design | Open: Q19 | No expiry; guest data stays until moved or the app is deleted |
+| P16 | Excludes complex offline synchronization | Tracker W11-05 includes check marks made with no signal | Resolved by the tracker (W11-05 is planned) | R10, R11; only check marks and item edits sync offline-first |
+| P17 | Headline "Packing for the whole family" | "Packing for the whole crew" | Resolved by DESIGN.md words rule (R16) | Design copy |
+| P18 | Children as profiles with age | Birth month and year stored, ages computed | Open: Q1, decision 13 | Depends on decision 13 |
+| P19 | AI accessed through a floating or sticky action | Scout bar pinned at the bottom of S06; Scout opens from S05 cards too | Resolved (consistent) | S06, S08a |
+| P20 | Loading messages indicate general progress, not real model steps | Generating stages show trip-specific details | Open: Q9 | Real trip data, cosmetic timing |
+| P21 | Monetization outside the private beta | Paywall not designed | Resolved for beta; launch is decision 6 | Paywall Later if free |
+
+Three conflicts inside the design, not with the PRD, are settled here by DESIGN.md's rule "don't confirm anything that isn't destructive": **Remove item**, **Archive trip** and **Forget a memory** use undo only, and their C1 variants are dropped from the canvas (S01e already archives without a confirm). The canvas gets the fix in the next design export.
+
+### 2.3 Glossary
 
 | Term | Meaning |
 | --- | --- |
@@ -365,7 +453,7 @@ Sources `Pack.dc.html`, `PackScrolled.dc.html` · route `/trips/[id]/pack` · bu
 - Bottom: Scout bar "Ask Scout to change anything" (opens S08a) and an add button (opens S07b).
 - Toast: "Packed Socks ×6 · Ivy" with Undo.
 
-**States.** Person selected; filter To pack, Packed, To buy or none; category open or closed; row just changed (highlight for 5 s); partial row; toast with undo; empty filter ("Nothing here. Tap the filter again to see everything."); all done for a person ("Ivy is all packed." with the rail ring full); live presence (W11-04: a Live chip and other people's changes animate in).
+**States.** Person selected; filter To pack, Packed, To buy or none; category open or closed; row just changed (highlight for 5 s); partial row; toast with undo; empty filter ("Nothing here. Tap the filter again to see everything."); all done for a person ("Ivy is all packed." with the rail ring full); live updates (W11-04: other people's check marks animate in; the Live chip shows when another adult has the app open is Later).
 
 **Rules.**
 - Default person on open: the one tapped in S05, else the person with the most left to pack, else the first adult.
@@ -403,14 +491,14 @@ Source `Item.dc.html` · sheet over S06 · built in W5-03.
 - Note: up to 300 characters; mic opens V1 with context Item.
 - Owner change is not on this sheet at launch (Should: Move to another person).
 - Changes apply as they are made; Done closes the sheet. Each change is undoable from the S06 toast after closing ("Updated Pajamas · Ivy").
-- Remove from list opens C1 Remove item.
+- Remove from list removes the line at once, closes the sheet and shows "Removed Pajamas · Ivy" with Undo (2.2).
 - Scout's reason shows only for lines Scout added or changed, in Scout text color with the Scout mark.
 
 **Acceptance.**
 - S07-1 Need 3, Packed 2; lowering Need to 1 makes Packed 1 and the row done.
 - S07-2 Setting Bought leaves Packed unchanged.
 - S07-3 Picking a bag shows the bag tag on the S06 row and counts it in S10.
-- S07-4 Remove asks to confirm; after Remove, the item leaves every count and S06 shows the undo toast.
+- S07-4 Remove takes the item out of every count and S06 shows the undo toast; Undo restores it with its packed quantity.
 
 ### S07b · Add an item
 
@@ -423,7 +511,7 @@ Source `AddItem.dc.html` · sheet over S06 · built in W5-03 (form), W8-02 (Scou
 - Any chip or stepper the user touches overrides the reading and stays overridden until the text changes.
 - If the item matches a line already on that person's list, the button reads "Add 2 more to Binoculars" and increases the line's Need instead of adding a duplicate.
 - Adding closes the sheet, selects the owner in S06, highlights the new line and shows the undo toast.
-- Quick adds: **Should.** The canvas lists "quick adds" in screens.md but the source doesn't draw them; W1-15 decides.
+- Quick adds: Later (2.1). screens.md lists them but the canvas doesn't draw them.
 
 **Acceptance.**
 - S07b-1 Typing "2 swimsuits for Ana" adds Swimsuits ×2 to Ana's list in Clothing.
@@ -459,30 +547,29 @@ Sources `ScoutStart.dc.html`, `Scout.dc.html` · sheet over S06 or S05 · built 
 
 Sources `Bags.dc.html`, `BagSheet.dc.html` · route `/trips/[id]/bags`, sheet · built in W5-03.
 
-**S10 content.** Back to packing; "Italy · 4 bags"; Edit bags; Scout card ("44 items aren't in a bag yet." with **Sort them for me** and "I'll do it myself"); one card per bag with icon, name, a line (Q3), "44 of 64" packed, a crew color mix bar, expandable rows (check, name, owner, "· to buy"), "N more in this bag", and a note when an item rides in another person's bag; **No bag yet** card with count.
+**S10 content.** Back to packing; "Italy · 4 bags"; Edit bags; Scout card with **Sort them for me** (Later, 2.1: not built at launch; the No bag yet card carries the count instead); one card per bag with icon, name, a line (Q3), "44 of 64" packed, a crew color mix bar, expandable rows (check, name, owner, "· to buy"), "N more in this bag", and a note when an item rides in another person's bag; **No bag yet** card with count.
 
-**S10b content.** "Your bags · Name them the way you do."; one row per bag with a name field, a type chip (Checked, Carry-on, Backpack, Tote; tap cycles) and remove; Add a bag; "Removing a bag never removes what's in it."; optional Scout suggestion card ("Two train days. A small backpack for Ivy keeps her bunny and snacks close." Add it, No thanks); **Done**.
+**S10b content.** "Your bags · Name them the way you do."; one row per bag with a name field, a type chip (Checked, Carry-on, Backpack, Tote; tap cycles) and remove; Add a bag; "Removing a bag never removes what's in it."; Scout suggestion card (Later, 2.1); **Done**.
 
-**States.** S10: no bags (Scout card hidden, "Add bags if you want them" and Edit bags); bag expanded; Scout sort idle, preview ("Here is my plan. Nothing moves until you apply."), applied ("Sorted. Every item has a bag."), skipped; undo after sort.
+**States.** S10: no bags (Scout card hidden, "Add bags if you want them" and Edit bags); bag expanded; Scout sort states are Later.
 
 **Rules.**
 - Bags are per trip. A new trip has no bags unless created from a past trip (S12), which copies them.
 - Removing a bag moves its items to No bag yet (copy on screen). No confirm (R9); undo toast instead.
-- Sort them for me is a Scout proposal (R2): the preview shows per-bag counts ("+30 Checked case"), Apply moves only items with no bag, Not now cancels. Items the user already placed never move. Undo reverts the whole sort.
+- Sort them for me (Later): when built, it is a Scout proposal (R2) that moves only items with no bag, with Apply, Not now and Undo.
 - Checking a row in S10 packs it exactly like S06 (same rules, same toast).
 - An item's owner and its bag are independent: Ivy's bunny can ride in Leo's backpack and still counts for Ivy.
 - Bag counts follow R4.
 
 **Acceptance.**
 - S10-1 Removing a bag sends its items to No bag yet; Undo restores the bag and its items.
-- S10-2 Sort them for me changes nothing until Apply; after Apply, No bag yet is 0 and Undo returns every item to no bag.
-- S10-3 An item placed by hand before sorting stays in its bag.
+- S10-2 Choosing a bag in S07 moves the item between bag cards and updates No bag yet.
 
 ### M1 · Trip menu
 
 Source `TripMenu.dc.html` · sheet over S05 or S06 · built in W5-04.
 
-**Content.** Trip name and dates; Edit trip details (S02 in edit mode); Bags (S10); Pack together (S11); New trip from this one (S12); Archive trip (C1 Archive trip); Delete trip (C1 Delete trip, red).
+**Content.** Trip name and dates; Edit trip details (S02 in edit mode); Bags (S10); Pack together (S11); New trip from this one (S12); Archive trip (at once, with undo); Delete trip (C1 Delete trip, red).
 
 **Rules.**
 - Edit trip details reopens S02, S03 answers and S04 with the trip's values. Saving changes that affect the list (dates, stops, people, activities) asks Scout for a change preview (S08 rules) rather than rebuilding the list. Removing a person from the trip opens C1 Remove person. Before Scout is built (W8-01), the rule list's additions and removals are shown as a preview with the same apply rules.
@@ -490,7 +577,7 @@ Source `TripMenu.dc.html` · sheet over S05 or S06 · built in W5-04.
 
 **Acceptance.**
 - M1-1 Editing dates from 9 to 5 nights proposes lower quantities and changes nothing until applied.
-- M1-2 Archive confirms and the trip leaves home; Restore in S01e brings it back unchanged.
+- M1-2 Archive moves the trip off home with an undo toast; Restore in S01e brings it back unchanged.
 
 ### D1 · All packed
 
@@ -515,7 +602,7 @@ Sources `Trips.dc.html`, `Loading.dc.html`, `HomeError.dc.html` · route `/` · 
 
 **Rules.**
 - Upcoming: trips whose last stop hasn't ended, not archived, ordered by start date (undated trips last, by creation). Past: ended trips, newest first. Archived trips appear in neither (S01e).
-- The countdown follows S05's wording. "Sam is packing now" shows when another adult changed the trip in the last 2 minutes (W11-04); before W11-04, the line shows the crew count and state.
+- The countdown follows S05's wording. The activity line shows the crew count and state ("4 people · not started", "Packing"); "Sam is packing now" is Later with presence.
 - Greeting uses the signed-in adult's first name; guests see "Where to next?" only.
 - S01c shows on cold start only when there is nothing cached; cached trips render at once and refresh quietly.
 - S01d shows when the server can't be reached and nothing is cached for this household on this phone beyond what is listed: "No connection · Your trips didn't load. Your lists are safe." with Try again (spinner, "Trying again…"), the cached trip(s) under "Saved on this phone" with "updated 2 min ago", and "Start a new trip anyway".
@@ -544,15 +631,15 @@ Sources `Crew.dc.html`, `Profile.dc.html`, `Memory.dc.html` · routes `/family`,
 
 **S09b content.** "Crew · profile" or "New person"; avatar preview; Name; Born (month and year, "Month and year only"; adults optional); current age and note ("Ivy turns 4 in July. Scout uses the age on each trip date."); Their color (six crew colors); **Tell Scout about Ivy** (text with mic) and "Scout heard" cards, each with Save and skip; **Always pack** list with Add; **Travels with** chips (Stroller, Pull-ups, Car seat, Travel crib, High chair, Blackout shade); What Scout remembers for this person with Forget; Remove Ivy from the crew (red) or Cancel for a new person; Done.
 
-**S09c content.** Back to crew; "12 memories"; search; filter chips by person with counts; "Waiting for your OK" card (for example "You removed the kids' umbrella from your last 3 trips. Stop suggesting it?" Stop suggesting, Keep it); groups by person with each memory's text, source ("Confirmed after Lisbon", "Saved by you · used on 3 trips") and Forget; empty search ("Nothing matches. Scout only remembers what you've said yes to."); Forget everything Scout knows (C1); How your data is used (A2); toast "Forgot: …" with Undo.
+**S09c content.** Back to crew; "12 memories"; search; filter chips by person with counts; "Waiting for your OK" card for pattern suggestions (Later, 2.1); groups by person with each memory's text, source ("Confirmed after Lisbon", "Saved by you · used on 3 trips") and Forget; empty search ("Nothing matches. Scout only remembers what you've said yes to."); Forget everything Scout knows (C1); How your data is used (A2); toast "Forgot: …" with Undo.
 
 **Rules.**
 - Age is computed from birth month and year on each trip's start date (Q1, decision 13). Adults have no age shown unless a birth date is added.
 - Crew colors: six per household, assigned in order and changeable; two people may share a color.
 - Scout heard cards are proposals (R2): Save adds the memory (and the matching Travels with chip where one exists); skip dismisses. Nothing from the text is stored except what is saved and the text itself if the user keeps it in the field. **Depends on W2-18** for what counts as a memory.
 - Always pack items are added to that person's list on every new trip. Travels with chips add their gear and are memories too.
-- Forget on S09b or S09c removes the memory at once with undo (R9; the canvas's C1 "Forget a memory" variant is used only from S09c's long-press menu, if at all; W1-15 to pick one). Forget everything always confirms (C1). Forgetting never changes lists already made.
-- Pattern suggestions ("Waiting for your OK") come from W2-18's rules; Stop suggesting saves a negative memory; Keep it dismisses for good.
+- Forget on S09b or S09c removes the memory at once with undo, no confirm (2.2). Forget everything always confirms (C1). Forgetting never changes lists already made.
+- Pattern suggestions ("Waiting for your OK") are Later. S09's "1 suggestion waiting for your OK" line shows only proposals still open from S08.
 - Removing a person from the crew (C1 Remove person variant for the crew) keeps them on past trips' lists as a name only; they leave future suggestions.
 - Profile edits are saved on Done; leaving with changes asks nothing and saves (R12).
 
@@ -609,14 +696,13 @@ Sources `SignIn.dc.html`, `Join.dc.html` · modal; deep link · built in W9-02, 
 
 Source `Share.dc.html` · route `/household` · built in W11-04.
 
-**Content.** Back; "Your household · Pack together · Everyone you invite sees every trip and can check things off."; members (avatar, name, "You · owner", "Packing Ivy's list now", pending "Invited 2 days ago · not joined yet" with Resend); Invite someone: field "Email or phone" and Send; Copy invite link ("Link copied"); "Kids are profiles, so they don't need accounts."; Recent on Italy (who packed what, when).
+**Content.** Back; "Your household · Pack together · Everyone you invite sees every trip and can check things off."; members (avatar, name, "You · owner", "Packing Ivy's list now", pending "Invited 2 days ago · not joined yet" with Resend); Invite someone: field "Email or phone" and Send; Copy invite link ("Link copied"); "Kids are profiles, so they don't need accounts."; Recent on Italy (Later, 2.1).
 
 **Rules.**
 - Guests see S13 first; inviting needs an account.
 - An invite is a link valid for 7 days, single household, reusable until accepted by one person. Email invites are sent from the server; phone invites open the system share sheet with the link (no SMS sending by us).
 - Resend sends again and restarts the 7 days. Cancel invite: Should.
-- Recent shows the last 10 changes by other adults on the current trip.
-- Presence ("Packing Ivy's list now") shows for adults active in the last 2 minutes.
+- Recent and presence ("Packing Ivy's list now") are Later. Member rows show "You · owner", "Joined Nov 21" or the pending line.
 - No roles (Q4); owner per Q5.
 
 **Acceptance.**
@@ -650,22 +736,19 @@ Sources `Account.dc.html`, `Privacy.dc.html` · routes `/account`, `/account/pri
 
 Source `Confirm.dc.html` · dialog · built with the screen that first needs each variant.
 
-Every variant has an icon, a title that names the thing, one sentence on what happens and what stays, a go button and a back button. Red go button and red icon tint for permanent loss; ink for reversible ones.
+Every variant has an icon, a title that names the thing, one sentence on what happens and what stays, a go button and a back button. Red go button and red icon tint for permanent loss; ink for Sign out, the only variant that loses nothing.
 
 | Variant | From | Title | Go / back | Red | After go |
 | --- | --- | --- | --- | --- | --- |
 | Delete trip | M1, S01e | Delete Italy for everyone? | Delete trip / Keep it | Yes | Home |
-| Archive trip | M1 | Archive Italy? | Archive / Cancel | No | Home |
-| Remove item | S07 | Remove Pajamas from Ivy's list? | Remove / Cancel | No | S06 with undo toast |
 | Remove person | M1 edit, S09b | Remove Leo from this trip? (or from the crew) | Remove from trip / Keep him | Yes | Origin |
 | Discard new trip | S02 back | Discard this trip? | Discard / Keep editing | Yes | S01 |
-| Forget a memory | S09c | Forget "Leo runs cold at night"? | Forget it / Keep it | No | S09c |
 | Forget everything | S09c | Forget everything Scout knows? | Forget everything / Keep it | Yes | S09c |
 | Leave household | A1 | Leave the household? | Leave / Stay | Yes | S01a |
 | Sign out | A1 | Sign out? | Sign out / Cancel | No | S01a |
 | Delete account | A1, A2 | Delete your account? | Delete account / Cancel | Yes | S01a |
 
-**Rules.** The body text uses real names and counts. Back is the default focus. Go performs the action once; double taps do nothing more. Archive, Remove item and Forget a memory are reversible and also get an undo toast after confirming; W1-15 may drop their confirms in favor of undo only, per R9.
+**Rules.** The body text uses real names and counts. Back is the default focus. Go performs the action once; double taps do nothing more. Archive trip, Remove item and Forget a memory are not C1 variants: they act at once with an undo toast (2.2). The canvas keeps them as drawn until the next design export removes them.
 
 **Acceptance.**
 - C1-1 Each variant's body names the real trip, person, item or memory and the real count.
@@ -679,11 +762,10 @@ Each needs a design before its build task starts, or the build task draws it fro
 
 - Paywall and manage plan (only if decision 6 is paid; W13-04).
 - App icon and splash at final size (W3-06).
-- Push notification prompts (none planned at launch; W1-15 to confirm).
+- Push notification prompts (none at launch; Later).
 - Onboarding for a second adult after joining (S13b lands on S05 at launch).
 - Offline banner (R11 line copy is used until designed).
-- Rename or move an item to another person (S07, Should).
-- Quick adds in S07b (Should).
+- Move an item to another person (S07) and quick adds (S07b): Later.
 
 ---
 
@@ -709,5 +791,5 @@ Each needs a design before its build task starts, or the build task draws it fro
 | S09, S09b, S09c | #24 W10-03 |
 | S12, S01b | #25 W10-04 |
 | S13 Apple | #26 W11-02 |
-| S13b, S11, presence | #27 W11-04 |
+| S13b, S11, live check marks | #27 W11-04 |
 | Concurrent edits and offline check marks | #28 W11-05 |
