@@ -2,233 +2,204 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Kitbag · Trip basics</title>
+<title>kitmunk · Trip basics</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
 <style>
 body{margin:0;background:#EEF1EA}
 a{color:#0E2A23;text-decoration:none}
 a:hover{color:#0E2A23}
-input::placeholder,textarea::placeholder{color:#7D8B85}
-@keyframes kbBar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
-@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+input::placeholder,textarea::placeholder{color:#56665F}
+select{appearance:none;-webkit-appearance:none}
 </style>
 </helmet>
-<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 16px 16px 22px; display: flex; flex-direction: column; gap: 14px; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 16px 16px 22px; display: flex; flex-direction: column; gap: 12px; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
 
 <header style="flex: none; height: 48px; display: flex; align-items: center; justify-content: space-between">
-<a href="Main.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
-<span style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">NEW TRIP · STEP 1 OF 3</span>
+<a href="Main.dc.html" aria-label="Back" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">New trip · step 1 of 3</span>
 <span style="width: 44px; height: 44px"></span>
 </header>
 
-<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 14px">
+<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px">
 
-<div style="flex: none; padding: 0 4px">
-<h1 style="margin: 0; font-size: 40px; line-height: 0.95; font-weight: 850; font-stretch: 68%; letter-spacing: -0.01em">Tell me about your trip</h1>
-<p style="margin: 6px 0 0; font-size: 15px; line-height: 1.4; color: #56665F">The basics up top. Everything else in your own words at the bottom.</p>
-</div>
+<h1 style="flex: none; margin: 0; padding: 0 4px; font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">Tell me about your trip</h1>
 
-<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<a href="VoiceRecord.dc.html" style="flex: none; min-height: 72px; box-sizing: border-box; border: 1.5px dashed #FF5B23; background: #FFF9F6; border-radius: 22px; padding: 12px 12px 12px 16px; display: flex; align-items: center; gap: 12px">
+<span style="flex: 1; display: flex; flex-direction: column; gap: 2px"><span style="font-size: 16px; font-weight: 700">Rather just talk?</span><span style="font-size: 14px; line-height: 1.35; color: #56665F">Tell Scout about the trip. It fills this in for you.</span></span>
+<span style="width: 48px; height: 48px; flex: none; border-radius: 999px; background: #FF5B23; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></span>
+</a>
+
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; justify-content: space-between; align-items: baseline">
-<h2 style="margin: 0; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">WHERE</h2>
-<span style="font-size: 12px; color: #56665F">{{stopsLabel}}</span>
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">Where and when</h2>
+<span style="font-size: 12px; font-weight: 600; color: #56665F">{{tripSpan}}</span>
 </div>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
 <sc-for list="{{stops}}" as="s" hint-placeholder-count="3">
+<li style="display: flex; gap: 12px">
+<span aria-hidden="true" style="width: 20px; flex: none; display: flex; flex-direction: column; align-items: center">
+<span style="width: 20px; height: 20px; margin-top: 14px; box-sizing: border-box; border-radius: 999px; background: #0E2A23; color: #EEF1EA; display: grid; place-items: center; font-size: 12px; font-weight: 700">{{s.n}}</span>
+<span style="flex: 1; width: 2px; margin: 4px 0; background: {{s.rail}}"></span>
+</span>
+<div style="flex: 1; min-width: 0; padding-bottom: 12px; display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; align-items: center; gap: 4px">
+<input value="{{s.name}}" onChange="{{s.set}}" aria-label="{{s.aria}}" placeholder="City, region or country" style="flex: 1; min-width: 0; height: 48px; box-sizing: border-box; border: 1.5px solid #7D8B85; border-radius: 14px; padding: 0 14px; background: #FFFFFF; font: 600 16px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
+<button type="button" onClick="{{s.remove}}" aria-label="{{s.removeAria}}" style="width: 44px; height: 44px; flex: none; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+</div>
+<a href="DatePicker.dc.html" style="height: 44px; margin-right: 48px; box-sizing: border-box; border-radius: 14px; background: {{s.dateBg}}; border: 1.5px {{s.dateBd}}; padding: 0 12px; display: flex; align-items: center; gap: 8px">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg>
+<span style="flex: 1; font-size: 14px; font-weight: 600">{{s.dates}}</span>
+<span style="font-size: 12px; color: #56665F">{{s.nights}}</span>
+</a>
+</div>
+</li>
+</sc-for>
+</ol>
+<button type="button" onClick="{{addStop}}" style="height: 44px; border: 0; border-radius: 14px; background: #EEF1EA; display: flex; align-items: center; justify-content: center; gap: 6px; font: 600 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add a stop</button>
+<span style="font-size: 12px; line-height: 1.4; color: #56665F">Each stop gets its own dates, so Scout packs for the weather there.</span>
+</section>
+
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; justify-content: space-between; align-items: baseline">
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">Who's coming</h2>
+<span style="font-size: 12px; font-weight: 600; color: #56665F">{{crewLabel}}</span>
+</div>
+<sc-for list="{{people}}" as="p" hint-placeholder-count="4">
 <div style="display: flex; align-items: center; gap: 8px">
-<span style="width: 26px; height: 26px; flex: none; border-radius: 50%; background: #0E2A23; color: #EEF1EA; display: grid; place-items: center; font-size: 14px; font-weight: 850; font-stretch: 70%">{{s.n}}</span>
-<input value="{{s.name}}" onChange="{{s.set}}" aria-label="{{s.aria}}" placeholder="City, region or country" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; border: 1.5px solid #E3E8E0; border-radius: 12px; padding: 0 12px; background: #FFFFFF; font: 650 16px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
-<button type="button" onClick="{{s.remove}}" aria-label="{{s.removeAria}}" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<span style="position: relative; display: inline-block; flex: none; width: 40px; height: 40px; flex: none"><svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="display: block"><circle cx="20" cy="20" r="18.75" fill="none" stroke="{{p.ring}}" stroke-width="2.5"></circle><circle cx="20" cy="20" r="14" fill="{{p.fill}}"></circle></svg><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; color: #0E2A23; line-height: 1">{{p.short}}</span></span>
+<input value="{{p.name}}" onChange="{{p.setName}}" aria-label="{{p.aria}}" placeholder="Name" style="flex: 1; min-width: 0; height: 48px; box-sizing: border-box; border: 1.5px solid #7D8B85; border-radius: 14px; padding: 0 12px; background: #FFFFFF; font: 500 16px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
+<label style="position: relative; flex: none">
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{p.ageAria}}</span>
+<select value="{{p.age}}" onChange="{{p.setAge}}" style="width: 96px; height: 48px; box-sizing: border-box; border: 0; border-radius: 14px; background: #EEF1EA; padding: 0 28px 0 14px; font: 600 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">
+<sc-for list="{{ages}}" as="o" hint-placeholder-count="19"><option value="{{o.v}}">{{o.label}}</option></sc-for>
+</select>
+<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="position: absolute; right: 12px; top: 18px; pointer-events: none"><path d="M6 9l6 6 6-6"></path></svg>
+</label>
+<button type="button" onClick="{{p.remove}}" aria-label="{{p.removeAria}}" style="width: 36px; height: 44px; flex: none; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 </sc-for>
-<button type="button" onClick="{{addStop}}" style="height: 44px; border-radius: 12px; border: 1.5px dashed #8A9892; background: transparent; display: flex; align-items: center; justify-content: center; gap: 6px; font: 650 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add another stop</button>
+<button type="button" onClick="{{addPerson}}" style="margin-top: 4px; height: 44px; border: 0; border-radius: 14px; background: #EEF1EA; display: flex; align-items: center; justify-content: center; gap: 6px; font: 600 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add someone</button>
 </section>
 
-<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; justify-content: space-between; align-items: center">
-<h2 style="margin: 0; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">WHEN</h2>
-<div style="display: flex; gap: 3px; padding: 3px; border-radius: 12px; background: #EEF1EA">
-<button type="button" onClick="{{useDates}}" aria-pressed="{{datesTab.pressed}}" style="height: 38px; padding: 0 12px; border: 0; border-radius: 9px; background: {{datesTab.bg}}; font: {{datesTab.w}} 13px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">Dates</button>
-<button type="button" onClick="{{useLength}}" aria-pressed="{{lengthTab.pressed}}" style="height: 38px; padding: 0 12px; border: 0; border-radius: 9px; background: {{lengthTab.bg}}; font: {{lengthTab.w}} 13px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">Just how long</button>
-</div>
-</div>
-<sc-if value="{{isDates}}" hint-placeholder-val="{{ true }}">
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
-<a href="DatePicker.dc.html" style="height: 58px; box-sizing: border-box; border: 1.5px solid #E3E8E0; border-radius: 12px; background: #FFFFFF; padding: 0 12px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; color: #0E2A23"><span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">LEAVE</span><span style="font-size: 16px; font-weight: 700">Fri, Nov 20</span></a>
-<a href="DatePicker.dc.html" style="height: 58px; box-sizing: border-box; border: 1.5px solid #E3E8E0; border-radius: 12px; background: #FFFFFF; padding: 0 12px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; color: #0E2A23"><span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">BACK</span><span style="font-size: 16px; font-weight: 700">Sun, Nov 29</span></a>
-</div>
-</sc-if>
-<sc-if value="{{isLength}}" hint-placeholder-val="{{ false }}">
-<div style="height: 58px; display: flex; align-items: center; gap: 10px">
-<span style="flex: 1; font-size: 16px; font-weight: 700">Days away</span>
-<button type="button" onClick="{{daysDown}}" aria-label="One day fewer" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">−</button>
-<span style="min-width: 36px; text-align: center; font-size: 30px; font-weight: 900; font-stretch: 64%">{{days}}</span>
-<button type="button" onClick="{{daysUp}}" aria-label="One day more" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">+</button>
-</div>
-</sc-if>
-<p style="margin: 0; display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.4; color: #56665F"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="flex: none; margin-top: 1px"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg><span>{{whenNote}}</span></p>
-</section>
-
-<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 14px">
+<sc-for list="{{chipGroups}}" as="g" hint-placeholder-count="3">
+<div style="display: flex; flex-direction: column; gap: 8px">
 <div style="display: flex; justify-content: space-between; align-items: baseline">
-<h2 style="margin: 0; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">WHO'S COMING</h2>
-<span style="font-size: 12px; color: #56665F">{{crewLabel}}</span>
-</div>
-<div style="display: flex; align-items: center; gap: 10px">
-<span style="flex: 1; display: flex; flex-direction: column; gap: 1px"><span style="font-size: 16px; font-weight: 700">Adults</span><span style="font-size: 12px; color: #56665F">Two by default. Change it if not.</span></span>
-<button type="button" onClick="{{adultsDown}}" aria-label="One adult fewer" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">−</button>
-<span style="min-width: 28px; text-align: center; font-size: 30px; font-weight: 900; font-stretch: 64%">{{adults}}</span>
-<button type="button" onClick="{{adultsUp}}" aria-label="One adult more" style="width: 44px; height: 44px; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">+</button>
-</div>
-<span style="margin-top: 4px; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">KIDS · NAME AND AGE</span>
-<sc-for list="{{kids}}" as="k" hint-placeholder-count="2">
-<div style="display: flex; align-items: center; gap: 6px">
-<input value="{{k.name}}" onChange="{{k.setName}}" aria-label="{{k.aria}}" placeholder="Name" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; border: 1.5px solid #E3E8E0; border-radius: 12px; padding: 0 12px; background: #FFFFFF; font: 650 16px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
-<button type="button" onClick="{{k.down}}" aria-label="Younger" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">−</button>
-<span style="width: 56px; flex: none; text-align: center; font-size: 14px; font-weight: 750">{{k.age}}</span>
-<button type="button" onClick="{{k.up}}" aria-label="Older" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 20px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">+</button>
-<button type="button" onClick="{{k.remove}}" aria-label="Remove this kid" style="width: 44px; height: 44px; flex: none; border: 0; border-radius: 12px; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-</div>
-</sc-for>
-<button type="button" onClick="{{addKid}}" style="height: 44px; border-radius: 12px; border: 1.5px dashed #8A9892; background: transparent; display: flex; align-items: center; justify-content: center; gap: 6px; font: 650 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a kid</button>
-</section>
-
-<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; justify-content: space-between; align-items: baseline">
-<h2 style="margin: 0; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">WHAT YOU'LL DO</h2>
-<span style="font-size: 12px; color: #56665F">{{actsLabel}}</span>
+<h2 style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">{{g.title}}</h2>
+<span style="font-size: 12px; color: #56665F">{{g.hint}}</span>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 8px">
-<sc-for list="{{acts}}" as="a" hint-placeholder-count="11">
-<button type="button" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="height: 38px; padding: 0 13px; border-radius: 19px; border: 1.5px solid {{a.bd}}; background: {{a.bg}}; color: {{a.fg}}; font: 650 14px Archivo, system-ui, sans-serif; cursor: pointer">{{a.label}}</button>
+<sc-for list="{{g.chips}}" as="a" hint-placeholder-count="5">
+<button type="button" onClick="{{a.pick}}" aria-pressed="{{a.pressed}}" style="height: 40px; padding: 0 14px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid {{a.bd}}; background: {{a.bg}}; color: {{a.fg}}; font: 600 14px Archivo, system-ui, sans-serif; cursor: pointer">{{a.label}}</button>
 </sc-for>
 </div>
-<div style="display: flex; gap: 8px">
-<input value="{{custom}}" onChange="{{onCustom}}" aria-label="Add your own activity" placeholder="Add your own" style="flex: 1; min-width: 0; height: 44px; box-sizing: border-box; border: 1.5px solid #E3E8E0; border-radius: 12px; padding: 0 12px; background: #FFFFFF; font: 600 15px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
-<button type="button" onClick="{{addCustom}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 12px; background: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">Add</button>
 </div>
+</sc-for>
 </section>
 
-<section style="flex: none; background: #FFFFFF; border: 2px solid #0E2A23; border-radius: 22px; padding: 14px; display: flex; flex-direction: column; gap: 8px">
-<label for="tripNote" style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">ANYTHING ELSE? TYPE IT OR SAY IT</label>
-<textarea id="tripNote" value="{{note}}" onChange="{{onNote}}" maxLength="2000" placeholder="Where you're staying, laundry, how you're getting there, naps. Anything a friend would need to know to pack for you." style="width: 100%; height: 100px; box-sizing: border-box; border: 0; outline: none; resize: none; background: transparent; padding: 0; font: 500 16px/1.45 Archivo, system-ui, sans-serif; color: #0E2A23"></textarea>
-<div style="display: flex; align-items: center; gap: 10px">
-<button type="button" onClick="{{toggleMic}}" aria-pressed="{{micPressed}}" aria-label="{{micAria}}" style="width: 48px; height: 48px; flex: none; border: 0; border-radius: 24px; background: {{micBg}}; display: grid; place-items: center; cursor: pointer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{{micInk}}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
-<sc-if value="{{listening}}" hint-placeholder-val="{{ false }}"><span aria-hidden="true" style="display: inline-flex; align-items: center; gap: 4px"><span style="width: 4px; height: 24px; border-radius: 2px; background: #FF5B23; animation: kbBar 0.9s ease-in-out infinite"></span><span style="width: 4px; height: 24px; border-radius: 2px; background: #FF5B23; animation: kbBar 0.9s ease-in-out 0.15s infinite"></span><span style="width: 4px; height: 24px; border-radius: 2px; background: #FF5B23; animation: kbBar 0.9s ease-in-out 0.3s infinite"></span><span style="width: 4px; height: 24px; border-radius: 2px; background: #FF5B23; animation: kbBar 0.9s ease-in-out 0.45s infinite"></span></span></sc-if>
-<span style="flex: 1; font-size: 13px; line-height: 1.35; color: #56665F">{{micHint}}</span>
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 10px">
+<label for="tripNote" style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">Anything else?</label>
+<div style="display: flex; align-items: flex-end; gap: 8px">
+<textarea id="tripNote" value="{{note}}" onChange="{{onNote}}" maxLength="2000" placeholder="Laundry, naps, a wedding, gear you rent there." style="flex: 1; min-width: 0; height: 80px; box-sizing: border-box; border: 0; outline: none; resize: none; background: transparent; padding: 0; font: 500 16px/1.4 Archivo, system-ui, sans-serif; color: #0E2A23"></textarea>
+<a href="VoiceRecord.dc.html" aria-label="Talk instead of typing" style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #EEF1EA; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></a>
 </div>
-<div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #56665F">
-<span style="display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>{{caughtLabel}}</span>
-<span style="font-family: 'DM Mono', monospace">{{count}} / 2,000</span>
-</div>
+<sc-if value="{{hasCaught}}" hint-placeholder-val="{{ true }}">
+<div style="padding-top: 10px; border-top: 1px solid #EDF0EA; display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #B23A0B"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Scout caught</span>
 <div style="display: flex; flex-wrap: wrap; gap: 6px">
-<sc-for list="{{caught}}" as="c" hint-placeholder-count="4">
-<span style="height: 30px; padding: 0 10px; border-radius: 10px; background: #0E2A23; color: #EEF1EA; display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600"><span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; color: #9FB5AC">{{c.k}}</span>{{c.v}}</span>
+<sc-for list="{{caught}}" as="c" hint-placeholder-count="3">
+<span style="height: 28px; padding: 0 10px; border-radius: 8px; background: #0E2A23; color: #EEF1EA; display: inline-flex; align-items: center; font-size: 12px; font-weight: 600">{{c.v}}</span>
 </sc-for>
 </div>
+</div>
+</sc-if>
 </section>
 
 </div>
 
-<a href="Clarify.dc.html" style="flex: none; height: 58px; border-radius: 18px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; justify-content: space-between; padding: 0 20px 0 22px; font-size: 18px; font-weight: 700">Continue<span style="font-size: 13px; font-weight: 500; color: #B6C8C0">3 quick questions →</span></a>
+<a href="Clarify.dc.html" style="flex: none; height: 56px; border-radius: 14px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 700">Continue<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
-const KB_ACTS = ['Sightseeing', 'Museums', 'Hiking', 'Beach', 'Swimming', 'Skiing', 'Camping', 'Theme park', 'Biking', 'Visiting family', 'Nice dinners'];
+const KM_COL = [['#AFC6FF', '#2D55D6'], ['#7BE0B5', '#0F8A5F'], ['#FFC94A', '#B57A00'], ['#FF9BAE', '#E0476A'], ['#C9B8FF', '#6A4FD0'], ['#FFB38F', '#C4561D']];
+const KM_AGES = [{ v: 'A', label: 'Adult' }, { v: '0', label: 'Under 1' }].concat(Array.from({ length: 17 }, (x, i) => ({ v: String(i + 1), label: (i + 1) + (i ? ' yrs' : ' yr') })));
+const KM_GROUPS = [
+  ['Getting there', 'Pick all', ['Flying', 'Driving', 'Train', 'Ferry']],
+  ['Staying in', 'Pick all', ['Hotel', 'Rental', 'Family or friends', 'Camping', 'Cruise']],
+  ["What you'll do", 'Pick any', ['Sightseeing', 'Museums', 'Hiking', 'Beach', 'Swimming', 'Skiing', 'Theme park', 'Nice dinners', 'A wedding or event']]
+];
 class Component extends DCLogic {
   constructor(props) {
     super(props);
     this.state = {
-      stops: ['Rome', 'Florence', 'Cinque Terre'],
-      mode: 'dates', days: 10, adults: 2,
-      kids: [{ name: 'Leo', age: 6 }, { name: 'Ivy', age: 3 }],
-      on: { Sightseeing: true, Museums: true }, extra: [], custom: '',
-      note: 'The Florence apartment has a washer, so laundry midway. Flying from SFO. Ivy still naps in the stroller.'
+      stops: [
+        { name: 'Rome', dates: 'Fri Nov 20 → Mon Nov 23', nights: 3 },
+        { name: 'Florence', dates: 'Mon Nov 23 → Thu Nov 26', nights: 3 },
+        { name: 'Cinque Terre', dates: 'Thu Nov 26 → Sun Nov 29', nights: 3 }
+      ],
+      people: [{ name: 'Nadia', age: 'A' }, { name: 'Sam', age: 'A' }, { name: 'Leo', age: '6' }, { name: 'Ivy', age: '3' }],
+      on: { Flying: true, Train: true, Hotel: true, Rental: true, Sightseeing: true, Museums: true, Hiking: true },
+      note: 'The Florence apartment has a washer. Ivy still naps in the stroller.'
     };
   }
   caught(t) {
     const s = t.toLowerCase();
     const out = [];
-    if (/no laundry|no washer/.test(s)) out.push(['LAUNDRY', 'None']);
-    else if (/laundry|washer|washing machine/.test(s)) out.push(['LAUNDRY', /halfway|midway|once/.test(s) ? 'Once, midway' : 'Available']);
-    if (/\b(fly|flying|flight|plane)\b/.test(s)) out.push(['TRAVEL', 'Flying']);
-    else if (/\b(drive|driving|road trip)\b/.test(s)) out.push(['TRAVEL', 'Driving']);
-    else if (/\btrain\b/.test(s)) out.push(['TRAVEL', 'Train']);
-    const stay = s.match(/\b(apartment|hotel|cabin|hostel|campsite|resort|rental)\b/);
-    if (stay) out.push(['STAY', stay[1].charAt(0).toUpperCase() + stay[1].slice(1)]);
-    if (/stroller/.test(s)) out.push(['GEAR', 'Stroller']);
-    if (/car seat/.test(s)) out.push(['GEAR', 'Car seat']);
-    if (/crib|travel cot/.test(s)) out.push(['GEAR', 'Crib']);
-    if (/carsick|car sick|motion sick/.test(s)) out.push(['HEADS UP', 'Motion sickness']);
+    if (/no laundry|no washer/.test(s)) out.push('No laundry');
+    else if (/laundry|washer|washing machine/.test(s)) out.push('Laundry in Florence');
+    if (/stroller/.test(s)) out.push('Stroller');
+    if (/car seat/.test(s)) out.push('Car seat');
+    if (/crib|travel cot/.test(s)) out.push('Crib');
+    if (/wedding/.test(s)) out.push('Formal outfit');
     return out;
   }
   renderVals() {
     const s = this.state;
     const setAt = (k, i, v) => { const a = s[k].slice(); a[i] = v; this.setState({ [k]: a }); };
-    const drop = (k, i) => this.setState({ [k]: s[k].filter((x, j) => j !== i) });
-    const stops = s.stops.map((name, i) => ({
-      n: i + 1, name, aria: 'Stop ' + (i + 1), removeAria: 'Remove stop ' + (i + 1),
-      set: (e) => setAt('stops', i, e.target.value),
-      remove: () => { if (s.stops.length > 1) drop('stops', i); }
-    }));
-    const kids = s.kids.map((k, i) => ({
-      name: k.name, aria: 'Name of kid ' + (i + 1),
-      age: k.age === 0 ? 'Under 1' : k.age + (k.age === 1 ? ' yr' : ' yrs'),
-      setName: (e) => setAt('kids', i, { ...k, name: e.target.value }),
-      up: () => setAt('kids', i, { ...k, age: Math.min(17, k.age + 1) }),
-      down: () => setAt('kids', i, { ...k, age: Math.max(0, k.age - 1) }),
-      remove: () => drop('kids', i)
-    }));
-    const acts = KB_ACTS.concat(s.extra).map((a) => {
-      const on = !!s.on[a];
-      return { label: a, pressed: on ? 'true' : 'false', bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#D9DFD6', pick: () => this.setState({ on: { ...s.on, [a]: !on } }) };
+    const last = s.stops.length - 1;
+    const stops = s.stops.map((st, i) => {
+      const has = !!st.dates;
+      return {
+        n: i + 1, name: st.name, aria: 'Stop ' + (i + 1), removeAria: 'Remove stop ' + (i + 1),
+        rail: i === last ? 'transparent' : '#D9DFD6',
+        dates: has ? st.dates : 'Add dates for this stop',
+        nights: has ? st.nights + (st.nights === 1 ? ' night' : ' nights') : '',
+        dateBg: has ? '#EEF1EA' : '#FFFFFF', dateBd: has ? 'solid #EEF1EA' : 'dashed #7D8B85',
+        set: (e) => setAt('stops', i, { ...st, name: e.target.value }),
+        remove: () => { if (s.stops.length > 1) this.setState({ stops: s.stops.filter((x, j) => j !== i) }); }
+      };
     });
-    const tab = (on) => ({ bg: on ? '#FFFFFF' : 'transparent', w: on ? '750' : '550', pressed: on ? 'true' : 'false' });
-    const isDates = s.mode === 'dates';
-    const n = s.adults + s.kids.length;
-    const picked = Object.keys(s.on).filter((k) => s.on[k]).length;
-    const caught = this.caught(s.note).map((c) => ({ k: c[0], v: c[1] }));
+    const nights = s.stops.reduce((t, x) => t + (x.nights || 0), 0);
+    const people = s.people.map((p, i) => {
+      const c = KM_COL[i % KM_COL.length];
+      return {
+        name: p.name, short: (p.name || '?').charAt(0).toUpperCase(), fill: c[0], ring: c[1], age: p.age,
+        aria: 'Name of person ' + (i + 1), ageAria: 'Age of ' + (p.name || 'person ' + (i + 1)), removeAria: 'Remove ' + (p.name || 'this person'),
+        setName: (e) => setAt('people', i, { ...p, name: e.target.value }),
+        setAge: (e) => setAt('people', i, { ...p, age: e.target.value }),
+        remove: () => this.setState({ people: s.people.filter((x, j) => j !== i) })
+      };
+    });
+    const chipGroups = KM_GROUPS.map((g) => ({
+      title: g[0], hint: g[1],
+      chips: g[2].map((a) => { const on = !!s.on[a]; return { label: a, pressed: on ? 'true' : 'false', bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#7D8B85', pick: () => this.setState({ on: { ...s.on, [a]: !on } }) }; })
+    }));
+    const caught = this.caught(s.note).map((v) => ({ v }));
+    const n = s.people.length;
     return {
-      stops, kids, acts, caught,
-      stopsLabel: s.stops.length + (s.stops.length === 1 ? ' stop' : ' stops'),
-      addStop: () => this.setState({ stops: s.stops.concat('') }),
-      isDates, isLength: !isDates,
-      datesTab: tab(isDates), lengthTab: tab(!isDates),
-      useDates: () => this.setState({ mode: 'dates' }),
-      useLength: () => this.setState({ mode: 'length' }),
-      days: s.days,
-      daysUp: () => this.setState({ days: Math.min(60, s.days + 1) }),
-      daysDown: () => this.setState({ days: Math.max(1, s.days - 1) }),
-      whenNote: isDates ? "10 days, 9 nights. I'll look up the usual weather for each stop, so you don't have to." : "No dates yet is fine. I'll plan for mixed weather until you add them.",
-      adults: s.adults,
-      adultsUp: () => this.setState({ adults: Math.min(8, s.adults + 1) }),
-      adultsDown: () => this.setState({ adults: Math.max(1, s.adults - 1) }),
-      crewLabel: n + (n === 1 ? ' traveler' : ' travelers'),
-      addKid: () => this.setState({ kids: s.kids.concat({ name: '', age: 4 }) }),
-      actsLabel: picked ? picked + ' picked' : 'Pick any',
-      custom: s.custom,
-      onCustom: (e) => this.setState({ custom: e.target.value }),
-      addCustom: () => {
-        const v = s.custom.trim();
-        if (!v) return;
-        const known = KB_ACTS.indexOf(v) > -1 || s.extra.indexOf(v) > -1;
-        this.setState({ extra: known ? s.extra : s.extra.concat(v), on: { ...s.on, [v]: true }, custom: '' });
-      },
+      stops, people, chipGroups, caught, ages: KM_AGES,
+      hasCaught: caught.length > 0,
+      tripSpan: 'Nov 20–29 · ' + nights + ' nights',
+      addStop: () => this.setState({ stops: s.stops.concat({ name: '', dates: '', nights: 0 }) }),
+      addPerson: () => this.setState({ people: s.people.concat({ name: '', age: 'A' }) }),
+      crewLabel: n + (n === 1 ? ' person' : ' people'),
       note: s.note,
-      onNote: (e) => this.setState({ note: e.target.value }),
-      count: s.note.length,
-      caughtLabel: caught.length ? 'Scout caught ' + caught.length : 'Scout reads as you type',
-      listening: !!s.mic,
-      toggleMic: () => this.setState({ mic: !s.mic }),
-      micPressed: s.mic ? 'true' : 'false',
-      micAria: s.mic ? 'Stop listening' : 'Talk instead of typing',
-      micBg: s.mic ? '#0E2A23' : '#EEF1EA',
-      micInk: s.mic ? '#EEF1EA' : '#0E2A23',
-      micHint: s.mic ? 'Listening. Tap the mic when you are done.' : 'Tap to talk. Your words land in the box above.'
+      onNote: (e) => this.setState({ note: e.target.value })
     };
   }
 }

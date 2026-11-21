@@ -2,61 +2,61 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Kitbag · Bag setup</title>
+<title>kitmunk · Bag setup</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
 <style>
 body{margin:0;background:#EEF1EA}
 a{color:#0E2A23;text-decoration:none}
 a:hover{color:#0E2A23}
-input::placeholder{color:#7D8B85}
+input::placeholder{color:#56665F}
 </style>
 </helmet>
 <div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
 
-<div aria-hidden="true" style="position: absolute; left: 16px; right: 16px; top: 16px; display: flex; align-items: center; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 22px; background: #FFFFFF"></span><span style="font-size: 30px; font-weight: 900; font-stretch: 64%">Bags</span></div>
+<div aria-hidden="true" style="position: absolute; left: 16px; right: 16px; top: 16px; display: flex; align-items: center; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF"></span><span style="font-size: 28px; font-weight: 900; font-stretch: 62.5%">Bags</span></div>
 <div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(14, 42, 35, 0.55)"></div>
 
-<section aria-label="Bag setup" style="position: absolute; left: 0; right: 0; top: 96px; bottom: 0; background: #FFFFFF; border-radius: 28px 28px 0 0; padding: 10px 20px 18px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
-<span aria-hidden="true" style="align-self: center; width: 40px; height: 5px; border-radius: 3px; background: #D9DFD6"></span>
+<section aria-label="Bag setup" style="position: absolute; left: 0; right: 0; top: 96px; bottom: 0; background: #FFFFFF; border-radius: 22px 22px 0 0; padding: 10px 20px 22px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<span aria-hidden="true" style="align-self: center; width: 40px; height: 4px; border-radius: 999px; background: #D9DFD6"></span>
 
 <div style="display: flex; align-items: center; gap: 12px">
-<div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
-<h1 style="margin: 0; font-size: 34px; line-height: 1; font-weight: 900; font-stretch: 66%">Your bags</h1>
-<span style="font-size: 13px; color: #56665F">Name them the way your family does.</span>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+<h1 style="margin: 0; font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">Your bags</h1>
+<span style="font-size: 14px; color: #56665F">Name them the way you do.</span>
 </div>
-<a href="Bags.dc.html" aria-label="Close" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #EEF1EA; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+<a href="Bags.dc.html" aria-label="Close" style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #EEF1EA; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></a>
 </div>
 
 <div style="display: flex; flex-direction: column; gap: 8px">
 <sc-for list="{{bags}}" as="b" hint-placeholder-count="4">
-<div style="display: flex; align-items: center; gap: 6px">
-<input value="{{b.name}}" onChange="{{b.setName}}" aria-label="{{b.aria}}" placeholder="Bag name" style="flex: 1; min-width: 0; height: 48px; box-sizing: border-box; border: 1.5px solid #E3E8E0; border-radius: 14px; padding: 0 12px; background: #FFFFFF; font: 650 16px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
-<button type="button" onClick="{{b.cycle}}" aria-label="{{b.kindAria}}" style="width: 96px; height: 48px; flex: none; border: 0; border-radius: 14px; background: #EEF1EA; font: 650 13px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">{{b.kind}}</button>
-<button type="button" onClick="{{b.remove}}" aria-label="{{b.removeAria}}" style="width: 44px; height: 48px; flex: none; border: 0; border-radius: 12px; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+<div style="display: flex; align-items: center; gap: 8px">
+<input value="{{b.name}}" onChange="{{b.setName}}" aria-label="{{b.aria}}" placeholder="Bag name" style="flex: 1; min-width: 0; height: 48px; box-sizing: border-box; border: 1.5px solid #7D8B85; border-radius: 14px; padding: 0 14px; background: #FFFFFF; font: 500 16px Archivo, system-ui, sans-serif; color: #0E2A23; outline: none">
+<button type="button" onClick="{{b.cycle}}" aria-label="{{b.kindAria}}" style="width: 96px; height: 48px; flex: none; border: 0; border-radius: 14px; background: #EEF1EA; font: 600 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">{{b.kind}}</button>
+<button type="button" onClick="{{b.remove}}" aria-label="{{b.removeAria}}" style="width: 44px; height: 48px; flex: none; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 </sc-for>
-<button type="button" onClick="{{add}}" style="height: 48px; border-radius: 14px; border: 1.5px dashed #8A9892; background: transparent; display: flex; align-items: center; justify-content: center; gap: 6px; font: 650 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add a bag</button>
+<button type="button" onClick="{{add}}" style="height: 44px; border: 0; border-radius: 14px; background: #EEF1EA; display: flex; align-items: center; justify-content: center; gap: 6px; font: 600 14px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>Add a bag</button>
 </div>
 
-<p style="margin: 0; font-size: 12px; line-height: 1.4; color: #56665F">Removing a bag never removes what's in it. Those items go back to Unassigned.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; color: #56665F">Removing a bag never removes what's in it.</p>
 
 <sc-if value="{{showTip}}" hint-placeholder-val="{{ true }}">
-<div style="border: 1.5px dashed #FF5B23; background: #FFF9F6; border-radius: 18px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px">
-<span style="display: inline-flex; align-items: center; gap: 8px; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>SCOUT SUGGESTS</span>
-<span style="font-size: 14px; line-height: 1.4">Two train days. A small backpack for Ivy keeps her bunny and snacks within reach.</span>
+<div style="border: 1.5px dashed #FF5B23; background: #FFF9F6; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Scout suggests</span>
+<span style="font-size: 14px; line-height: 1.4">Two train days. A small backpack for Ivy keeps her bunny and snacks close.</span>
 <div style="display: flex; gap: 8px">
-<button type="button" onClick="{{addTip}}" style="height: 44px; padding: 0 14px; border: 0; border-radius: 12px; background: #0E2A23; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; cursor: pointer">Add Ivy's backpack</button>
-<button type="button" onClick="{{hideTip}}" style="height: 44px; padding: 0 14px; border: 1.5px solid #D9DFD6; border-radius: 12px; background: #FFFFFF; color: #0E2A23; font: 650 14px Archivo, system-ui, sans-serif; cursor: pointer">No thanks</button>
+<button type="button" onClick="{{addTip}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 14px; background: #0E2A23; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; cursor: pointer">Add it</button>
+<button type="button" onClick="{{hideTip}}" style="height: 44px; padding: 0 16px; box-sizing: border-box; border: 1.5px solid #7D8B85; border-radius: 14px; background: #FFFFFF; color: #0E2A23; font: 700 14px Archivo, system-ui, sans-serif; cursor: pointer">No thanks</button>
 </div>
 </div>
 </sc-if>
 
-<a href="Bags.dc.html" style="margin-top: auto; height: 58px; border-radius: 18px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 750">Done</a>
+<a href="Bags.dc.html" style="margin-top: auto; height: 56px; border-radius: 14px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">Done</a>
 </section>
 </div>
 </x-dc>

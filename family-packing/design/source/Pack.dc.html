@@ -2,91 +2,80 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Kitbag · Packing workspace</title>
+<title>kitmunk · Packing workspace</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
 <style>
 body{margin:0;background:#EEF1EA}
 a{color:#0E2A23;text-decoration:none}
 a:hover{color:#0E2A23}
+@media (prefers-reduced-motion: reduce){*{transition:none !important}}
 </style>
 </helmet>
 <div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
 
-<div onScroll="{{onScroll}}" style="position: absolute; left: 0; right: 0; top: 0; bottom: 86px; overflow-y: auto">
-<div style="padding: 12px 12px 0">
+<div onScroll="{{onScroll}}" style="position: absolute; left: 0; right: 0; top: 0; bottom: 80px; overflow-y: auto">
+<div style="padding: 12px 16px 0; display: flex; flex-direction: column; gap: 10px; opacity: {{bigOpacity}}; transform: {{bigShift}}; transition: opacity 120ms linear, transform 120ms linear">
 <header style="height: 48px; display: flex; align-items: center; gap: 10px">
-<a href="Reveal.dc.html" aria-label="Trip home" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
-<div style="flex: 1; min-width: 0; display: flex; flex-direction: column">
-<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">NOV 20–29 · 4 TRAVELERS</span>
-<span style="font-size: 30px; line-height: 1; font-weight: 900; font-stretch: 64%; letter-spacing: -0.01em">Italy</span>
+<a href="Reveal.dc.html" aria-label="Trip home" style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<div style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">Italy</span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">{{progress}}</span>
 </div>
-<a href="Share.dc.html" aria-label="Packing together: Sam is here" style="height: 44px; padding: 0 10px 0 6px; border-radius: 22px; background: #FFFFFF; display: flex; align-items: center; gap: 6px">
-<span style="display: flex">
-<span style="width: 28px; height: 28px; border-radius: 50%; background: #3A6BFF; color: #FFFFFF; border: 2px solid #FFFFFF; display: grid; place-items: center; font-size: 11px; font-weight: 800">N</span>
-<span style="width: 28px; height: 28px; margin-left: -8px; border-radius: 50%; background: #7BE0B5; color: #0E2A23; border: 2px solid #FFFFFF; display: grid; place-items: center; font-size: 11px; font-weight: 800; position: relative">S<span style="position: absolute; right: -3px; bottom: -3px; width: 10px; height: 10px; border-radius: 50%; background: #13996A; border: 2px solid #FFFFFF"></span></span>
-</span>
-<span style="font-size: 12px; font-weight: 700">Live</span>
-</a>
-<a href="TripMenu.dc.html" aria-label="Trip menu" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E2A23" aria-hidden="true"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></a>
+<a href="TripMenu.dc.html" aria-label="Trip menu" style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#0E2A23" aria-hidden="true"><circle cx="5" cy="12" r="1.8"></circle><circle cx="12" cy="12" r="1.8"></circle><circle cx="19" cy="12" r="1.8"></circle></svg></a>
 </header>
 
-<div style="height: 24px; margin: 10px 4px 0; display: flex; align-items: center; gap: 10px">
-<span style="font-size: 24px; font-weight: 900; font-stretch: 64%; line-height: 1">{{pct}}</span>
-<span style="flex: 1; height: 8px; border-radius: 4px; background: #D9DFD6; overflow: hidden; display: block"><span style="display: block; height: 8px; border-radius: 4px; width: {{pct}}; background: #0E2A23"></span></span>
-<span style="font: 500 11px 'DM Mono', monospace; color: #56665F">{{progress}}</span>
-</div>
-
-<div style="margin-top: 8px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px">
 <sc-for list="{{crew}}" as="c" hint-placeholder-count="5">
-<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" style="padding: 6px 0 7px; border-radius: 18px; border: 2px solid {{c.tileBd}}; background: {{c.tileBg}}; display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
-<svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
-<circle cx="28" cy="28" r="25" fill="none" stroke="#D9DFD6" stroke-width="4"/>
-<circle cx="28" cy="28" r="25" fill="none" stroke="{{c.deep}}" stroke-width="4" stroke-linecap="round" stroke-dasharray="{{c.dash}}" transform="rotate(-90 28 28)"/>
-<circle cx="28" cy="28" r="19" fill="{{c.fill}}"/>
-<text x="28" y="33" text-anchor="middle" font-family="Archivo, sans-serif" font-size="15" font-weight="800" fill="{{c.ink}}">{{c.short}}</text>
-</svg>
-<span style="font-size: 12px; font-weight: 700">{{c.name}}</span>
-<span style="font: 500 10px 'DM Mono', monospace; color: #56665F">{{c.count}}</span>
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" aria-label="{{c.aria}}" style="padding: 6px 0; border: 0; border-radius: 14px; background: {{c.tileBg}}; display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
+<span style="position: relative; display: inline-block; flex: none; width: 48px; height: 48px"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" style="display: block">
+<circle cx="24" cy="24" r="21.5" fill="none" stroke="#E3E8E0" stroke-width="2.5"></circle>
+<circle cx="24" cy="24" r="21.5" fill="none" stroke="{{c.deep}}" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="{{c.dash}}" transform="rotate(-90 24 24)"></circle>
+<circle cx="24" cy="24" r="16.5" fill="{{c.fill}}"></circle>
+
+</svg><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: Archivo, sans-serif; font-size: 14px; font-weight: 600; color: {{c.ink}}; line-height: 1">{{c.short}}</span></span>
+<span style="font-size: 12px; font-weight: {{c.nameWeight}}">{{c.name}}</span>
 </button>
 </sc-for>
 </div>
 
-<div style="margin: 10px 4px 0; display: flex; gap: 6px">
+<div style="display: flex; gap: 8px">
 <sc-for list="{{filters}}" as="f" hint-placeholder-count="3">
-<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="height: 36px; padding: 0 12px; border-radius: 18px; border: 1.5px solid {{f.bd}}; background: {{f.bg}}; color: {{f.fg}}; font: 650 13px Archivo, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 6px; cursor: pointer">{{f.label}}<span style="font: 500 11px 'DM Mono', monospace">{{f.n}}</span></button>
+<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="height: 44px; padding: 0; border: 0; background: transparent; display: inline-flex; align-items: center; cursor: pointer"><span style="height: 36px; padding: 0 14px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid {{f.bd}}; background: {{f.bg}}; color: {{f.fg}}; font: 600 14px Archivo, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 6px">{{f.label}}<span style="font-weight: 500">{{f.n}}</span></span></button>
 </sc-for>
 </div>
 </div>
 
-<div style="padding: 0 16px 76px">
+<div style="padding: 0 16px 80px; display: flex; flex-direction: column; gap: 12px; margin-top: 4px">
 <sc-for list="{{cats}}" as="cat" hint-placeholder-count="2">
-<section style="background: #FFFFFF; border-radius: 20px; margin-top: 12px; overflow: hidden">
-<button type="button" onClick="{{cat.toggle}}" aria-expanded="{{cat.expanded}}" style="width: 100%; height: 46px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 14px; border: 0; background: transparent; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
-<span style="flex: 1; font-size: 15px; font-weight: 750">{{cat.name}}</span>
-<span style="width: 48px; height: 5px; border-radius: 3px; background: #E3E8E0; overflow: hidden; display: block"><span style="display: block; height: 5px; width: {{cat.w}}; background: {{cat.deep}}"></span></span>
-<span style="font: 500 11px 'DM Mono', monospace; color: #56665F">{{cat.count}}</span>
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{cat.rot}}"><path d="M6 9l6 6 6-6"/></svg>
+<section style="background: #FFFFFF; border-radius: 22px; overflow: hidden">
+<button type="button" onClick="{{cat.toggle}}" aria-expanded="{{cat.expanded}}" style="width: 100%; height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 16px; border: 0; background: transparent; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
+<span style="flex: 1; font-size: 16px; font-weight: 700">{{cat.name}}</span>
+<span style="font-size: 14px; color: #56665F">{{cat.left}}</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: {{cat.rot}}; transition: transform 200ms ease"><path d="M6 9l6 6 6-6"></path></svg>
 </button>
 <sc-if value="{{cat.open}}" hint-placeholder-val="{{ true }}">
 <sc-for list="{{cat.items}}" as="it" hint-placeholder-count="5">
-<div style="display: flex; align-items: center; gap: 6px; padding: 2px 14px 2px 6px; border-top: 1px solid #EDF0EA; background: {{it.rowBg}}">
-<button type="button" onClick="{{it.toggle}}" aria-label="{{it.aria}}" aria-pressed="{{it.pressed}}" style="width: 44px; height: 44px; flex: none; padding: 0; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer">
-<span style="width: 28px; height: 28px; box-sizing: border-box; border-radius: 9px; border: 2px solid {{it.bd}}; background: {{it.bg}}; display: grid; place-items: center">
-<sc-if value="{{it.done}}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<div style="height: 48px; display: flex; align-items: center; gap: 4px; padding: 0 16px 0 6px; border-top: 1px solid #EDF0EA; background: {{it.rowBg}}; transition: background 300ms ease">
+<button type="button" onClick="{{it.toggle}}" aria-label="{{it.aria}}" aria-pressed="{{it.pressed}}" style="width: 44px; height: 48px; flex: none; padding: 0; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer">
+<span style="width: 26px; height: 26px; box-sizing: border-box; border-radius: 8px; border: 2px solid {{it.bd}}; background: {{it.bg}}; display: grid; place-items: center; transition: background 160ms ease, border-color 160ms ease">
+<sc-if value="{{it.done}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
 <sc-if value="{{it.partial}}" hint-placeholder-val="{{ false }}"><span style="width: 12px; height: 3px; border-radius: 2px; background: {{it.deep}}; display: block"></span></sc-if>
 </span>
 </button>
-<a href="Item.dc.html" style="flex: 1; min-width: 0; height: 44px; display: flex; align-items: center; gap: 8px">
-<span style="min-width: 0; font-size: 16px; font-weight: 650; color: {{it.nameColor}}; text-decoration: {{it.strike}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{it.name}}</span>
-<sc-if value="{{it.need}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 18px; padding: 0 6px; border-radius: 6px; background: #FFE4D9; color: #B23A0B; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; display: inline-flex; align-items: center">TO BUY</span></sc-if>
-<sc-if value="{{it.bought}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 18px; padding: 0 6px; border-radius: 6px; background: #D7F3E6; color: #0E5C3E; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; display: inline-flex; align-items: center">BOUGHT</span></sc-if>
+<a href="Item.dc.html" style="flex: 1; min-width: 0; height: 48px; display: flex; align-items: center; gap: 8px">
+<span style="min-width: 0; font-size: 16px; font-weight: 500; color: {{it.nameColor}}; text-decoration: {{it.strike}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{it.name}}</span>
+<sc-if value="{{it.need}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 22px; padding: 0 8px; box-sizing: border-box; border-radius: 8px; border: 1.5px solid #0E2A23; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center">To buy</span></sc-if>
+<sc-if value="{{it.bought}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 22px; padding: 0 8px; border-radius: 8px; background: #EEF1EA; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center">Bought</span></sc-if>
 </a>
-<span style="font-size: 20px; font-weight: 850; font-stretch: 70%; min-width: 36px; text-align: right; color: {{it.qtyColor}}">{{it.qty}}</span>
+<sc-if value="{{it.hasBag}}" hint-placeholder-val="{{ false }}">
+<span style="flex: none; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #56665F; white-space: nowrap"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="3"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path></svg>{{it.bag}}</span>
+</sc-if>
+<span style="flex: none; min-width: 32px; text-align: right; font-size: 14px; font-weight: 600; color: #56665F">{{it.qty}}</span>
 </div>
 </sc-for>
 </sc-if>
@@ -94,17 +83,16 @@ a:hover{color:#0E2A23}
 </sc-for>
 
 <sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
-<div style="margin-top: 12px; padding: 20px; border-radius: 20px; border: 1.5px dashed #B7C2BB; text-align: center; font-size: 14px; color: #56665F">Nothing here. Tap the filter again to see everything.</div>
+<div style="padding: 20px; border-radius: 22px; border: 1.5px solid #D9DFD6; text-align: center; font-size: 14px; color: #56665F">Nothing here. Tap the filter again to see everything.</div>
 </sc-if>
 
 <sc-if value="{{showRest}}" hint-placeholder-val="{{ true }}">
-<section style="background: #FFFFFF; border-radius: 20px; margin-top: 12px; overflow: hidden">
+<section style="background: #FFFFFF; border-radius: 22px; overflow: hidden">
 <sc-for list="{{rest}}" as="r" hint-placeholder-count="4">
-<button type="button" aria-expanded="false" style="width: 100%; height: 46px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 14px; border: 0; border-top: 1px solid {{r.line}}; background: transparent; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
-<span style="flex: 1; font-size: 15px; font-weight: 750">{{r.name}}</span>
-<span style="width: 48px; height: 5px; border-radius: 3px; background: #E3E8E0; overflow: hidden; display: block"><span style="display: block; height: 5px; width: {{r.w}}; background: {{r.deep}}"></span></span>
-<span style="font: 500 11px 'DM Mono', monospace; color: #56665F">{{r.count}}</span>
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+<button type="button" aria-expanded="false" style="width: 100%; height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 16px; border: 0; border-top: 1px solid {{r.line}}; background: transparent; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif; color: #0E2A23">
+<span style="flex: 1; font-size: 16px; font-weight: 700">{{r.name}}</span>
+<span style="font-size: 14px; color: #56665F">{{r.left}}</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
 </button>
 </sc-for>
 </section>
@@ -112,39 +100,40 @@ a:hover{color:#0E2A23}
 </div>
 </div>
 
-<div style="position: absolute; left: 0; right: 0; top: 0; height: 60px; box-sizing: border-box; padding: 0 12px; background: #EEF1EA; border-bottom: 1px solid #D9DFD6; display: flex; align-items: center; gap: 4px; opacity: {{barOpacity}}; transform: {{barShift}}; pointer-events: {{barEvents}}; transition: opacity 0.18s ease, transform 0.18s ease">
-<a href="Reveal.dc.html" aria-label="Trip home" style="width: 44px; height: 44px; flex: none; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<div style="position: absolute; left: 0; right: 0; top: 0; height: 64px; box-sizing: border-box; padding: 0 12px; background: rgba(238, 241, 234, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid rgba(217, 223, 214, {{barLine}}); display: flex; align-items: center; gap: 6px; opacity: {{barOpacity}}; pointer-events: {{barEvents}}; transition: opacity 120ms linear">
+<a href="Reveal.dc.html" aria-label="Trip home" style="width: 44px; height: 44px; flex: none; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 20px; font-weight: 900; font-stretch: 62.5%; transform: {{titleShift}}; transition: transform 120ms linear">Italy</span>
+<span style="flex: 1"></span>
+<div style="display: flex; gap: 2px; transform: {{railShift}}; transition: transform 160ms ease-out">
 <sc-for list="{{crew}}" as="c" hint-placeholder-count="5">
-<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" aria-label="{{c.aria}}" style="width: 44px; height: 44px; flex: none; padding: 0; box-sizing: border-box; border-radius: 14px; border: 1.5px solid {{c.tileBd}}; background: {{c.tileBg}}; display: grid; place-items: center; cursor: pointer">
-<svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" fill="none" stroke="#D9DFD6" stroke-width="3"/><circle cx="18" cy="18" r="16" fill="none" stroke="{{c.deep}}" stroke-width="3" stroke-linecap="round" stroke-dasharray="{{c.miniDash}}" transform="rotate(-90 18 18)"/><circle cx="18" cy="18" r="11.5" fill="{{c.fill}}"/><text x="18" y="22" text-anchor="middle" font-family="Archivo, sans-serif" font-size="11" font-weight="800" fill="{{c.ink}}">{{c.short}}</text></svg>
+<button type="button" onClick="{{c.pick}}" aria-pressed="{{c.pressed}}" aria-label="{{c.aria}}" style="width: 44px; height: 44px; flex: none; padding: 0; border: 0; border-radius: 999px; background: {{c.tileBg}}; display: grid; place-items: center; cursor: pointer">
+<span style="position: relative; display: inline-block; flex: none; width: 34px; height: 34px"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" style="display: block"><circle cx="17" cy="17" r="15" fill="none" stroke="#E3E8E0" stroke-width="2"></circle><circle cx="17" cy="17" r="15" fill="none" stroke="{{c.deep}}" stroke-width="2" stroke-linecap="round" stroke-dasharray="{{c.miniDash}}" transform="rotate(-90 17 17)"></circle><circle cx="17" cy="17" r="11" fill="{{c.fill}}"></circle></svg><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: Archivo, sans-serif; font-size: 11px; font-weight: 600; color: {{c.ink}}; line-height: 1">{{c.short}}</span></span>
 </button>
 </sc-for>
-<span style="flex: 1"></span>
-<span style="font-size: 24px; font-weight: 900; font-stretch: 64%; padding-right: 6px">{{pct}}</span>
+</div>
 </div>
 
 <sc-if value="{{showToast}}" hint-placeholder-val="{{ false }}">
-<div aria-live="polite" style="position: absolute; left: 16px; right: 16px; bottom: 98px; height: 52px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 1.5px solid #0E2A23; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 12px; box-shadow: 0 10px 24px rgba(14, 42, 35, 0.16)">
-<span style="width: 26px; height: 26px; border-radius: 9px; background: {{toastDeep}}; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-<span style="flex: 1; font-size: 14px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{toastText}}</span>
-<button type="button" onClick="{{undo}}" style="height: 40px; padding: 0 14px; border: 0; border-radius: 12px; background: #EEF1EA; color: #B23A0B; font: 750 14px Archivo, system-ui, sans-serif; cursor: pointer">Undo</button>
+<div aria-live="polite" style="position: absolute; left: 16px; right: 16px; bottom: 92px; height: 52px; box-sizing: border-box; border-radius: 14px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; gap: 10px; padding: 0 4px 0 16px">
+<span style="flex: 1; font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{toastText}}</span>
+<button type="button" onClick="{{undo}}" style="height: 44px; padding: 0 14px; border: 0; background: transparent; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Undo</button>
 </div>
 </sc-if>
 
-<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 86px; box-sizing: border-box; background: #EEF1EA; border-top: 1px solid #D9DFD6; padding: 10px 16px 20px; display: flex; gap: 10px">
-<a href="ScoutStart.dc.html" style="flex: 1; height: 56px; border-radius: 28px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; gap: 10px; padding: 0 8px 0 16px">
-<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>
-<span style="flex: 1; font-size: 15px; color: #B6C8C0">Ask Scout to change anything…</span>
-<span style="width: 40px; height: 40px; border-radius: 20px; background: #FF5B23; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 80px; box-sizing: border-box; background: #EEF1EA; border-top: 1px solid #D9DFD6; padding: 10px 16px 14px; display: flex; gap: 10px">
+<a href="ScoutStart.dc.html" style="flex: 1; min-width: 0; height: 56px; box-sizing: border-box; border-radius: 999px; background: #FFFFFF; border: 1.5px solid #7D8B85; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 16px">
+<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>
+<span style="flex: 1; min-width: 0; font-size: 16px; color: #56665F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Ask Scout to change anything</span>
+<span style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #FF5B23; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></span>
 </a>
-<a href="AddItem.dc.html" aria-label="Add item" style="width: 56px; height: 56px; flex: none; box-sizing: border-box; border-radius: 28px; background: #FFFFFF; border: 1.5px solid #D9DFD6; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a>
+<a href="AddItem.dc.html" aria-label="Add item" style="width: 56px; height: 56px; flex: none; border-radius: 999px; background: #0E2A23; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></a>
 </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"startPerson":{"editor":"enum","options":["nadia","sam","leo","ivy","shared"],"default":"ivy"},"$preview":{"width":390,"height":844}}'>
 const KB_CREW = [
-  { id: 'nadia', name: 'Nadia', short: 'N', fill: '#3A6BFF', deep: '#3A6BFF', ink: '#FFFFFF' },
-  { id: 'sam', name: 'Sam', short: 'S', fill: '#7BE0B5', deep: '#13996A', ink: '#0E2A23' },
+  { id: 'nadia', name: 'Nadia', short: 'N', fill: '#AFC6FF', deep: '#2D55D6', ink: '#0E2A23' },
+  { id: 'sam', name: 'Sam', short: 'S', fill: '#7BE0B5', deep: '#0F8A5F', ink: '#0E2A23' },
   { id: 'leo', name: 'Leo', short: 'L', fill: '#FFC94A', deep: '#B57A00', ink: '#0E2A23' },
   { id: 'ivy', name: 'Ivy', short: 'I', fill: '#FF9BAE', deep: '#E0476A', ink: '#0E2A23' },
   { id: 'shared', name: 'Shared', short: 'Us', fill: '#0E2A23', deep: '#0E2A23', ink: '#EEF1EA' }
@@ -152,22 +141,22 @@ const KB_CREW = [
 const KB_DATA = {
   nadia: { cats: [
     ['Clothing', [['n1', 'Tops', 5, 5], ['n2', 'Pants', 2, 2], ['n3', 'Light layer for churches', 1, 0], ['n4', 'Running kit', 1, 1], ['n5', 'Sneakers', 1, 1], ['n6', 'Pajamas', 1, 0]]],
-    ['Travel-day essentials', [['n7', 'Phone charger', 1, 1], ['n8', 'Headphones', 1, 0], ['n9', 'Snacks for the flight', 1, 0, 'need'], ['n10', 'Water bottle', 1, 1]]]
+    ['Travel-day essentials', [['n7', 'Phone charger', 1, 1, null, 'Carry-on'], ['n8', 'Headphones', 1, 0, null, 'Carry-on'], ['n9', 'Snacks for the flight', 1, 0, 'need', 'Day bag'], ['n10', 'Water bottle', 1, 1]]]
   ], rest: [['Toiletries', 9, 4], ['Sleep and comfort', 3, 1], ['Activities', 3, 1], ['Other', 6, 2]] },
   sam: { cats: [
     ['Clothing', [['s1', 'Shirts', 5, 5], ['s2', 'Pants', 2, 0], ['s3', 'Light jacket', 1, 1], ['s4', 'Sneakers', 1, 1], ['s5', 'Pajamas', 1, 1], ['s6', 'Socks', 5, 5]]],
-    ['Activities', [['s7', 'Camera + spare battery', 1, 0], ['s8', 'Trail shoes', 1, 0], ['s9', 'Book', 1, 1]]]
+    ['Activities', [['s7', 'Camera + spare battery', 1, 0, null, 'Carry-on'], ['s8', 'Trail shoes', 1, 0], ['s9', 'Book', 1, 1]]]
   ], rest: [['Toiletries', 8, 5], ['Travel-day essentials', 5, 2], ['Sleep and comfort', 2, 1], ['Other', 4, 1]] },
   leo: { cats: [
     ['Clothing', [['l1', 'T-shirts', 5, 5], ['l2', 'Shorts', 3, 3], ['l3', 'Long pants', 2, 0], ['l4', 'Pajamas', 3, 3], ['l5', 'Hoodie', 1, 1], ['l6', 'Socks', 6, 0], ['l7', 'Underwear', 6, 6]]],
-    ['Activities', [['l8', 'Headlamp', 1, 1], ['l9', 'Sketchbook & pencils', 1, 0], ['l10', 'Tablet + headphones', 1, 0], ['l11', 'Card game', 1, 0]]]
+    ['Activities', [['l8', 'Headlamp', 1, 1, null, "Leo's backpack"], ['l9', 'Sketchbook & pencils', 1, 0, null, "Leo's backpack"], ['l10', 'Tablet + headphones', 1, 0, null, "Leo's backpack"], ['l11', 'Card game', 1, 0]]]
   ], rest: [['Sleep and comfort', 4, 2], ['Travel-day essentials', 7, 3], ['Toiletries', 7, 2], ['Other', 5, 1]] },
   ivy: { cats: [
-    ['Clothing', [['i1', 'T-shirts', 5, 5], ['i2', 'Leggings & shorts', 4, 4], ['i3', 'Pajamas', 3, 2], ['i4', 'Light cardigan', 1, 0], ['i5', 'Socks', 6, 6], ['i6', 'Sun hat', 1, 0, 'need'], ['i7', 'Rain jacket', 1, 1]]],
-    ['Sleep and comfort', [['i8', 'Bunny (the one)', 1, 0], ['i9', 'Night-light', 1, 1], ['i10', 'Overnight pull-ups', 12, 0, 'bought'], ['i11', 'Blackout travel shade', 1, 1], ['i12', 'Favorite blanket', 1, 1]]]
+    ['Clothing', [['i1', 'T-shirts', 5, 5], ['i2', 'Leggings & shorts', 4, 4], ['i3', 'Pajamas', 3, 2, null, 'Checked'], ['i4', 'Light cardigan', 1, 0], ['i5', 'Socks', 6, 6], ['i6', 'Sun hat', 1, 0, 'need'], ['i7', 'Rain jacket', 1, 1, null, 'Day bag']]],
+    ['Sleep and comfort', [['i8', 'Bunny (the one)', 1, 0, null, 'Carry-on'], ['i9', 'Night-light', 1, 1], ['i10', 'Overnight pull-ups', 12, 0, 'bought'], ['i11', 'Blackout travel shade', 1, 1], ['i12', 'Favorite blanket', 1, 1, null, 'Carry-on']]]
   ], rest: [['Travel-day essentials', 8, 5], ['Toiletries', 9, 4], ['Activities', 6, 2], ['Other', 6, 1]] },
   shared: { cats: [
-    ['Travel-day essentials', [['h1', 'Passports', 4, 4], ['h2', 'Plug adapters', 2, 0, 'need'], ['h3', 'First-aid kit', 1, 1], ['h4', 'Laundry pods', 6, 6], ['h5', 'Wet wipes', 3, 3], ['h6', 'Compact stroller', 1, 0]]]
+    ['Travel-day essentials', [['h1', 'Passports', 4, 4, null, 'Carry-on'], ['h2', 'Plug adapters', 2, 0, 'need'], ['h3', 'First-aid kit', 1, 1, null, 'Day bag'], ['h4', 'Laundry pods', 6, 6], ['h5', 'Wet wipes', 3, 3], ['h6', 'Compact stroller', 1, 0]]]
   ], rest: [['Toiletries', 6, 3], ['Activities', 4, 1], ['Other', 10, 4]] }
 };
 class Component extends DCLogic {
@@ -175,7 +164,7 @@ class Component extends DCLogic {
     super(props);
     const p = {};
     Object.keys(KB_DATA).forEach((k) => KB_DATA[k].cats.forEach((cat) => cat[1].forEach((it) => { p[it[0]] = it[3]; })));
-    this.state = { sel: props.startPerson || 'ivy', filter: 'all', p, last: null, recent: null, compact: false, closed: {} };
+    this.state = { sel: props.startPerson || 'ivy', filter: 'all', p, last: null, recent: null, y: 0, closed: {} };
   }
   componentWillUnmount() { clearTimeout(this._t); }
   toggle(it, c) {
@@ -183,7 +172,7 @@ class Component extends DCLogic {
     const prev = P[it[0]];
     const pack = prev < it[2];
     P[it[0]] = pack ? it[2] : 0;
-    this.setState({ p: P, last: { id: it[0], prev, name: it[1], packed: pack, owner: c.name, deep: c.deep }, recent: pack ? it[0] : null });
+    this.setState({ p: P, last: { id: it[0], prev, name: it[1], packed: pack, owner: c.name }, recent: pack ? it[0] : null });
     clearTimeout(this._t);
     this._t = setTimeout(() => this.setState({ last: null, recent: null }), 5000);
   }
@@ -212,9 +201,9 @@ class Component extends DCLogic {
       const x = st[c.id];
       const on = s.sel === c.id;
       return {
-        short: c.short, fill: c.fill, deep: c.deep, ink: c.ink, name: c.name, count: x.k + '/' + x.t,
-        dash: ring(x, 25), miniDash: ring(x, 16),
-        tileBg: on ? '#FFFFFF' : 'transparent', tileBd: on ? '#0E2A23' : 'transparent', pressed: on ? 'true' : 'false',
+        short: c.short, fill: c.fill, deep: c.deep, ink: c.ink, name: c.name,
+        dash: ring(x, 21.5), miniDash: ring(x, 15),
+        tileBg: on ? '#FFFFFF' : 'transparent', nameWeight: on ? '700' : '500', pressed: on ? 'true' : 'false',
         aria: c.name + ', ' + x.k + ' of ' + x.t + ' packed',
         pick: () => this.setState({ sel: c.id, filter: 'all', recent: null })
       };
@@ -222,6 +211,7 @@ class Component extends DCLogic {
     const c = KB_CREW.find((x) => x.id === s.sel);
     const d = KB_DATA[s.sel];
     const me = st[s.sel];
+    const leftText = (n) => (n ? n + ' left' : 'Done');
     const cats = d.cats.map((cat) => {
       const key = s.sel + ':' + cat[0];
       const all = cat[1];
@@ -237,40 +227,45 @@ class Component extends DCLogic {
         const q = it[2], p = s.p[it[0]];
         const D = p >= q, part = p > 0 && p < q;
         return {
-          name: it[1], qty: part ? p + '/' + q : '×' + q, done: D, partial: part, deep: c.deep,
-          bg: D ? c.deep : '#FFFFFF', bd: (D || part) ? c.deep : '#B7C2BB',
-          nameColor: D ? '#56665F' : '#0E2A23', strike: D ? 'line-through' : 'none', qtyColor: D ? '#7D8B85' : '#0E2A23',
-          rowBg: it[0] === s.recent ? '#FFF6F1' : '#FFFFFF',
+          name: it[1], qty: part ? p + ' of ' + q : '×' + q, done: D, partial: part, deep: c.deep,
+          bg: D ? c.deep : '#FFFFFF', bd: (D || part) ? c.deep : '#7D8B85',
+          nameColor: D ? '#56665F' : '#0E2A23', strike: D ? 'line-through' : 'none',
+          rowBg: it[0] === s.recent ? '#F6F8F3' : '#FFFFFF',
           need: it[4] === 'need', bought: it[4] === 'bought',
+          hasBag: !!it[5], bag: it[5] || '',
           pressed: D ? 'true' : 'false', aria: (D ? 'Unpack ' : 'Mark packed: ') + it[1],
           toggle: () => this.toggle(it, c)
         };
       });
       return {
-        name: cat[0], count: k + '/' + all.length, w: Math.round(k / all.length * 100) + '%', deep: c.deep,
+        name: cat[0], left: leftText(all.length - k),
         items, has: items.length > 0, open, expanded: open ? 'true' : 'false', rot: open ? 'rotate(180deg)' : 'none',
         toggle: () => this.setState({ closed: { ...s.closed, [key]: open } })
       };
     }).filter((x) => x.has);
     const filters = [['todo', 'To pack', me.t - me.k], ['packed', 'Packed', me.k], ['buy', 'To buy', me.b]].map((f) => {
       const on = s.filter === f[0];
-      return { label: f[1], n: f[2], bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#D9DFD6', pressed: on ? 'true' : 'false', pick: () => this.setState({ filter: on ? 'all' : f[0], recent: null }) };
+      return { label: f[1], n: f[2], bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#7D8B85', pressed: on ? 'true' : 'false', pick: () => this.setState({ filter: on ? 'all' : f[0], recent: null }) };
     });
     const last = s.last;
+    const t = Math.max(0, Math.min(1, (s.y - 60) / 110));
+    const ease = t * t * (3 - 2 * t);
     return {
       crew, cats, filters,
       empty: cats.length === 0,
       showRest: s.filter === 'all',
-      rest: d.rest.map((r, i) => ({ name: r[0], count: r[2] + '/' + r[1], w: Math.round(r[2] / r[1] * 100) + '%', deep: c.deep, line: i ? '#EDF0EA' : 'transparent' })),
-      pct: Math.round(dn / tot * 100) + '%',
-      progress: dn + ' of ' + tot + ' packed',
-      onScroll: (e) => { const on = e.currentTarget.scrollTop > 170; if (on !== this.state.compact) this.setState({ compact: on }); },
-      barOpacity: s.compact ? '1' : '0',
-      barShift: s.compact ? 'translateY(0)' : 'translateY(-10px)',
-      barEvents: s.compact ? 'auto' : 'none',
+      rest: d.rest.map((r, i) => ({ name: r[0], left: leftText(r[1] - r[2]), line: i ? '#EDF0EA' : 'transparent' })),
+      progress: dn + ' of ' + tot + ' packed · in 9 days',
+      onScroll: (e) => { const y = e.currentTarget.scrollTop; if (Math.abs(y - this.state.y) > 2) this.setState({ y }); },
+      bigOpacity: (1 - ease * 0.6).toFixed(3),
+      bigShift: 'translateY(' + (ease * 12).toFixed(1) + 'px)',
+      barOpacity: ease.toFixed(3),
+      barLine: ease.toFixed(3),
+      barEvents: ease > 0.5 ? 'auto' : 'none',
+      titleShift: 'translateY(' + ((1 - ease) * 8).toFixed(1) + 'px)',
+      railShift: 'translateX(' + ((1 - ease) * 16).toFixed(1) + 'px)',
       showToast: !!last,
       toastText: last ? (last.packed ? 'Packed ' : 'Unpacked ') + last.name + ' · ' + last.owner : '',
-      toastDeep: last ? last.deep : '#0E2A23',
       undo: () => this.undo()
     };
   }

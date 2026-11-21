@@ -1,6 +1,6 @@
 # Screens
 
-36 screens from the design canvas (Design v1.0, reviewed Nov 21 2026). Each row names its canvas file; the image is `screens/<same name>.png` (for example `Pack.dc.html` → `screens/Pack.png`). The files in `source/` are still the v0.9 export and are being refreshed; where a `source/` file and its image differ, the image and `DESIGN.md` win. Routes are proposals for Expo Router. Sheets open over the screen named in "Opens from".
+36 screens from the design canvas (Design v1.0, reviewed Nov 21 2026). Each row names its canvas file in `source/`; the image is `screens/<same name>.png` (for example `Pack.dc.html` → `screens/Pack.png`), rendered at 2x from that file. Routes are proposals for Expo Router. Sheets open over the screen named in "Opens from".
 
 `DESIGN.md` and `tokens.json` are the source of truth for values, the images for layout. `docs/spec-v2.md` (week 2) is the source of truth for behavior.
 
@@ -67,7 +67,7 @@
 
 | Source | What it is |
 | --- | --- |
-| `V2System.dc.html` | Design system v1.0 board (image `screens/V2System.png`). Replaces `System.dc.html` and `Logo.dc.html`, which are v0.9 leftovers in `source/` |
+| `V2System.dc.html` | Design system v1.0 board (image `screens/V2System.png`) |
 | `canvas.json` | Canvas layout and artboard titles |
 
 ## Not drawn yet

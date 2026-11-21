@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>kitmunk · Confirmation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<div aria-hidden="true" style="position: absolute; left: 16px; right: 16px; top: 16px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px"><span style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF"></span><span style="font-size: 28px; font-weight: 900; font-stretch: 62.5%">Italy</span></div>
+<div style="height: 110px; border-radius: 22px; background: #FFFFFF"></div>
+<div style="height: 220px; border-radius: 22px; background: #FFFFFF"></div>
+</div>
+<div aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 390px; height: 844px; background: rgba(14, 42, 35, 0.55)"></div>
+
+<section role="alertdialog" aria-labelledby="cfTitle" aria-describedby="cfBody" style="position: absolute; left: 12px; right: 12px; bottom: 12px; background: #FFFFFF; border-radius: 22px; padding: 24px 20px 20px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<div style="width: 48px; height: 48px; border-radius: 999px; background: {{iconBg}}; display: grid; place-items: center">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{iconInk}}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="{{icon}}"></path></svg>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 id="cfTitle" style="margin: 0; font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">{{title}}</h1>
+<p id="cfBody" style="margin: 0; font-size: 16px; line-height: 1.45; color: #56665F">{{body}}</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 8px; margin-top: 4px">
+<a href="{{goHref}}" style="height: 56px; border-radius: 14px; background: {{goBg}}; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">{{go}}</a>
+<a href="{{backHref}}" style="height: 56px; box-sizing: border-box; border-radius: 14px; border: 1.5px solid #7D8B85; background: #FFFFFF; color: #0E2A23; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700">{{back}}</a>
+</div>
+</section>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"variant":{"editor":"enum","options":["Delete trip","Archive trip","Remove item","Remove person","Discard new trip","Forget a memory","Forget everything","Leave household","Sign out","Delete account"],"default":"Delete trip"},"$preview":{"width":390,"height":844}}'>
+const KM_DANGER = '#B42318';
+const KM_INK = '#0E2A23';
+const KM_ICONS = {
+  trash: 'M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12',
+  archive: 'M4 6h16v4H4zM6 10v9h12v-9M10 14h4',
+  minus: 'M6 12h12',
+  person: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c1-4.5 4.2-7 8-7s7 2.5 8 7',
+  door: 'M14 4h5v16h-5M10 8l-4 4 4 4M6 12h10'
+};
+const KM_V = {
+  'Delete trip': ['trash', true, 'Delete Italy for everyone?', 'The list and its 160 items go for the whole household. Your crew and what Scout learned stay.', 'Delete trip', 'Keep it', 'Trips.dc.html', 'TripMenu.dc.html'],
+  'Archive trip': ['archive', false, 'Archive Italy?', 'It moves to past trips. You can still pack like it later.', 'Archive', 'Cancel', 'Trips.dc.html', 'TripMenu.dc.html'],
+  'Remove item': ['minus', false, "Remove Pajamas from Ivy's list?", "It won't count toward packing. You can undo it for a few seconds.", 'Remove', 'Cancel', 'Pack.dc.html', 'Item.dc.html'],
+  'Remove person': ['person', true, 'Remove Leo from this trip?', "His 34 items come off the list. He stays in your crew for other trips.", 'Remove from trip', 'Keep him', 'Crew.dc.html', 'Crew.dc.html'],
+  'Discard new trip': ['trash', true, 'Discard this trip?', "What you've entered so far will be lost.", 'Discard', 'Keep editing', 'Main.dc.html', 'Describe.dc.html'],
+  'Forget a memory': ['minus', false, 'Forget "Leo runs cold at night"?', "Scout won't use it on future trips. Lists you already made don't change.", 'Forget it', 'Keep it', 'Memory.dc.html', 'Memory.dc.html'],
+  'Forget everything': ['trash', true, 'Forget everything Scout knows?', 'Scout keeps your crew and trips but starts fresh on what it learned. This cannot be undone.', 'Forget everything', 'Keep it', 'Memory.dc.html', 'Memory.dc.html'],
+  'Leave household': ['door', true, 'Leave the household?', "You'll lose access to shared trips and the crew. Nothing is deleted for the others.", 'Leave', 'Stay', 'Main.dc.html', 'Account.dc.html'],
+  'Sign out': ['door', false, 'Sign out?', 'Your trips stay saved to your account.', 'Sign out', 'Cancel', 'Main.dc.html', 'Account.dc.html'],
+  'Delete account': ['trash', true, 'Delete your account?', 'This removes your trips, crew and memories for good. It cannot be undone.', 'Delete account', 'Cancel', 'Main.dc.html', 'Account.dc.html']
+};
+class Component extends DCLogic {
+  renderVals() {
+    const v = KM_V[this.props.variant || 'Delete trip'] || KM_V['Delete trip'];
+    const danger = v[1];
+    return {
+      icon: KM_ICONS[v[0]],
+      iconBg: danger ? '#FDECEA' : '#EEF1EA',
+      iconInk: danger ? KM_DANGER : KM_INK,
+      title: v[2], body: v[3], go: v[4], back: v[5],
+      goHref: v[6], backHref: v[7],
+      goBg: danger ? KM_DANGER : KM_INK
+    };
+  }
+}
+</script>
+</body>
+</html>

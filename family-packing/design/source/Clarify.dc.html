@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Kitbag · Scout's questions</title>
+<title>kitmunk · Scout's questions</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
 <style>
 body{margin:0;background:#EEF1EA}
 a{color:#0E2A23;text-decoration:none}
@@ -18,49 +18,45 @@ a:hover{color:#0E2A23}
 <div style="width: 390px; height: 844px; box-sizing: border-box; padding: 16px 16px 22px; display: flex; flex-direction: column; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
 
 <header style="flex: none; height: 48px; display: flex; align-items: center; gap: 14px">
-<a href="Describe.dc.html" aria-label="Back to trip basics" style="width: 44px; height: 44px; flex: none; border-radius: 22px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
+<a href="Describe.dc.html" aria-label="Back to trip basics" style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
 <div style="flex: 1; display: flex; gap: 6px">
-<sc-for list="{{segs}}" as="g" hint-placeholder-count="3"><span style="flex: 1; height: 6px; border-radius: 3px; background: {{g.bg}}"></span></sc-for>
+<sc-for list="{{segs}}" as="g" hint-placeholder-count="3"><span style="flex: 1; height: 4px; border-radius: 999px; background: {{g.bg}}"></span></sc-for>
 </div>
-<span style="font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F">{{stepLabel}}</span>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">{{stepLabel}}</span>
 </header>
 
-<section style="flex: none; margin-top: 12px; background: #0E2A23; color: #EEF1EA; border-radius: 20px; padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 10px">
-<div style="display: flex; justify-content: space-between; align-items: center">
-<span style="display: inline-flex; align-items: center; gap: 8px; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #FF8A5E"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>SCOUT CHECKED THE WEATHER</span>
-<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #9FB5AC">USUAL · LATE NOV</span>
-</div>
+<section style="flex: none; margin-top: 12px; background: #0E2A23; color: #EEF1EA; border-radius: 22px; padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #9FB5AC"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Usual weather for your dates</span>
 <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
-<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #B6C8C0">Rome</span><span style="font-size: 26px; line-height: 1; font-weight: 900; font-stretch: 64%">46–60°F</span></div>
-<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #B6C8C0">Florence</span><span style="font-size: 26px; line-height: 1; font-weight: 900; font-stretch: 64%">42–56°F</span></div>
-<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #B6C8C0">Cinque Terre</span><span style="font-size: 26px; line-height: 1; font-weight: 900; font-stretch: 64%">47–58°F</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #B6C8C0">Rome · Nov 20–23</span><span style="font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">46–60°F</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #B6C8C0">Florence · 23–26</span><span style="font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">42–56°F</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; color: #B6C8C0">Cinque Terre · 26–29</span><span style="font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">47–58°F</span></div>
 </div>
-<p style="margin: 0; font-size: 13px; line-height: 1.4; color: #B6C8C0">Cool, and rain is likely. I'm packing layers and rain shells, so I won't ask you about weather.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.4; color: #B6C8C0">Cool with likely rain. I'll pack layers and rain shells.</p>
 </section>
 
 <div style="flex: none; margin-top: 10px; display: flex; flex-direction: column; gap: 6px">
 <sc-for list="{{answered}}" as="r" hint-placeholder-count="1">
-<div style="height: 48px; box-sizing: border-box; background: #FFFFFF; border-radius: 14px; padding: 0 6px 0 14px; display: flex; align-items: center; gap: 10px">
-<span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.08em; color: #56665F; width: 60px">{{r.key}}</span>
-<span style="flex: 1; font-size: 15px; font-weight: 700; text-decoration: {{r.deco}}; text-decoration-color: #C2410C; text-underline-offset: 4px">{{r.value}}</span>
-<sc-if value="{{r.assumed}}" hint-placeholder-val="{{ false }}"><span style="font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; color: #B23A0B">ASSUMED</span></sc-if>
-<button type="button" onClick="{{r.edit}}" style="height: 36px; padding: 0 12px; border: 0; border-radius: 10px; background: #EEF1EA; font: 600 13px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">Change</button>
+<div style="height: 48px; box-sizing: border-box; background: #FFFFFF; border-radius: 14px; padding: 0 4px 0 16px; display: flex; align-items: center; gap: 10px">
+<span style="width: 64px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">{{r.key}}</span>
+<span style="flex: 1; font-size: 16px; font-weight: 600; text-decoration: {{r.deco}}; text-decoration-color: #FF5B23; text-underline-offset: 4px">{{r.value}}</span>
+<button type="button" onClick="{{r.edit}}" style="height: 44px; padding: 0 12px; border: 0; background: transparent; font: 600 14px Archivo, system-ui, sans-serif; color: #0E2A23; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Change</button>
 </div>
 </sc-for>
 </div>
 
 <sc-if value="{{asking}}" hint-placeholder-val="{{ true }}">
-<section style="flex: none; margin-top: 18px; display: flex; flex-direction: column; gap: 14px">
+<section style="flex: none; margin-top: 20px; display: flex; flex-direction: column; gap: 14px">
 <div style="display: flex; flex-direction: column; gap: 8px">
-<span style="display: inline-flex; align-items: center; gap: 8px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #B23A0B"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>ASKING BECAUSE · {{why}}</span>
-<h1 style="margin: 0; font-size: 36px; line-height: 0.95; font-weight: 850; font-stretch: 68%; letter-spacing: -0.01em">{{q}}</h1>
-<p style="margin: 0; font-size: 15px; line-height: 1.4; color: #56665F">{{sub}}</p>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Asking because {{why}}</span>
+<h1 style="margin: 0; font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">{{q}}</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; color: #56665F">{{sub}}</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
 <sc-for list="{{opts}}" as="o" hint-placeholder-count="3">
-<button type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="grid-column: {{o.col}}; height: 100px; border-radius: 20px; border: 2px solid {{o.bd}}; background: {{o.bg}}; color: {{o.fg}}; padding: 14px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 4px; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif">
-<span style="font-size: 28px; line-height: 1; font-weight: 850; font-stretch: 70%">{{o.label}}</span>
-<span style="font-size: 13px; color: {{o.sub}}">{{o.detail}}</span>
+<button type="button" onClick="{{o.pick}}" aria-pressed="{{o.pressed}}" style="grid-column: {{o.col}}; height: 96px; box-sizing: border-box; border-radius: 22px; border: 1.5px solid {{o.bd}}; background: {{o.bg}}; color: {{o.fg}}; padding: 14px 16px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; gap: 4px; text-align: left; cursor: pointer; font-family: Archivo, system-ui, sans-serif">
+<span style="font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">{{o.label}}</span>
+<span style="font-size: 14px; color: {{o.sub}}">{{o.detail}}</span>
 </button>
 </sc-for>
 </div>
@@ -71,20 +67,20 @@ a:hover{color:#0E2A23}
 </sc-if>
 
 <sc-if value="{{finished}}" hint-placeholder-val="{{ false }}">
-<section style="flex: none; margin-top: 18px; background: #FFFFFF; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
-<span style="display: inline-flex; align-items: center; gap: 8px; font: 500 11px 'DM Mono', monospace; letter-spacing: 0.08em; color: #B23A0B"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>SCOUT</span>
-<h1 style="margin: 0; font-size: 40px; line-height: 0.95; font-weight: 850; font-stretch: 68%">That's all I need.</h1>
-<p style="margin: 0; font-size: 15px; line-height: 1.45; color: #56665F">Anything underlined in orange is my assumption. You can change it on the next screen.</p>
+<section style="flex: none; margin-top: 20px; background: #FFFFFF; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Scout</span>
+<h1 style="margin: 0; font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">That's all I need.</h1>
+<p style="margin: 0; font-size: 16px; line-height: 1.4; color: #56665F">Underlined in orange means I guessed. You can change it next.</p>
 </section>
-<a href="Review.dc.html" style="flex: none; margin-top: auto; height: 58px; border-radius: 18px; background: #FF5B23; color: #0E2A23; display: flex; align-items: center; justify-content: space-between; padding: 0 20px 0 22px; font-size: 18px; font-weight: 750">Review the trip<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+<a href="Review.dc.html" style="flex: none; margin-top: auto; height: 56px; border-radius: 14px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 700">Review the trip<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
 </sc-if>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"startStep":{"editor":"enum","options":["1","2","3","Done"],"default":"2"},"$preview":{"width":390,"height":844}}'>
 const KB_QS = [
-  { id: 'around', key: 'AROUND', why: 'IVY IS 3 · LOTS OF WALKING', q: 'How does Ivy get around on sightseeing days?', sub: 'It changes the shared gear and what rides in the day bag.', skip: ['Stroller', "Skip · I'll assume the stroller"], opts: [['Stroller', 'You said she naps in it'], ['Carrier', 'Hands free on stairs'], ['On foot', 'She walks it'], ['A mix', 'Stroller plus carrier']] },
-  { id: 'style', key: 'STYLE', why: '3 STOPS · 2 TRAIN DAYS', q: 'Three stops in ten days. How do you like to pack?', sub: 'Fewer bags are easier on trains. More gear is easier on kids.', skip: ['Balanced', 'Skip · go balanced'], opts: [['Light', 'Carry-ons only'], ['Balanced', 'One checked bag'], ['Ready', 'For anything']] },
-  { id: 'nights', key: 'NIGHTS', why: 'IVY IS 3 · 9 NIGHTS', q: 'Does Ivy still need pull-ups?', sub: 'So I can count them out instead of guessing.', skip: null, opts: [['Nights only', 'About 12 for the trip'], ['Day and night', "I'll count more"], ['Not anymore', 'None packed']] }
+  { id: 'around', key: 'Around', why: 'Ivy is 3', q: 'How does Ivy get around on sightseeing days?', sub: 'It changes the shared gear and the day bag.', skip: ['Stroller', "Skip, I'll assume the stroller"], opts: [['Stroller', 'You said she naps in it'], ['Carrier', 'Hands free on stairs'], ['On foot', 'She walks it'], ['A mix', 'Stroller plus carrier']] },
+  { id: 'style', key: 'Style', why: '3 stops, 2 train days', q: 'Three stops in ten days. How do you like to pack?', sub: 'Fewer bags are easier on trains.', skip: ['Balanced', 'Skip, go balanced'], opts: [['Light', 'Carry-ons only'], ['Balanced', 'One checked bag'], ['Ready', 'For anything']] },
+  { id: 'nights', key: 'Nights', why: 'Ivy is 3', q: 'Does Ivy still need pull-ups?', sub: 'So I can count them instead of guessing.', skip: null, opts: [['Nights only', 'About 12 for the trip'], ['Day and night', "I'll count more"], ['Not anymore', 'None packed']] }
 ];
 class Component extends DCLogic {
   constructor(props) {
@@ -101,7 +97,7 @@ class Component extends DCLogic {
     const cur = KB_QS[step];
     const answered = KB_QS.map((q, i) => ({ q, i })).filter((x) => answers[x.q.id] && (x.i < step || step === 3)).map((x) => {
       const a = answers[x.q.id];
-      return { key: x.q.key, value: a.v, assumed: !!a.assumed, deco: a.assumed ? 'underline dashed' : 'none', edit: () => this.setState({ step: x.i }) };
+      return { key: x.q.key, value: a.v, deco: a.assumed ? 'underline dashed' : 'none', edit: () => this.setState({ step: x.i }) };
     });
     const n = cur ? cur.opts.length : 0;
     const opts = cur ? cur.opts.map((o, i) => {
@@ -109,13 +105,13 @@ class Component extends DCLogic {
       return {
         label: o[0], detail: o[1], pressed: on ? 'true' : 'false',
         col: (n % 2 === 1 && i === n - 1) ? 'span 2' : 'auto',
-        bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#FFFFFF', sub: on ? '#B6C8C0' : '#56665F',
+        bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#7D8B85', sub: on ? '#B6C8C0' : '#56665F',
         pick: () => this.setState({ answers: { ...answers, [cur.id]: { v: o[0] } }, step: Math.min(3, step + 1) })
       };
     }) : [];
     return {
-      segs: [0, 1, 2].map((i) => ({ bg: i < step ? '#0E2A23' : (i === step ? '#FF5B23' : '#D2D9CF') })),
-      stepLabel: step === 3 ? 'DONE' : 'Q' + (step + 1) + ' OF 3',
+      segs: [0, 1, 2].map((i) => ({ bg: i <= step ? '#0E2A23' : '#D9DFD6' })),
+      stepLabel: step === 3 ? 'Done' : (step + 1) + ' of 3',
       answered,
       asking: !!cur,
       finished: !cur,

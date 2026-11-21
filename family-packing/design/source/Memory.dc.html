@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>kitmunk · What Scout remembers</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+input::placeholder{color:#56665F}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; box-sizing: border-box; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 12px; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<header style="flex: none; height: 48px; display: flex; align-items: center; justify-content: space-between">
+<a href="Crew.dc.html" aria-label="Back to crew" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">{{countLabel}}</span>
+<span style="width: 44px; height: 44px"></span>
+</header>
+
+<h1 style="flex: none; margin: 0 4px; font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">What Scout remembers</h1>
+
+<label style="flex: none; height: 48px; box-sizing: border-box; border-radius: 14px; background: #FFFFFF; border: 1.5px solid #7D8B85; padding: 0 14px; display: flex; align-items: center; gap: 10px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="M16 16l4.5 4.5"></path></svg>
+<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Search memories</span>
+<input value="{{q}}" onChange="{{onQ}}" placeholder="Search, like “cold” or “bunny”" style="flex: 1; min-width: 0; border: 0; outline: none; background: transparent; font: 500 16px Archivo, system-ui, sans-serif; color: #0E2A23">
+</label>
+
+<div style="flex: none; display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px; padding: 0 16px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="6">
+<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="height: 40px; flex: none; padding: 0 14px 0 10px; box-sizing: border-box; border-radius: 999px; border: 1.5px solid {{f.bd}}; background: {{f.bg}}; color: {{f.fg}}; font: 600 14px Archivo, system-ui, sans-serif; display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; cursor: pointer"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{f.dot}}"></span>{{f.label}}</button>
+</sc-for>
+</div>
+
+<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 96px">
+
+<sc-if value="{{showPend}}" hint-placeholder-val="{{ true }}">
+<section style="flex: none; border: 1.5px dashed #FF5B23; background: #FFF9F6; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Waiting for your OK</span>
+<p style="margin: 0; font-size: 14px; line-height: 1.4">You removed the kids' umbrella from your last 3 trips. Stop suggesting it?</p>
+<div style="display: flex; gap: 8px">
+<button type="button" onClick="{{stop}}" style="height: 44px; padding: 0 16px; border: 0; border-radius: 14px; background: #0E2A23; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; cursor: pointer">Stop suggesting</button>
+<button type="button" onClick="{{keep}}" style="height: 44px; padding: 0 16px; box-sizing: border-box; border-radius: 14px; border: 1.5px solid #7D8B85; background: #FFFFFF; color: #0E2A23; font: 700 14px Archivo, system-ui, sans-serif; cursor: pointer">Keep it</button>
+</div>
+</section>
+</sc-if>
+
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 12px 4px 4px 16px; display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 8px; padding-bottom: 6px">
+<span style="width: 10px; height: 10px; border-radius: 50%; background: {{g.dot}}"></span>
+<span style="flex: 1; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">{{g.name}} · {{g.n}}</span>
+</div>
+<sc-for list="{{g.rows}}" as="m" hint-placeholder-count="3">
+<div style="min-height: 56px; box-sizing: border-box; display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid #EDF0EA">
+<span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 600; line-height: 1.3">{{m.text}}</span>
+<span style="font-size: 12px; color: #56665F">{{m.src}}</span>
+</span>
+<button type="button" onClick="{{m.forget}}" aria-label="{{m.aria}}" style="height: 44px; padding: 0 12px; border: 0; background: transparent; color: #0E2A23; font: 600 14px Archivo, system-ui, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Forget</button>
+</div>
+</sc-for>
+</section>
+</sc-for>
+
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="flex: none; padding: 24px 20px; border-radius: 22px; background: #FFFFFF; text-align: center; font-size: 14px; line-height: 1.45; color: #56665F">Nothing matches. Scout only remembers what you've said yes to.</div>
+</sc-if>
+
+<a href="Confirm.dc.html" style="flex: none; height: 44px; display: grid; place-items: center; font-size: 14px; font-weight: 600; color: #B42318; text-decoration: underline; text-underline-offset: 3px">Forget everything Scout knows</a>
+<a href="Privacy.dc.html" style="flex: none; height: 44px; display: grid; place-items: center; font-size: 14px; color: #56665F; text-decoration: underline; text-underline-offset: 3px">How your data is used</a>
+</div>
+
+<sc-if value="{{hasToast}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="position: absolute; left: 16px; right: 16px; bottom: 24px; height: 52px; box-sizing: border-box; border-radius: 14px; background: #0E2A23; color: #EEF1EA; padding: 0 6px 0 16px; display: flex; align-items: center; gap: 8px">
+<span style="flex: 1; font-size: 14px">{{toast}}</span>
+<button type="button" onClick="{{undo}}" style="height: 44px; padding: 0 12px; border: 0; background: transparent; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Undo</button>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+const KM_WHO = [['all', 'All', '#7D8B85'], ['N', 'Nadia', '#AFC6FF'], ['S', 'Sam', '#7BE0B5'], ['L', 'Leo', '#FFC94A'], ['I', 'Ivy', '#FF9BAE'], ['U', 'Shared', '#0E2A23']];
+const KM_MEM = [
+  ['m1', 'N', 'Packs light, one pair of shoes plus runners', 'Saved by you · used on 3 trips'],
+  ['m2', 'N', 'Brings running kit on trips over 4 days', 'Confirmed after Lisbon'],
+  ['m3', 'S', 'Camera, spare battery and charger in the carry-on', 'Saved by you'],
+  ['m4', 'S', 'Trail shoes on any trip with a hike', 'Confirmed after Tahoe'],
+  ['m5', 'L', 'Runs cold at night: warm sleep layer', 'Saved while packing Italy'],
+  ['m6', 'L', 'Carries his own backpack', 'Saved by you'],
+  ['m7', 'L', 'Sketchbook and pencils for travel days', 'Confirmed after Lisbon'],
+  ['m8', 'I', 'The bunny goes in the carry-on', 'Saved by you'],
+  ['m9', 'I', 'Night-light for every stay', 'Saved by you'],
+  ['m10', 'I', 'Naps in the stroller', 'Saved while packing Italy'],
+  ['m11', 'U', 'Laundry pods on trips over 7 days', 'Confirmed after Lisbon'],
+  ['m12', 'U', 'Two universal adapters for trips abroad', 'Confirmed after Lisbon']
+];
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { who: 'all', q: '', gone: {}, last: null, pend: true };
+  }
+  renderVals() {
+    const s = this.state;
+    const live = KM_MEM.filter((m) => !s.gone[m[0]]);
+    const q = s.q.trim().toLowerCase();
+    const shown = live.filter((m) => (s.who === 'all' || m[1] === s.who) && (!q || m[2].toLowerCase().includes(q)));
+    const groups = KM_WHO.slice(1).map((w) => {
+      const rows = shown.filter((m) => m[1] === w[0]);
+      return {
+        name: w[1], dot: w[2], n: rows.length,
+        rows: rows.map((m) => ({ text: m[2], src: m[3], aria: 'Forget: ' + m[2], forget: () => this.setState({ gone: { ...s.gone, [m[0]]: true }, last: m[0] }) }))
+      };
+    }).filter((g) => g.rows.length);
+    const lastM = s.last ? KM_MEM.find((m) => m[0] === s.last) : null;
+    return {
+      q: s.q, onQ: (e) => this.setState({ q: e.target.value }),
+      countLabel: live.length + ' memories',
+      filters: KM_WHO.map((w) => {
+        const on = s.who === w[0];
+        const n = w[0] === 'all' ? live.length : live.filter((m) => m[1] === w[0]).length;
+        return { label: w[1] + ' ' + n, dot: on && w[0] === 'U' ? '#EEF1EA' : w[2], pressed: on ? 'true' : 'false', bg: on ? '#0E2A23' : '#FFFFFF', fg: on ? '#EEF1EA' : '#0E2A23', bd: on ? '#0E2A23' : '#7D8B85', pick: () => this.setState({ who: w[0] }) };
+      }),
+      showPend: s.pend && s.who === 'all' && !q,
+      stop: () => this.setState({ pend: false }), keep: () => this.setState({ pend: false }),
+      groups, empty: groups.length === 0,
+      hasToast: !!lastM,
+      toast: lastM ? 'Forgot: ' + lastM[2] : '',
+      undo: () => { if (!s.last) return; const g = { ...s.gone }; delete g[s.last]; this.setState({ gone: g, last: null }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

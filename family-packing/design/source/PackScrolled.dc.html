@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Kitbag · Packing, scrolled</title>
+<title>kitmunk · Packing, scrolled</title>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
 <style>
 body{margin:0;background:#EEF1EA}
 a{color:#0E2A23;text-decoration:none}
@@ -17,100 +17,91 @@ a:hover{color:#0E2A23}
 </helmet>
 <div style="width: 390px; height: 844px; position: relative; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
 
-<div style="position: absolute; left: 0; right: 0; top: 60px; bottom: 86px; overflow: hidden; padding: 0 16px">
+<div style="position: absolute; left: 0; right: 0; top: 52px; bottom: 80px; overflow: hidden; padding: 0 16px; display: flex; flex-direction: column; gap: 12px">
 <sc-for list="{{cats}}" as="cat" hint-placeholder-count="2">
-<section style="background: #FFFFFF; border-radius: {{cat.radius}}; margin-bottom: 12px; overflow: hidden">
+<section style="flex: none; background: #FFFFFF; border-radius: {{cat.radius}}; overflow: hidden">
 <sc-if value="{{cat.head}}" hint-placeholder-val="{{ true }}">
-<div style="height: 46px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 14px">
-<span style="flex: 1; font-size: 15px; font-weight: 750">{{cat.name}}</span>
-<span style="width: 48px; height: 5px; border-radius: 3px; background: #E3E8E0; overflow: hidden; display: block"><span style="display: block; height: 5px; width: {{cat.w}}; background: #E0476A"></span></span>
-<span style="font: 500 11px 'DM Mono', monospace; color: #56665F">{{cat.count}}</span>
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M6 9l6 6 6-6"/></svg>
+<div style="height: 48px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 16px">
+<span style="flex: 1; font-size: 16px; font-weight: 700">{{cat.name}}</span>
+<span style="font-size: 14px; color: #56665F">{{cat.left}}</span>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform: rotate(180deg)"><path d="M6 9l6 6 6-6"></path></svg>
 </div>
 </sc-if>
 <sc-for list="{{cat.items}}" as="it" hint-placeholder-count="5">
-<div style="display: flex; align-items: center; gap: 6px; padding: 2px 14px 2px 6px; border-top: 1px solid #EDF0EA; background: {{it.rowBg}}">
-<button type="button" aria-label="{{it.name}}" aria-pressed="{{it.pressed}}" style="width: 44px; height: 44px; flex: none; padding: 0; border: 0; background: transparent; display: grid; place-items: center; cursor: pointer">
-<span style="width: 28px; height: 28px; box-sizing: border-box; border-radius: 9px; border: 2px solid {{it.bd}}; background: {{it.bg}}; display: grid; place-items: center">
-<sc-if value="{{it.done}}" hint-placeholder-val="{{ false }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<div style="height: 48px; display: flex; align-items: center; gap: 4px; padding: 0 16px 0 6px; border-top: 1px solid #EDF0EA; background: {{it.rowBg}}">
+<span style="width: 44px; height: 48px; flex: none; display: grid; place-items: center">
+<span style="width: 26px; height: 26px; box-sizing: border-box; border-radius: 8px; border: 2px solid {{it.bd}}; background: {{it.bg}}; display: grid; place-items: center">
+<sc-if value="{{it.done}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></sc-if>
 <sc-if value="{{it.partial}}" hint-placeholder-val="{{ false }}"><span style="width: 12px; height: 3px; border-radius: 2px; background: #E0476A; display: block"></span></sc-if>
 </span>
-</button>
-<a href="Item.dc.html" style="flex: 1; min-width: 0; height: 44px; display: flex; align-items: center; gap: 8px">
-<span style="min-width: 0; font-size: 16px; font-weight: 650; color: {{it.nameColor}}; text-decoration: {{it.strike}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{it.name}}</span>
-<sc-if value="{{it.need}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 18px; padding: 0 6px; border-radius: 6px; background: #FFE4D9; color: #B23A0B; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; display: inline-flex; align-items: center">TO BUY</span></sc-if>
-<sc-if value="{{it.bought}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 18px; padding: 0 6px; border-radius: 6px; background: #D7F3E6; color: #0E5C3E; font: 500 10px 'DM Mono', monospace; letter-spacing: 0.06em; display: inline-flex; align-items: center">BOUGHT</span></sc-if>
+</span>
+<a href="Item.dc.html" style="flex: 1; min-width: 0; height: 48px; display: flex; align-items: center; gap: 8px">
+<span style="min-width: 0; font-size: 16px; font-weight: 500; color: {{it.nameColor}}; text-decoration: {{it.strike}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{it.name}}</span>
+<sc-if value="{{it.need}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 22px; padding: 0 8px; box-sizing: border-box; border-radius: 8px; border: 1.5px solid #0E2A23; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center">To buy</span></sc-if>
+<sc-if value="{{it.bought}}" hint-placeholder-val="{{ false }}"><span style="flex: none; height: 22px; padding: 0 8px; border-radius: 8px; background: #EEF1EA; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center">Bought</span></sc-if>
 </a>
-<span style="font-size: 20px; font-weight: 850; font-stretch: 70%; min-width: 36px; text-align: right; color: {{it.qtyColor}}">{{it.qty}}</span>
+<sc-if value="{{it.hasBag}}" hint-placeholder-val="{{ false }}">
+<span style="flex: none; display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #56665F; white-space: nowrap"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="13" rx="3"></rect><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"></path></svg>{{it.bag}}</span>
+</sc-if>
+<span style="flex: none; min-width: 32px; text-align: right; font-size: 14px; font-weight: 600; color: #56665F">{{it.qty}}</span>
 </div>
 </sc-for>
 </section>
 </sc-for>
-<section style="background: #FFFFFF; border-radius: 20px; overflow: hidden">
-<sc-for list="{{rest}}" as="r" hint-placeholder-count="4">
-<div style="height: 46px; display: flex; align-items: center; gap: 8px; padding: 0 12px 0 14px; border-top: 1px solid #EDF0EA">
-<span style="flex: 1; font-size: 15px; font-weight: 750">{{r.name}}</span>
-<span style="width: 48px; height: 5px; border-radius: 3px; background: #E3E8E0; overflow: hidden; display: block"><span style="display: block; height: 5px; width: {{r.w}}; background: #E0476A"></span></span>
-<span style="font: 500 11px 'DM Mono', monospace; color: #56665F">{{r.count}}</span>
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#56665F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-</div>
-</sc-for>
-</section>
 </div>
 
-<div style="position: absolute; left: 0; right: 0; top: 0; height: 60px; box-sizing: border-box; padding: 0 12px; background: #EEF1EA; border-bottom: 1px solid #D9DFD6; display: flex; align-items: center; gap: 4px">
-<a href="Reveal.dc.html" aria-label="Trip home" style="width: 44px; height: 44px; flex: none; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></a>
-<sc-for list="{{crew}}" as="c" hint-placeholder-count="5">
-<a href="Pack.dc.html" aria-label="{{c.aria}}" style="width: 44px; height: 44px; flex: none; box-sizing: border-box; border-radius: 14px; border: 1.5px solid {{c.bd}}; background: {{c.bg}}; display: grid; place-items: center">
-<svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="16" fill="none" stroke="#D9DFD6" stroke-width="3"/><circle cx="18" cy="18" r="16" fill="none" stroke="{{c.deep}}" stroke-width="3" stroke-linecap="round" stroke-dasharray="{{c.dash}}" transform="rotate(-90 18 18)"/><circle cx="18" cy="18" r="11.5" fill="{{c.fill}}"/><text x="18" y="22" text-anchor="middle" font-family="Archivo, sans-serif" font-size="11" font-weight="800" fill="{{c.ink}}">{{c.short}}</text></svg>
-</a>
-</sc-for>
+<div style="position: absolute; left: 0; right: 0; top: 0; height: 64px; box-sizing: border-box; padding: 0 12px; background: rgba(238, 241, 234, 0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid #D9DFD6; display: flex; align-items: center; gap: 6px">
+<a href="Reveal.dc.html" aria-label="Trip home" style="width: 44px; height: 44px; flex: none; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 20px; font-weight: 900; font-stretch: 62.5%">Italy</span>
 <span style="flex: 1"></span>
-<span style="font-size: 24px; font-weight: 900; font-stretch: 64%; padding-right: 6px">46%</span>
-</div>
-
-<div style="position: absolute; left: 16px; right: 16px; bottom: 98px; height: 52px; box-sizing: border-box; border-radius: 16px; background: #FFFFFF; border: 1.5px solid #0E2A23; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 12px; box-shadow: 0 10px 24px rgba(14, 42, 35, 0.16)">
-<span style="width: 26px; height: 26px; border-radius: 9px; background: #E0476A; display: grid; place-items: center; flex: none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-<span style="flex: 1; font-size: 14px; font-weight: 650">Packed Socks ×6 · Ivy</span>
-<button type="button" style="height: 40px; padding: 0 14px; border: 0; border-radius: 12px; background: #EEF1EA; color: #B23A0B; font: 750 14px Archivo, system-ui, sans-serif; cursor: pointer">Undo</button>
-</div>
-
-<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 86px; box-sizing: border-box; background: #EEF1EA; border-top: 1px solid #D9DFD6; padding: 10px 16px 20px; display: flex; gap: 10px">
-<a href="ScoutStart.dc.html" style="flex: 1; height: 56px; border-radius: 28px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; gap: 10px; padding: 0 8px 0 16px">
-<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"/><circle cx="12" cy="12" r="2.6" fill="#0E2A23"/></svg>
-<span style="flex: 1; font-size: 15px; color: #B6C8C0">Ask Scout to change anything…</span>
-<span style="width: 40px; height: 40px; border-radius: 20px; background: #FF5B23; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+<sc-for list="{{crew}}" as="c" hint-placeholder-count="5">
+<a href="Pack.dc.html" aria-label="{{c.aria}}" style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: {{c.bg}}; display: grid; place-items: center">
+<span style="position: relative; display: inline-block; flex: none; width: 34px; height: 34px"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true" style="display: block"><circle cx="17" cy="17" r="15" fill="none" stroke="#E3E8E0" stroke-width="2"></circle><circle cx="17" cy="17" r="15" fill="none" stroke="{{c.deep}}" stroke-width="2" stroke-linecap="round" stroke-dasharray="{{c.dash}}" transform="rotate(-90 17 17)"></circle><circle cx="17" cy="17" r="11" fill="{{c.fill}}"></circle></svg><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: Archivo, sans-serif; font-size: 11px; font-weight: 600; color: {{c.ink}}; line-height: 1">{{c.short}}</span></span>
 </a>
-<a href="AddItem.dc.html" aria-label="Add item" style="width: 56px; height: 56px; flex: none; box-sizing: border-box; border-radius: 28px; background: #FFFFFF; border: 1.5px solid #D9DFD6; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a>
+</sc-for>
+</div>
+
+<div style="position: absolute; left: 16px; right: 16px; bottom: 92px; height: 52px; box-sizing: border-box; border-radius: 14px; background: #0E2A23; color: #EEF1EA; display: flex; align-items: center; gap: 10px; padding: 0 4px 0 16px">
+<span style="flex: 1; font-size: 14px; font-weight: 600">Packed Socks ×6 · Ivy</span>
+<button type="button" style="height: 44px; padding: 0 14px; border: 0; background: transparent; color: #EEF1EA; font: 700 14px Archivo, system-ui, sans-serif; text-decoration: underline; text-underline-offset: 3px; cursor: pointer">Undo</button>
+</div>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 80px; box-sizing: border-box; background: #EEF1EA; border-top: 1px solid #D9DFD6; padding: 10px 16px 14px; display: flex; gap: 10px">
+<a href="ScoutStart.dc.html" style="flex: 1; min-width: 0; height: 56px; box-sizing: border-box; border-radius: 999px; background: #FFFFFF; border: 1.5px solid #7D8B85; display: flex; align-items: center; gap: 10px; padding: 0 6px 0 16px">
+<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style="flex: none"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>
+<span style="flex: 1; min-width: 0; font-size: 16px; color: #56665F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">Ask Scout to change anything</span>
+<span style="width: 44px; height: 44px; flex: none; border-radius: 999px; background: #FF5B23; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg></span>
+</a>
+<a href="AddItem.dc.html" aria-label="Add item" style="width: 56px; height: 56px; flex: none; border-radius: 999px; background: #0E2A23; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EEF1EA" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg></a>
 </div>
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
 class Component extends DCLogic {
   renderVals() {
-    const row = (name, need, packed, status, recent) => {
+    const row = (name, need, packed, status, bag, recent) => {
       const D = packed >= need, part = packed > 0 && packed < need;
       return {
-        name, qty: part ? packed + '/' + need : '×' + need, done: D, partial: part,
-        bg: D ? '#E0476A' : '#FFFFFF', bd: (D || part) ? '#E0476A' : '#B7C2BB',
-        nameColor: D ? '#56665F' : '#0E2A23', strike: D ? 'line-through' : 'none', qtyColor: D ? '#7D8B85' : '#0E2A23',
-        rowBg: recent ? '#FFF6F1' : '#FFFFFF', need: status === 'need', bought: status === 'bought', pressed: D ? 'true' : 'false'
+        name, qty: part ? packed + ' of ' + need : '×' + need, done: D, partial: part,
+        bg: D ? '#E0476A' : '#FFFFFF', bd: (D || part) ? '#E0476A' : '#7D8B85',
+        nameColor: D ? '#56665F' : '#0E2A23', strike: D ? 'line-through' : 'none',
+        rowBg: recent ? '#F6F8F3' : '#FFFFFF', need: status === 'need', bought: status === 'bought',
+        hasBag: !!bag, bag: bag || ''
       };
     };
-    const C = 2 * Math.PI * 16;
-    const crew = [['Nadia', 'N', '#3A6BFF', '#3A6BFF', '#FFFFFF', 14, 31], ['Sam', 'S', '#7BE0B5', '#13996A', '#0E2A23', 15, 28], ['Leo', 'L', '#FFC94A', '#B57A00', '#0E2A23', 14, 34], ['Ivy', 'I', '#FF9BAE', '#E0476A', '#0E2A23', 19, 41], ['Shared', 'Us', '#0E2A23', '#0E2A23', '#EEF1EA', 12, 26]].map((c) => ({
+    const C = 2 * Math.PI * 15;
+    const crew = [['Nadia', 'N', '#AFC6FF', '#2D55D6', '#0E2A23', 14, 31], ['Sam', 'S', '#7BE0B5', '#0F8A5F', '#0E2A23', 15, 28], ['Leo', 'L', '#FFC94A', '#B57A00', '#0E2A23', 14, 34], ['Ivy', 'I', '#FF9BAE', '#E0476A', '#0E2A23', 19, 41], ['Shared', 'Us', '#0E2A23', '#0E2A23', '#EEF1EA', 12, 26]].map((c) => ({
       short: c[1], fill: c[2], deep: c[3], ink: c[4],
       dash: (C * c[5] / c[6]).toFixed(1) + ' ' + C.toFixed(1),
       aria: c[0] + ', ' + c[5] + ' of ' + c[6] + ' packed',
-      bg: c[0] === 'Ivy' ? '#FFFFFF' : 'transparent', bd: c[0] === 'Ivy' ? '#0E2A23' : 'transparent'
+      bg: c[0] === 'Ivy' ? '#FFFFFF' : 'transparent'
     }));
     return {
       crew,
       cats: [
-        { head: false, radius: '0 0 20px 20px', name: 'Clothing', count: '5/7', w: '71%', items: [row('Pajamas', 3, 2), row('Light cardigan', 1, 0), row('Socks', 6, 6, null, true), row('Sun hat', 1, 0, 'need'), row('Rain jacket', 1, 1)] },
-        { head: true, radius: '20px', name: 'Sleep and comfort', count: '3/5', w: '60%', items: [row('Bunny (the one)', 1, 0), row('Night-light', 1, 1), row('Overnight pull-ups', 12, 0, 'bought'), row('Blackout travel shade', 1, 1), row('Favorite blanket', 1, 1)] }
-      ],
-      rest: [['Travel-day essentials', 5, 8], ['Toiletries', 4, 9], ['Activities', 2, 6], ['Other', 1, 6]].map((r) => ({ name: r[0], count: r[1] + '/' + r[2], w: Math.round(r[1] / r[2] * 100) + '%' }))
+        { head: false, radius: '0 0 22px 22px', name: 'Clothing', left: '2 left', items: [row('Pajamas', 3, 2, null, 'Checked'), row('Light cardigan', 1, 0), row('Socks', 6, 6, null, null, true), row('Sun hat', 1, 0, 'need'), row('Rain jacket', 1, 1, null, 'Day bag')] },
+        { head: true, radius: '22px', name: 'Sleep and comfort', left: '2 left', items: [row('Bunny (the one)', 1, 0, null, 'Carry-on'), row('Night-light', 1, 1), row('Overnight pull-ups', 12, 0, 'bought'), row('Blackout travel shade', 1, 1), row('Favorite blanket', 1, 1, null, 'Carry-on')] }
+      ]
     };
   }
 }

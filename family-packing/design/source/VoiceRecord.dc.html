@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>kitmunk · Voice, recording</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#0E2A23}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+@keyframes kmWave{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+@keyframes kmRing{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.5);opacity:0}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; position: relative; box-sizing: border-box; padding: 16px 16px 28px; display: flex; flex-direction: column; overflow: hidden; background: #0E2A23; color: #EEF1EA; font-family: Archivo, system-ui, sans-serif">
+
+<header style="flex: none; height: 48px; display: flex; align-items: center; justify-content: space-between">
+<a href="Describe.dc.html" style="height: 44px; padding: 0 8px; display: inline-flex; align-items: center; color: #EEF1EA; font-size: 16px; font-weight: 600">Cancel</a>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #9FB5AC"><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF5B23"></span>Listening · {{time}}</span>
+<span style="width: 60px"></span>
+</header>
+
+<div style="flex: none; margin-top: 32px; padding: 0 4px; display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #9FB5AC"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>{{context}}</span>
+<h1 style="margin: 0; font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">{{prompt}}</h1>
+</div>
+
+<p aria-live="polite" style="flex: none; margin: 24px 4px 0; font-size: 20px; line-height: 1.4; font-weight: 500; color: #EEF1EA">{{heard}}<span style="color: #9FB5AC">{{tail}}</span></p>
+
+<div aria-hidden="true" style="flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px">
+<sc-for list="{{bars}}" as="b" hint-placeholder-count="21">
+<span style="width: 6px; height: {{b.h}}; border-radius: 999px; background: {{b.c}}; transform-origin: center; animation: kmWave {{b.d}} ease-in-out {{b.delay}} infinite"></span>
+</sc-for>
+</div>
+
+<div style="flex: none; display: flex; flex-direction: column; align-items: center; gap: 12px">
+<div style="position: relative; width: 88px; height: 88px">
+<span aria-hidden="true" style="position: absolute; left: 0; top: 0; width: 88px; height: 88px; border-radius: 50%; background: #FF5B23; animation: kmRing 1.6s ease-out infinite"></span>
+<a href="VoiceTranscribe.dc.html" aria-label="Stop and use this" style="position: absolute; left: 0; top: 0; width: 88px; height: 88px; border-radius: 50%; background: #FF5B23; display: grid; place-items: center"><span style="width: 28px; height: 28px; border-radius: 8px; background: #0E2A23"></span></a>
+</div>
+<span style="font-size: 14px; color: #9FB5AC">Tap to finish</span>
+<span style="font-size: 12px; color: #9FB5AC">Turned into text on this phone. Audio is never saved.</span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"context":{"editor":"enum","options":["Trip","Item","Scout"],"default":"Trip"},"$preview":{"width":390,"height":844}}'>
+const KM_CTX = {
+  Trip: ['Telling Scout about the trip', 'Where, when, who, and anything else.', 'Italy for ten days, Rome then Florence then the coast. Two of us and the kids, Leo is six and Ivy is three', ', the apartment in Florence has a washer…'],
+  Item: ['Adding items', 'Say what to add and for whom.', 'Two more swimsuits for Ivy', ' and a sun hat for Leo…'],
+  Scout: ['Asking Scout', 'Ask for any change to the list.', "We're skipping the beach day", ', so drop the beach stuff…']
+};
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { s: 14 };
+  }
+  componentDidMount() { this._t = setInterval(() => this.setState({ s: this.state.s + 1 }), 1000); }
+  componentWillUnmount() { clearInterval(this._t); }
+  renderVals() {
+    const c = KM_CTX[this.props.context || 'Trip'] || KM_CTX.Trip;
+    const s = this.state.s;
+    const bars = [];
+    for (let i = 0; i < 21; i++) {
+      const h = 24 + Math.round(64 * Math.abs(Math.sin(i * 1.7)));
+      bars.push({ h: h + 'px', c: i % 5 === 2 ? '#FF5B23' : '#EEF1EA', d: (0.7 + (i % 4) * 0.15).toFixed(2) + 's', delay: (i * 0.06).toFixed(2) + 's' });
+    }
+    return {
+      context: c[0], prompt: c[1], heard: c[2], tail: c[3], bars,
+      time: Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0')
+    };
+  }
+}
+</script>
+</body>
+</html>
