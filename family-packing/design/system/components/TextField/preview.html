@@ -1,0 +1,12 @@
+<!-- @dsCard group="Inputs" height=110 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>TextField — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-pad'},h(K.TextField,{label:'Where to',value:'Florence'}),h(K.TextField,{label:'Notes',optional:true,placeholder:'Anything Scout should know'})));
+</script>
+</body>
+</html>

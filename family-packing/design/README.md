@@ -1,10 +1,12 @@
 # Design files
 
-- `screens.md`: every screen, its route, where it goes and which states to build. Start here.
-- `DESIGN.md` (from the design system task, W1-13): the visual identity for agents, with tokens and rules. Once it exists, `tokens.json` is generated from it.
-- `tokens.json`: colors, type, radii, spacing. The only allowed source of visual values.
-- `source/*.dc.html`: one file per artboard from the design canvas. These are reference, not code to ship.
-- `screens/*.png`: one image per screen. Added in a later export.
+- `DESIGN.md`: the design system v1.0 in Google's DESIGN.md format: tokens in the front matter, rules in the body, opening with the design concept. **The source of truth for look.** Read it first.
+- `tokens.json`: generated from `DESIGN.md` by `build-tokens.py`, shaped for React Native (numbers in points, references resolved). The only allowed source of visual values in code. Never edit it by hand.
+- `build-tokens.py`: `python3 family-packing/design/build-tokens.py` rewrites `tokens.json`; `--check` fails when it is stale (for `scripts/check.sh`).
+- `system/`: export of the kitmunk design system artifact (https://claude.ai/artifact/R6zQCD9E3A94yNTjBN3MQw): brand book (`README.md`), its tokens, web reference components with previews (`components/`), and the logo and Scout mark SVGs (`assets/Logos/`).
+- `screens.md`: every screen, its route, where it goes and which states to build. Start here for behavior and navigation.
+- `screens/*.png`: one image per artboard of the reviewed v1.0 canvas, named after its canvas file (W1-14).
+- `source/*.dc.html`: the v0.9 export of the canvas files, kept for states and sample copy until it is refreshed. Where it differs from `screens/` or `DESIGN.md`, those win. `System.dc.html` and `Logo.dc.html` are superseded by `system/` and `screens/V2System.png`.
 
 ## Reading a `.dc.html` source file
 
@@ -16,12 +18,8 @@ Each file is a self-contained screen at 390 by 844 points.
 - `onClick` handlers in the script show the intended behavior, for example how undo restores the previous packed quantity.
 - `<a href="Other.dc.html">` is a link to another screen. See `screens.md` for the route each file maps to.
 
-Rebuild screens as React Native components using `tokens.json`. Do not port the HTML or its script directly.
+Rebuild screens as React Native components using `tokens.json`. Do not port the HTML or its script directly. Where a source file and `DESIGN.md` disagree on a value, `DESIGN.md` wins.
 
 ## Keeping this folder current
 
-The design canvas lives in the founders' Claude chat. When a design changes there, Claude exports the changed files here in a pull request titled `family-packing/design: <what changed>`.
-
-## Brand placeholders
-
-The "kitbag" wordmark and the logo on these screens are placeholders. The name is now Kitmunk (decision 1) and the logo is option A, the Case (decision 2); the next canvas export replaces them. Never ship "kitbag" anywhere.
+The design canvas (https://claude.ai/artifact/LokjSwqPYHJoJDvZWz5auF) is where screens are drawn. When a design changes there, Claude exports the changed files here in a pull request titled `family-packing/design: <what changed>`, and updates `DESIGN.md` first if a token or rule changed.

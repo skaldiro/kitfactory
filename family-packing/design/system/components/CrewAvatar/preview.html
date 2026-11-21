@@ -1,0 +1,12 @@
+<!-- @dsCard group="People" height=120 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>CrewAvatar — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-pad',style:{gap:'20px',alignItems:'flex-end'}},h(K.CrewAvatar,{name:'Nadia',crew:'blue',size:64,showName:true,caption:'Adult'}),h(K.CrewAvatar,{name:'Sam',crew:'mint',size:48,showName:true,caption:'Adult'}),h(K.CrewAvatar,{name:'Leo',crew:'yellow',size:48,progress:0.6,showName:true,caption:'6 yrs'}),h(K.CrewAvatar,{name:'Ivy',crew:'pink',size:40,progress:0.3,showName:true,caption:'3 yrs'}),h(K.CrewAvatar,{name:'Shared',initial:'Us',crew:'shared',size:40,showName:true})));
+</script>
+</body>
+</html>

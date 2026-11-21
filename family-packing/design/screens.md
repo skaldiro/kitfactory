@@ -1,8 +1,8 @@
 # Screens
 
-31 screens from the design canvas (Design v0.9, Nov 11 2026). Each row names the source file in `source/` and, once exported, the image in `screens/`. Routes are proposals for Expo Router. Sheets open over the screen named in "Opens from".
+36 screens from the design canvas (Design v1.0, reviewed Nov 21 2026). Each row names its canvas file; the image is `screens/<same name>.png` (for example `Pack.dc.html` → `screens/Pack.png`). The files in `source/` are still the v0.9 export and are being refreshed; where a `source/` file and its image differ, the image and `DESIGN.md` win. Routes are proposals for Expo Router. Sheets open over the screen named in "Opens from".
 
-The canvas is the source of truth for look. `docs/spec-v2.md` (week 2) is the source of truth for behavior.
+`DESIGN.md` and `tokens.json` are the source of truth for values, the images for layout. `docs/spec-v2.md` (week 2) is the source of truth for behavior.
 
 ## 01 · Start a trip
 
@@ -53,14 +53,23 @@ The canvas is the source of truth for look. `docs/spec-v2.md` (week 2) is the so
 | S11 | `Share.dc.html` | Pack together, invites | `/household` | S06 Live chip, M1, account | Same | Pending invite resend; link copied; invite sent |
 | A1 | `Account.dc.html` | Account and settings | `/account` | S01b | S11, S09 | Units, packing style, toggles, export, delete, sign out |
 
+## 05 · Shared patterns (added in v1.0)
+
+| ID | Source | Screen | Route or type | Opens from | Goes to | States to build |
+| --- | --- | --- | --- | --- | --- | --- |
+| S09c | `Memory.dc.html` | What Scout remembers | `/family/memory` | S09 | S09 | Waiting-for-OK card; filter by person; search; forget with undo |
+| A2 | `Privacy.dc.html` | Your data and privacy | `/account/privacy` | A1, S13 | A1 | Default |
+| V1 | `VoiceRecord.dc.html` | Voice, recording | Full-screen modal | Every mic | V2 | Listening with live text; cancel |
+| V2 | `VoiceTranscribe.dc.html` | Voice, transcribing | Full-screen modal | V1 | Back to origin, fields filled | Transcribing; done |
+| C1 | `Confirm.dc.html` | Destructive confirm (9 variants in the canvas props) | Dialog | Trip menu, A1, S09b, S11 | Back to origin | Delete trip, remove person, leave household, delete account and others |
+
 ## Reference boards (not screens)
 
 | Source | What it is |
 | --- | --- |
-| `System.dc.html` | Design language: colors, crew colors, type, item row states, Scout patterns |
-| `Logo.dc.html` | Logo options A to D. A, the Case, is used on the screens |
+| `V2System.dc.html` | Design system v1.0 board (image `screens/V2System.png`). Replaces `System.dc.html` and `Logo.dc.html`, which are v0.9 leftovers in `source/` |
 | `canvas.json` | Canvas layout and artboard titles |
 
 ## Not drawn yet
 
-Paywall and manage plan (only if decision 6 is paid), app icon and splash at final size, push notification prompts, onboarding for a second adult after joining, offline banner.
+Paywall and manage plan (only if decision 6 is paid), app icon and splash at final size (W3-06), push notification prompts, onboarding for a second adult after joining, offline banner.

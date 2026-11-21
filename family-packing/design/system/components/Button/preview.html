@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=220 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Button — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-col'},h('div',{className:'km-pad',style:{padding:0}},h(K.Button,{variant:'scout',icon:'arrowRight'},'Plan a trip'),h(K.Button,null,'Open the packing list')),h('div',{className:'km-pad',style:{padding:0}},h(K.Button,{variant:'secondary'},'Start fresh'),h(K.Button,{variant:'danger'},'Delete trip'),h(K.Button,{variant:'link'},'Text link')),h('div',{className:'km-pad km-dark',style:{borderRadius:'14px'}},h(K.Button,{variant:'onDark'},'See the list'),h(K.Button,{variant:'ghostDark'},'Copy invite link'))));
+</script>
+</body>
+</html>

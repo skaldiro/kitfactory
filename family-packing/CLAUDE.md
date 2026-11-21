@@ -2,7 +2,7 @@
 
 An AI-first packing app for families who travel. Parents describe a trip, Scout (the in-app AI) asks a few tailored questions, and the family gets a packing list per person they can work through together on two phones.
 
-Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The folder stays `family-packing/`. Use the `APP_NAME` constant in code, set to `Kitmunk`. "Kitbag" has a legal conflict and must never appear in code, copy or store listings. The AI assistant is "Scout". The "kitbag" wordmark in `design/source/` is a placeholder until the canvas is re-exported with the Kitmunk logo.
+Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The folder stays `family-packing/`. Use the `APP_NAME` constant in code, set to `Kitmunk`. "Kitbag" has a legal conflict and must never appear in code, copy or store listings. The AI assistant is "Scout". The logo and Scout mark files are in `design/system/assets/Logos/`. Some v0.9 files in `design/source/` still show the old "kitbag" wordmark: never copy it.
 
 ## Where things live
 
@@ -24,12 +24,13 @@ Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The
 Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than 8 days old, or a decision your task needs is not here, stop and ask.
 
 - 1 · Name: Kitmunk, for the app and the company. Domain kitmunk.com.
-- 2 · Logo: A, "the Case" (suitcase with four ribs in the crew colors, on an orange tile, lowercase kitmunk wordmark). Scout keeps the blaze. Final assets come with the canvas re-export.
+- 2 · Logo: A, "the Case" (suitcase with four ribs in the crew colors, on an orange tile, lowercase kitmunk wordmark). Scout keeps the blaze. Assets: `design/system/assets/Logos/`.
 - 4 · A guest gets a full list before signing up.
 - 5 · No packing assignment at launch; bags are off the main view.
 - 14 · A new trip starts with 2 adults; no upper limit.
 - 15 · No cap on adults in a household.
-- 29 · Orange means Scout. A main button is orange only when it hands work to Scout: Plan a trip (S01), Create our packing list (S04), Ask Scout (S08), Create the list from a past trip (S12). Every other main button is ink on light screens and mist on dark screens. At most one orange button per screen. Progress, tags and links use ink and crew colors, never orange.
+- 29 · Orange means Scout. A main button is orange only when it hands work to Scout or applies what Scout proposed: Plan a trip (S01), Create our packing list (S04), Ask Scout and its send button (S08), Apply N changes (S08), Create the list from a past trip (S12), Sort them for me (S10). Every other main button is ink on light screens and mist on dark screens. At most one orange button per screen. Progress, tags and links use ink and crew colors, never orange.
+- 35 · Contrast: inputs and unselected chips are outlined in edge #7D8B85, never line #D9DFD6. Done green is #0B7A54; crew mint keeps #0F8A5F. The outline button on ink uses #5E8A7C.
 - Still open, do not assume: 6 monetization, 7 weather source, 8 voice, 9 tablets and OS versions, 10 country, language and units, 11 cost ceiling, 12 web, 13 child data and usage events.
 
 ## Stack
@@ -53,8 +54,9 @@ Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than
 
 ## Design rules
 
-- Match `design/screens/` images and `design/source/` files for layout, color, type and copy. Use only token values; never invent new colors.
-- Fonts: Archivo (variable, condensed widths for display and numbers), DM Mono for labels.
+- Values come from `design/DESIGN.md` and `design/tokens.json` (generated from DESIGN.md; never edit it by hand). Layout and copy come from the `design/screens/` images. `design/source/` files are v0.9 reference for states and sample copy; where they differ from the images or DESIGN.md, those win. Never invent new colors.
+- Font: Archivo only (100% width for reading, 62.5% for display). No DM Mono.
+- Icons: lucide-react-native at strokeWidth 2.2, plus the custom case and Scout marks.
 - Every AI moment uses Scout's mark and the orange "flare" color. Dashed orange means an assumption or a question; solid means fact. Button color follows decision 29.
 - Touch targets at least 44 by 44 points. Text contrast at least 4.5:1. Every icon-only button has an accessibility label.
 - Before a screen PR, critique your own screenshots for AI tells: generic cards, weak hierarchy, uneven spacing, needless gradients, template layouts. Fix them.

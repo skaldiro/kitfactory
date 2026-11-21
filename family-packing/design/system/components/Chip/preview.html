@@ -1,0 +1,12 @@
+<!-- @dsCard group="Selection" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Chip — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-pad'},h(K.Chip,null,'Hiking'),h(K.Chip,{selected:true},'Museums'),h(K.Chip,{size:'sm',count:12},'To pack'),h(K.Chip,{size:'sm',count:3,selected:true},'To buy')));
+</script>
+</body>
+</html>

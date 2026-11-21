@@ -1,0 +1,12 @@
+<!-- @dsCard group="Actions" height=80 -->
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>IconButton — preview</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var K = window.Kitmunk, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div',{className:'km-pad'},h(K.IconButton,{icon:'back',label:'Trip home'}),h(K.IconButton,{icon:'more',label:'Trip menu'}),h('span',{style:{background:'#fff',padding:'8px',borderRadius:'14px'}},h(K.IconButton,{icon:'close',tone:'mist',label:'Close Scout'}))));
+</script>
+</body>
+</html>
