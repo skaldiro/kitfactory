@@ -4,12 +4,13 @@ A monorepo for our apps. Each app lives in its own top-level folder with its own
 
 | Folder | App | Status |
 | --- | --- | --- |
-| `family-packing/` | Family Packing (working title; the public name is being replaced), the AI family packing app for iOS and Android | Building, launch target week of March 1, 2027 |
+| `family-packing/` | Kitmunk, the AI family packing app for iOS and Android | Building, launch target week of March 1, 2027 |
 
 ## Where things live
 
 - GitHub (this repo): technical work only. Code, specs, design exports, design systems, test data, changelogs. Build tasks are GitHub issues.
-- Google Drive folder KitFactory: the plan and tracker, decisions, accounts, business, legal, brand and meeting notes. Never copy these into the repo.
+- Google Drive folder KitFactory: the plan and tracker, decisions, accounts, business, legal, brand and meeting notes. Never copy these into the repo, except the build-facing decisions each app's `CLAUDE.md` lists under "Decided" with a sync date.
+- Shared Claude Code setup lives in `.claude/` (agents, skills, the `/loop` command and safety hooks). Changing it needs a founder's yes.
 
 ## Rules for every app
 
