@@ -2,7 +2,7 @@
 
 An AI-first packing app for families who travel. Parents describe a trip, Scout (the in-app AI) asks a few tailored questions, and the family gets a packing list per person they can work through together on two phones.
 
-Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The folder stays `family-packing/`. Use the `APP_NAME` constant in code, set to `Kitmunk`. "Kitbag" has a legal conflict and must never appear in code, copy or store listings. The AI assistant is "Scout". The logo and Scout mark files are in `design/system/assets/Logos/`. Some v0.9 files in `design/source/` still show the old "kitbag" wordmark: never copy it.
+Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The folder stays `family-packing/`. Use the `APP_NAME` constant in code, set to `Kitmunk`. "Kitbag" has a legal conflict and must never appear in code, copy or store listings. The AI assistant is "Scout". The logo and Scout mark files are in `design/system/assets/Logos/`.
 
 ## Where things live
 
@@ -54,7 +54,7 @@ Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than
 
 ## Design rules
 
-- Values come from `design/DESIGN.md` and `design/tokens.json` (generated from DESIGN.md; never edit it by hand). Layout and copy come from the `design/screens/` images. `design/source/` files are v0.9 reference for states and sample copy; where they differ from the images or DESIGN.md, those win. Never invent new colors.
+- Values come from `design/DESIGN.md` and `design/tokens.json` (generated from DESIGN.md; never edit it by hand). Layout and copy come from the `design/screens/` images and the `design/source/` files (states, sample copy). Where a file disagrees with DESIGN.md, DESIGN.md wins. Never invent new colors.
 - Font: Archivo only (100% width for reading, 62.5% for display). No DM Mono.
 - Icons: lucide-react-native at strokeWidth 2.2, plus the custom case and Scout marks.
 - Every AI moment uses Scout's mark and the orange "flare" color. Dashed orange means an assumption or a question; solid means fact. Button color follows decision 29.

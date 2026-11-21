@@ -5,8 +5,8 @@
 - `build-tokens.py`: `python3 family-packing/design/build-tokens.py` rewrites `tokens.json`; `--check` fails when it is stale (for `scripts/check.sh`).
 - `system/`: export of the kitmunk design system artifact (https://claude.ai/artifact/R6zQCD9E3A94yNTjBN3MQw): brand book (`README.md`), its tokens, web reference components with previews (`components/`), and the logo and Scout mark SVGs (`assets/Logos/`).
 - `screens.md`: every screen, its route, where it goes and which states to build. Start here for behavior and navigation.
-- `screens/*.png`: one image per artboard of the reviewed v1.0 canvas, named after its canvas file (W1-14).
-- `source/*.dc.html`: the v0.9 export of the canvas files, kept for states and sample copy until it is refreshed. Where it differs from `screens/` or `DESIGN.md`, those win. `System.dc.html` and `Logo.dc.html` are superseded by `system/` and `screens/V2System.png`.
+- `screens/*.png`: one image per artboard of the v1.0 canvas, rendered at 2x from `source/` and named after its file (W1-14).
+- `source/*.dc.html`: the v1.0 canvas files (Nov 21), one per artboard. Reference, not code to ship.
 
 ## Reading a `.dc.html` source file
 

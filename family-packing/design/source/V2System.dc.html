@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>kitmunk · Design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+.ds-lbl{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#56665F}
+.ds-card{background:#FFFFFF;border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:16px;box-sizing:border-box}
+.ds-h{margin:0;font-size:28px;line-height:1;font-weight:900;font-stretch:62.5%}
+.ds-note{margin:0;font-size:14px;line-height:1.45;color:#56665F}
+.ds-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.ds-sw{display:flex;flex-direction:column;gap:6px;width:96px}
+.ds-chip{height:40px;padding:0 14px;box-sizing:border-box;border-radius:999px;border:1.5px solid #7D8B85;background:#FFFFFF;display:inline-flex;align-items:center;font-size:14px;font-weight:600}
+.ds-btn{height:56px;padding:0 22px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;box-sizing:border-box}
+@keyframes dsRing{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.5);opacity:0}}
+@keyframes dsBar{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@keyframes dsSweep{0%{transform:translateX(-100%)}100%{transform:translateX(250%)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</helmet>
+<div style="width: 1200px; height: 2260px; box-sizing: border-box; padding: 48px; display: flex; flex-direction: column; gap: 24px; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<header style="display: flex; align-items: flex-end; gap: 24px; padding-bottom: 8px">
+<svg width="88" height="88" viewBox="0 0 48 48" aria-hidden="true"><rect x="0" y="0" width="48" height="48" rx="12" fill="#FF5B23"></rect><path d="M19 13v-2.5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2V13" fill="none" stroke="#0E2A23" stroke-width="2.6" stroke-linecap="round"></path><rect x="9" y="13" width="30" height="25" rx="6" fill="#0E2A23"></rect><rect x="13.5" y="18" width="3.6" height="15" rx="1.8" fill="#AFC6FF"></rect><rect x="19.5" y="18" width="3.6" height="15" rx="1.8" fill="#7BE0B5"></rect><rect x="25.5" y="18" width="3.6" height="15" rx="1.8" fill="#FFC94A"></rect><rect x="31.5" y="18" width="3.6" height="15" rx="1.8" fill="#FF9BAE"></rect><circle cx="16" cy="41" r="1.8" fill="#0E2A23"></circle><circle cx="32" cy="41" r="1.8" fill="#0E2A23"></circle></svg>
+<div style="flex: 1; display: flex; flex-direction: column; gap: 6px">
+<span class="ds-lbl">Design system · v1.0 · Nov 21, 2026</span>
+<h1 style="margin: 0; font-size: 64px; line-height: 0.88; font-weight: 900; font-stretch: 62.5%">kitmunk</h1>
+</div>
+<p class="ds-note" style="max-width: 420px">The single source for every screen. If a screen and this board disagree, this board wins and the screen gets fixed.</p>
+</header>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<section class="ds-card" style="background: #0E2A23; color: #EEF1EA"><span class="ds-lbl" style="color: #9FB5AC">Rule 1</span><h2 class="ds-h">Orange means Scout.</h2><p class="ds-note" style="color: #B6C8C0">A button is orange only when it hands work to Scout or applies what Scout proposed. One per screen at most. Never on progress, tags or links.</p></section>
+<section class="ds-card"><span class="ds-lbl">Rule 2</span><h2 class="ds-h">Dashed means a guess.</h2><p class="ds-note">Anything Scout inferred gets a dashed orange line or a dashed card, so people know what to check.</p></section>
+<section class="ds-card"><span class="ds-lbl">Rule 3</span><h2 class="ds-h">Everyone is a circle.</h2><p class="ds-note">Adults and kids look the same: a crew color and an initial. Age is the caption, not a different shape.</p></section>
+</div>
+
+<div style="display: grid; grid-template-columns: 7fr 5fr; gap: 16px">
+<section class="ds-card">
+<span class="ds-lbl">Color</span>
+<div class="ds-row" style="align-items: flex-start">
+<div class="ds-sw"><span style="height: 56px; border-radius: 14px; background: #0E2A23"></span><b style="font-size: 14px">Ink</b><span class="ds-note">#0E2A23</span></div>
+<div class="ds-sw"><span style="height: 56px; border-radius: 14px; background: #EEF1EA; border: 1px solid #D9DFD6"></span><b style="font-size: 14px">Mist</b><span class="ds-note">#EEF1EA</span></div>
+<div class="ds-sw"><span style="height: 56px; border-radius: 14px; background: #FFFFFF; border: 1px solid #D9DFD6"></span><b style="font-size: 14px">Card</b><span class="ds-note">#FFFFFF</span></div>
+<div class="ds-sw"><span style="height: 56px; border-radius: 14px; background: #FF5B23"></span><b style="font-size: 14px">Flare</b><span class="ds-note">#FF5B23 · Scout</span></div>
+<div class="ds-sw"><span style="height: 56px; border-radius: 14px; background: #163A31"></span><b style="font-size: 14px">Deep</b><span class="ds-note">#163A31</span></div>
+<div class="ds-sw"><span style="height: 56px; border-radius: 14px; background: #B42318"></span><b style="font-size: 14px">Danger</b><span class="ds-note">#B42318</span></div>
+</div>
+<div class="ds-row" style="align-items: flex-start">
+<div class="ds-sw"><span style="height: 24px; border-radius: 8px; background: #D9DFD6"></span><b style="font-size: 14px">Line</b><span class="ds-note">#D9DFD6 decoration</span></div>
+<div class="ds-sw"><span style="height: 24px; border-radius: 8px; background: #EDF0EA; border: 1px solid #D9DFD6"></span><b style="font-size: 14px">Divider</b><span class="ds-note">#EDF0EA</span></div>
+<div class="ds-sw"><span style="height: 24px; border-radius: 8px; background: #7D8B85"></span><b style="font-size: 14px">Edge</b><span class="ds-note">#7D8B85 inputs, outlines</span></div>
+<div class="ds-sw"><span style="height: 24px; border-radius: 8px; background: #56665F"></span><b style="font-size: 14px">Muted</b><span class="ds-note">#56665F text</span></div>
+<div class="ds-sw"><span style="height: 24px; border-radius: 8px; background: #B23A0B"></span><b style="font-size: 14px">Scout text</b><span class="ds-note">#B23A0B</span></div>
+<div class="ds-sw"><span style="height: 24px; border-radius: 8px; background: #0B7A54"></span><b style="font-size: 14px">Done</b><span class="ds-note">#0B7A54</span></div>
+</div>
+<span class="ds-lbl" style="margin-top: 4px">Crew colors · fill and ring</span>
+<div class="ds-row">
+<sc-for list="{{crewCols}}" as="c" hint-placeholder-count="7">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 84px">
+<span style="position: relative; display: inline-block; flex: none; width: 48px; height: 48px"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" style="display: block"><circle cx="24" cy="24" r="22.75" fill="none" stroke="{{c.ring}}" stroke-width="2.5"></circle><circle cx="24" cy="24" r="17.5" fill="{{c.fill}}"></circle></svg><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: Archivo, system-ui, sans-serif; font-size: 14px; font-weight: 600; color: {{c.ink}}; line-height: 1">{{c.s}}</span></span>
+<span style="font-size: 12px; font-weight: 600">{{c.name}}</span>
+<span style="font-size: 12px; color: #56665F">{{c.hex}}</span>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section class="ds-card">
+<span class="ds-lbl">Type · Archivo only</span>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Display 64/900</span><span style="font-size: 64px; line-height: 0.88; font-weight: 900; font-stretch: 62.5%">Italy</span></div>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Title 40/900</span><span style="font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">Your lists are ready.</span></div>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Heading 28/900</span><span style="font-size: 28px; line-height: 1; font-weight: 900; font-stretch: 62.5%">Dates in Florence</span></div>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Subhead 20/700</span><span style="font-size: 20px; font-weight: 700">12 things, across 5 lists</span></div>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Body 16/500–600</span><span style="font-size: 16px; font-weight: 500">Rain shells, one each</span></div>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Small 14/500</span><span style="font-size: 14px; color: #56665F">Saved while packing Italy</span></div>
+<div style="display: flex; align-items: baseline; gap: 16px"><span style="width: 120px; flex: none" class="ds-note">Label 12/600</span><span class="ds-lbl">Where and when</span></div>
+</div>
+<p class="ds-note">Two widths: 100% for reading, 62.5% for display. Weights 500, 600, 700, 900 only. Sentence case everywhere except labels.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; padding-top: 12px; border-top: 1px solid #EDF0EA">
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="ds-lbl">Radii</span><div class="ds-row" style="gap: 8px"><span style="width: 40px; height: 40px; border-radius: 8px; background: #0E2A23"></span><span style="width: 40px; height: 40px; border-radius: 14px; background: #0E2A23"></span><span style="width: 40px; height: 40px; border-radius: 22px 22px 6px 6px; background: #0E2A23"></span><span style="width: 40px; height: 40px; border-radius: 999px; background: #0E2A23"></span></div><span class="ds-note">8 tags · 14 controls · 22 cards and sheets · 999 pills</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="ds-lbl">Spacing</span><div class="ds-row" style="gap: 6px; align-items: flex-end"><span style="width: 4px; height: 4px; background: #FF5B23"></span><span style="width: 8px; height: 8px; background: #FF5B23"></span><span style="width: 12px; height: 12px; background: #FF5B23"></span><span style="width: 16px; height: 16px; background: #FF5B23"></span><span style="width: 24px; height: 24px; background: #FF5B23"></span></div><span class="ds-note">4 · 8 · 12 · 16 · 24. Screen edge 16. Touch targets 44 minimum.</span></div>
+</div>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+<section class="ds-card">
+<span class="ds-lbl">Buttons</span>
+<div class="ds-row">
+<span class="ds-btn" style="background: #FF5B23; color: #0E2A23">Create our packing list</span>
+<span class="ds-btn" style="background: #0E2A23; color: #EEF1EA">Open the packing list</span>
+</div>
+<div class="ds-row">
+<span class="ds-btn" style="background: #FFFFFF; border: 1.5px solid #7D8B85">Start fresh</span>
+<span class="ds-btn" style="background: #B42318; color: #FFFFFF">Delete trip</span>
+<span style="font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Text link</span>
+</div>
+<div class="ds-row" style="background: #0E2A23; border-radius: 14px; padding: 12px">
+<span class="ds-btn" style="background: #EEF1EA; color: #0E2A23">See the list</span>
+<span class="ds-btn" style="background: transparent; color: #EEF1EA; border: 1.5px solid #5E8A7C">Copy invite link</span>
+</div>
+<p class="ds-note">Orange: Plan a trip, Create our packing list, Ask Scout, Apply changes, Create the list from a past trip, Sort them for me. Ink on light, mist on dark for everything else. Red only for destructive confirms.</p>
+</section>
+
+<section class="ds-card">
+<span class="ds-lbl">Inputs and selection</span>
+<div class="ds-row">
+<span style="width: 220px; height: 48px; box-sizing: border-box; border: 1.5px solid #7D8B85; border-radius: 14px; padding: 0 14px; display: flex; align-items: center; font-size: 16px; font-weight: 500">Florence</span>
+<span style="width: 220px; height: 44px; box-sizing: border-box; border-radius: 14px; background: #EEF1EA; padding: 0 12px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3"></rect><path d="M3.5 10h17M8 3v4M16 3v4"></path></svg>Nov 23 → 26 · 3 nights</span>
+</div>
+<div class="ds-row">
+<span class="ds-chip">Hiking</span>
+<span class="ds-chip" style="background: #0E2A23; border-color: #0E2A23; color: #EEF1EA">Museums</span>
+<span style="display: inline-flex; gap: 4px; padding: 4px; border-radius: 14px; background: #EEF1EA"><span style="height: 40px; padding: 0 14px; border-radius: 10px; background: #0E2A23; color: #EEF1EA; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600">Have it</span><span style="height: 40px; padding: 0 14px; border-radius: 10px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 600">To buy</span></span>
+</div>
+<div class="ds-row">
+<span style="display: inline-flex; align-items: center; border-radius: 14px; background: #EEF1EA"><span style="width: 44px; height: 44px; display: grid; place-items: center; font-size: 20px; font-weight: 600">−</span><span style="min-width: 32px; text-align: center; font-size: 16px; font-weight: 700">3</span><span style="width: 44px; height: 44px; display: grid; place-items: center; font-size: 20px; font-weight: 600">+</span></span>
+<span style="width: 52px; height: 32px; border-radius: 999px; background: #0E2A23; position: relative"><span style="position: absolute; top: 4px; left: 24px; width: 24px; height: 24px; border-radius: 50%; background: #FFFFFF"></span></span>
+<span style="width: 24px; height: 24px; box-sizing: border-box; border-radius: 999px; border: 2px solid #7D8B85"></span>
+<span style="width: 24px; height: 24px; border-radius: 999px; background: #0E2A23; display: grid; place-items: center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg></span>
+<span style="height: 22px; padding: 0 8px; box-sizing: border-box; border: 1.5px solid #0E2A23; border-radius: 8px; display: inline-flex; align-items: center; font-size: 12px; font-weight: 600">To buy</span>
+</div>
+<p class="ds-note">One stepper, one segmented control, one chip style. Inputs 48 tall. Optional fields say "Optional"; nothing is inferred silently.</p>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<section class="ds-card">
+<span class="ds-lbl">People</span>
+<div class="ds-row" style="gap: 16px; align-items: flex-end">
+<sc-for list="{{people}}" as="p" hint-placeholder-count="4">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 4px">
+<span style="position: relative; display: inline-block; flex: none; width: {{p.sz}}px; height: {{p.sz}}px"><svg width="{{p.sz}}" height="{{p.sz}}" viewBox="0 0 48 48" aria-hidden="true" style="display: block"><circle cx="24" cy="24" r="22.75" fill="none" stroke="{{p.ring}}" stroke-width="2.5"></circle><circle cx="24" cy="24" r="17.5" fill="{{p.fill}}"></circle></svg><span aria-hidden="true" style="position: absolute; inset: 0; display: grid; place-items: center; font-family: Archivo, system-ui, sans-serif; font-size: calc({{p.sz}}px * 0.2917); font-weight: 600; color: #0E2A23; line-height: 1">{{p.s}}</span></span>
+<span style="font-size: 14px; font-weight: 600">{{p.name}}</span>
+<span style="font-size: 12px; color: #56665F">{{p.age}}</span>
+</div>
+</sc-for>
+</div>
+<p class="ds-note">Sizes 28, 40, 48, 64. 2.5px ring in the darker crew shade, initial 600. Ages come from birth month and year, so they update themselves. Adults read "Adult".</p>
+</section>
+
+<section class="ds-card">
+<span class="ds-lbl">Scout</span>
+<div style="border: 1.5px dashed #FF5B23; background: #FFF9F6; border-radius: 22px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px">
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #B23A0B"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="3.5" transform="rotate(45 12 12)" fill="#FF5B23"></rect><circle cx="12" cy="12" r="2.6" fill="#0E2A23"></circle></svg>Scout noticed</span>
+<span style="font-size: 16px; font-weight: 700">Two train rides between stops</span>
+<div class="ds-row" style="gap: 8px"><span style="height: 44px; padding: 0 16px; border-radius: 14px; background: #0E2A23; color: #EEF1EA; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700">Add them</span><span style="height: 44px; padding: 0 16px; box-sizing: border-box; border-radius: 14px; border: 1.5px solid #7D8B85; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700">Skip</span></div>
+</div>
+<span style="font-size: 16px; font-weight: 600; text-decoration: underline dashed #FF5B23; text-underline-offset: 4px">2 checked bags, 4 carry-ons</span>
+<p class="ds-note">Every Scout suggestion can be skipped. Scout names trips from the stops: the country when there is one, a route ("Rome to Cinque Terre") when it reads better. People can rename it.</p>
+</section>
+
+<section class="ds-card">
+<span class="ds-lbl">Voice · every mic does this</span>
+<div class="ds-row" style="gap: 16px">
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="width: 48px; height: 48px; border-radius: 999px; background: #EEF1EA; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"></path></svg></span><span style="font-size: 12px; color: #56665F">1 Tap</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="position: relative; width: 48px; height: 48px"><span style="position: absolute; inset: 0; border-radius: 50%; background: #FF5B23; animation: dsRing 1.6s ease-out infinite"></span><span style="position: absolute; inset: 0; border-radius: 50%; background: #FF5B23; display: grid; place-items: center"><span style="width: 14px; height: 14px; border-radius: 4px; background: #0E2A23"></span></span></span><span style="font-size: 12px; color: #56665F">2 Recording</span></div>
+<div style="display: flex; flex-direction: column; align-items: center; gap: 6px"><span style="width: 96px; height: 48px; border-radius: 14px; background: #0E2A23; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; gap: 3px"><span style="width: 3px; height: 20px; border-radius: 2px; background: #EEF1EA; animation: dsBar .9s ease-in-out infinite"></span><span style="width: 3px; height: 20px; border-radius: 2px; background: #EEF1EA; animation: dsBar .9s ease-in-out .15s infinite"></span><span style="width: 3px; height: 20px; border-radius: 2px; background: #EEF1EA; animation: dsBar .9s ease-in-out .3s infinite"></span><span style="position: absolute; left: 0; bottom: 0; width: 40%; height: 3px; background: #EEF1EA; animation: dsSweep 1.4s linear infinite"></span></span><span style="font-size: 12px; color: #56665F">3 Transcribing</span></div>
+</div>
+<p class="ds-note">Tap the mic, record full screen, transcribe, then land back with the fields filled and visible. Text is made on the phone; audio is never saved.</p>
+</section>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<section class="ds-card">
+<span class="ds-lbl">Feedback</span>
+<div style="height: 52px; box-sizing: border-box; border-radius: 14px; background: #0E2A23; color: #EEF1EA; padding: 0 16px; display: flex; align-items: center; gap: 8px"><span style="flex: 1; font-size: 14px">Packed Pajamas ×3</span><span style="font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px">Undo</span></div>
+<div style="border-radius: 22px; border: 1.5px solid #D9DFD6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="width: 40px; height: 40px; border-radius: 999px; background: #FDECEA; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B42318" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 7h14M10 7V5h4v2M7 7l1 12h8l1-12"></path></svg></span><span style="font-size: 20px; font-weight: 700">Delete Italy for everyone?</span><span class="ds-note">Destructive actions always confirm. Everything else gets Undo instead.</span></div>
+</section>
+
+<section class="ds-card">
+<span class="ds-lbl">Motion</span>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; font-size: 14px"><b>Tap feedback</b><span style="color: #56665F">120ms, ease-out</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; padding-top: 10px; border-top: 1px solid #EDF0EA"><b>Sheets and toasts</b><span style="color: #56665F">240ms, ease-out</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; padding-top: 10px; border-top: 1px solid #EDF0EA"><b>Header collapse</b><span style="color: #56665F">Tied to scroll, smoothstep</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; padding-top: 10px; border-top: 1px solid #EDF0EA"><b>Scout progress</b><span style="color: #56665F">One stage per 1.8s</span></div>
+<div style="display: flex; justify-content: space-between; font-size: 14px; padding-top: 10px; border-top: 1px solid #EDF0EA"><b>First-run case</b><span style="color: #56665F">8s loop, ribs fill</span></div>
+</div>
+<p class="ds-note">Reduced motion turns every loop off and shows the end state.</p>
+</section>
+
+<section class="ds-card">
+<span class="ds-lbl">Words</span>
+<div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 1.4">
+<span><b>Dates</b> · Nov 20–29, Nov 23 → 26 for a stop</span>
+<span><b>Ages</b> · 3 yrs, Under 1, Adult</span>
+<span><b>Counts</b> · 74 of 160 packed, never a bare %</span>
+<span><b>People</b> · "people" and "crew", never only "family" or "kids"</span>
+<span><b>Scout</b> · speaks in first person, short, never cute</span>
+<span><b>Privacy</b> · never sold, never for ads or AI training</span>
+</div>
+</section>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1200,"height":2260}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      crewCols: [['N', 'Blue', '#AFC6FF', '#2D55D6'], ['S', 'Mint', '#7BE0B5', '#0F8A5F'], ['L', 'Yellow', '#FFC94A', '#B57A00'], ['I', 'Pink', '#FF9BAE', '#E0476A'], ['R', 'Lavender', '#C9B8FF', '#6A4FD0'], ['M', 'Peach', '#FFB38F', '#C4561D'], ['Us', 'Shared', '#0E2A23', '#0E2A23']].map((c) => ({ s: c[0], name: c[1], fill: c[2], ring: c[3], hex: c[2], ink: c[0] === 'Us' ? '#EEF1EA' : '#0E2A23' })),
+      people: [['N', 'Nadia', 'Adult', '#AFC6FF', '#2D55D6', 64], ['S', 'Sam', 'Adult', '#7BE0B5', '#0F8A5F', 48], ['L', 'Leo', '6 yrs', '#FFC94A', '#B57A00', 40], ['I', 'Ivy', '3 yrs', '#FF9BAE', '#E0476A', 28]].map((p) => ({ s: p[0], name: p[1], age: p[2], fill: p[3], ring: p[4], sz: p[5] }))
+    };
+  }
+}
+</script>
+</body>
+</html>

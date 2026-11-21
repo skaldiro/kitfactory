@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>kitmunk · Your data</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&amp;display=swap">
+<style>
+body{margin:0;background:#EEF1EA}
+a{color:#0E2A23;text-decoration:none}
+a:hover{color:#0E2A23}
+</style>
+</helmet>
+<div style="width: 390px; height: 844px; box-sizing: border-box; padding: 16px 16px 0; display: flex; flex-direction: column; gap: 12px; overflow: hidden; background: #EEF1EA; color: #0E2A23; font-family: Archivo, system-ui, sans-serif">
+
+<header style="flex: none; height: 48px; display: flex; align-items: center; justify-content: space-between">
+<a href="Account.dc.html" aria-label="Back to account" style="width: 44px; height: 44px; border-radius: 999px; background: #FFFFFF; display: grid; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E2A23" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></a>
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">Privacy</span>
+<span style="width: 44px; height: 44px"></span>
+</header>
+
+<div style="flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; padding-bottom: 24px">
+
+<h1 style="flex: none; margin: 0 4px; font-size: 40px; line-height: 0.95; font-weight: 900; font-stretch: 62.5%">Your data, plainly</h1>
+
+<section style="flex: none; background: #0E2A23; color: #EEF1EA; border-radius: 22px; padding: 16px; display: flex; flex-direction: column; gap: 12px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #9FB5AC">Our promises</span>
+<sc-for list="{{promises}}" as="p" hint-placeholder-count="5">
+<div style="display: flex; align-items: flex-start; gap: 10px">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7BE0B5" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none; margin-top: 1px"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+<span style="font-size: 16px; font-weight: 600; line-height: 1.35">{{p}}</span>
+</div>
+</sc-for>
+</section>
+
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 12px 16px 4px; display: flex; flex-direction: column">
+<span style="padding-bottom: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">What we keep, and where</span>
+<sc-for list="{{keep}}" as="k" hint-placeholder-count="5">
+<div style="padding: 12px 0; border-top: 1px solid #EDF0EA; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; font-weight: 700">{{k.t}}</span>
+<span style="font-size: 14px; line-height: 1.4; color: #56665F">{{k.d}}</span>
+</div>
+</sc-for>
+</section>
+
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 12px 16px 4px; display: flex; flex-direction: column">
+<span style="padding-bottom: 6px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #56665F">Who helps us run kitmunk</span>
+<sc-for list="{{vendors}}" as="v" hint-placeholder-count="3">
+<div style="padding: 12px 0; border-top: 1px solid #EDF0EA; display: flex; flex-direction: column; gap: 4px">
+<span style="font-size: 16px; font-weight: 700">{{v.t}}</span>
+<span style="font-size: 14px; line-height: 1.4; color: #56665F">{{v.d}}</span>
+</div>
+</sc-for>
+</section>
+
+<section style="flex: none; background: #FFFFFF; border-radius: 22px; padding: 0 8px 0 16px; display: flex; flex-direction: column">
+<button type="button" style="height: 56px; padding: 0; border: 0; background: transparent; display: flex; align-items: center; text-align: left; font: 600 16px Archivo, system-ui, sans-serif; color: #0E2A23; cursor: pointer">Download all my data</button>
+<a href="Memory.dc.html" style="height: 56px; border-top: 1px solid #EDF0EA; display: flex; align-items: center; font-size: 16px; font-weight: 600">Review what Scout remembers</a>
+<a href="Confirm.dc.html" style="height: 56px; border-top: 1px solid #EDF0EA; display: flex; align-items: center; font-size: 16px; font-weight: 600; color: #B42318">Delete my account and data</a>
+</section>
+
+<a href="Privacy.dc.html" style="flex: none; height: 44px; display: grid; place-items: center; font-size: 14px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px">Read the full privacy policy</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      promises: [
+        'We never sell your data.',
+        'No ads, and no ad or tracking tools in the app.',
+        'Your trips are never used to train AI models.',
+        'Scout only remembers what you approve.',
+        'Delete everything, any time, in two taps.'
+      ],
+      keep: [
+        { t: 'Trips and lists', d: 'On this phone until you sign in. After that, in our database so they sync between your phones.' },
+        { t: 'Your crew', d: 'First names, a color, and birth month and year for kids. No photos, no full birth dates.' },
+        { t: 'What Scout remembers', d: "Only things you said yes to. See or forget any of it in Memory." },
+        { t: 'Your voice', d: 'Turned into text on your phone. The audio is never uploaded or saved.' },
+        { t: 'Your account', d: 'Your email address, so we can send sign-in links. Nothing else about you.' }
+      ],
+      vendors: [
+        { t: 'Supabase', d: 'Stores your trips once you sign in, encrypted, with access only for your household.' },
+        { t: 'Anthropic (Claude)', d: 'Writes your lists. Gets trip details and first names, never your email. It does not train on them and deletes them within 30 days.' },
+        { t: 'Apple and Google', d: 'Only if you choose to sign in with them.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
