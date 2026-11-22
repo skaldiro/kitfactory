@@ -101,4 +101,18 @@ Founders start with "Work on W3-01", "Work on issue #5" or "Work on the next tas
 
 ## Commands
 
-To be filled in by the scaffold task (W2-07): install, start, run on iOS simulator, run on Android emulator, test, lint, check (`scripts/check.sh`), build a development build.
+Run from `family-packing/`. Add packages with `npx expo install <package>` (never `npm install <package>`), and only after a founder's yes.
+
+| What | Command |
+| --- | --- |
+| Install | `npm ci` |
+| Start (QR code for Expo Go on a phone) | `npx expo start --go` |
+| Run on the iOS simulator | `npx expo start --go --ios` (the first time, tap Open on the simulator's "Open in Expo Go?" prompt) |
+| Run on the Android emulator | `npx expo start --go --android` |
+| Type check | `npm run typecheck` |
+| Lint (no warnings) | `npm run lint` |
+| Test | `npm test` |
+| Gate (must print `GATE: PASS`) | `bash scripts/check.sh` |
+| Development build (needs a founder's yes, and `expo-dev-client` added first) | `npx eas-cli@latest build --profile development --platform ios` |
+
+Code layout: routes in `app/`, components in `src/components/`, the theme in `src/theme/` (the only reader of `design/tokens.json`), shared helpers in `src/lib/`. `src/lib/routes.ts` lists every route in `design/screens.md`.
