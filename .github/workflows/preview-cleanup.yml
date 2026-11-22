@@ -1,0 +1,66 @@
+# Deletes a pull request's EAS Update branch (pr-<number>) when the pull
+# request is merged or closed, so old previews don't pile up on Expo. The QR
+# code comment on that pull request stops working afterwards; the latest main
+# stays at the QR code in family-packing/README.md.
+#
+# Uses the same EXPO_TOKEN repository secret as preview.yml. Secrets are never
+# passed to pull requests from forks, so the job runs only for branches in this
+# repository.
+name: preview-cleanup
+
+on:
+  pull_request:
+    types: [closed]
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  delete:
+    name: Delete the EAS preview branch
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          packager: npm
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      # eas reads the project ID from app.config.ts, which imports expo,
+      # so the app's packages must be installed.
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: family-packing/package-lock.json
+
+      - run: npm ci
+        working-directory: family-packing
+
+      # A pull request that never touched family-packing/ has no preview
+      # branch; "Could not find branch" is fine, any other error fails the job.
+      - name: Delete pr-${{ github.event.pull_request.number }}
+        working-directory: family-packing
+        env:
+          BRANCH: pr-${{ github.event.pull_request.number }}
+        run: |
+          set +e
+          output=$(eas branch:delete "$BRANCH" --non-interactive 2>&1)
+          rc=$?
+          set -e
+          echo "$output"
+          if [ $rc -ne 0 ]; then
+            if echo "$output" | grep -q "Could not find branch"; then
+              echo "No preview branch $BRANCH; nothing to delete."
+            else
+              exit $rc
+            fi
+          fi

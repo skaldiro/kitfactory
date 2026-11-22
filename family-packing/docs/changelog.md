@@ -2,6 +2,7 @@
 
 One line per merged task, newest first.
 
+- 2026-11-22: W2-10 follow-up: .github/workflows/preview-cleanup.yml deletes a PR's EAS branch pr-<number> when the PR is merged or closed.
 - 2026-11-21: W2-24: the weekly drift audit moves from a scheduled task into the session-start skill (step 5); findings go to the tracker's Drift log tab, the only tracker write a session may make.
 - 2026-11-21: W2-16, W2-17, W2-18, W2-26: spec v2 section 4 (intake and data model, Scout, memory and context, privacy), Q20 to Q34, docs/scout-design.md.
 - 2026-11-21: W1-16: docs/spec-v2.md draft: every screen with states, rules and acceptance criteria; global rules R1 to R22; 19 open questions for W2-09; scope (must have, cuts, later, never) with the amendment rule, 21 design vs PRD conflicts and the glossary (W1-15); slots for W2-16, W2-17, W2-18 and W2-26.
