@@ -51,7 +51,7 @@ flowchart LR
   Phones -. "issues with screenshots" .-> GH
 ```
 
-Until the Apple and Google store accounts exist (week 9 to 11), iPhone testing runs in Expo Go. Every change passes `scripts/check.sh` in CI before a founder can merge it. Anything that needs a native module Expo Go doesn't include waits for a development build after week 10.
+Until the Apple and Google store accounts exist (week 9 to 11), iPhone testing runs in Expo Go. Every change passes `scripts/check.sh` in CI before a founder can merge it. Anything that needs a native module Expo Go doesn't include waits for the development build in week 11 (W11-02, issue #26).
 
 ## Rules
 
@@ -80,7 +80,7 @@ erDiagram
 ```
 
 - Every row carries its household; the access rules check it on every read and write.
-- Children exist only as crew profiles with a first name and age.
+- Children exist only as crew profiles: a first name plus age or birth month and year, per decision 13 (open).
 - A memory fact is `proposed` until a parent says yes; it records its source trip and when it was last used.
 - Guest trips use the same shape on the phone and move to the server unchanged at sign-up.
 - The catalog is shared and read-only; it is not owned by a household.
