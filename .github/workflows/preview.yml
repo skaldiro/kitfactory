@@ -31,6 +31,7 @@ jobs:
         working-directory: family-packing
     steps:
       - name: Check for EXPO_TOKEN
+        working-directory: . # runs before checkout, so family-packing/ doesn't exist yet
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
         run: |
