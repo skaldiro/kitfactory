@@ -1,0 +1,30 @@
+# Runs the Kitmunk gate on every pull request. The job is named `check` so
+# branch protection on main can require it (tracker W2-21).
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: family-packing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: family-packing/package-lock.json
+      - run: npm ci
+      - run: bash scripts/check.sh
