@@ -2,6 +2,8 @@
 
 One line per merged task, newest first.
 
+- 2026-11-21: W2-16, W2-17, W2-18, W2-26: spec v2 section 4 (intake and data model, Scout, memory and context, privacy), Q20 to Q34, docs/scout-design.md.
+- 2026-11-21: W1-16: docs/spec-v2.md draft: every screen with states, rules and acceptance criteria; global rules R1 to R22; 19 open questions for W2-09; scope (must have, cuts, later, never) with the amendment rule, 21 design vs PRD conflicts and the glossary (W1-15); slots for W2-16, W2-17, W2-18 and W2-26.
 - 2026-11-22: W2-10: EAS Update previews: expo-updates with runtimeVersion exposdk:58.0.0 (derived from the installed SDK) so Expo Go can load published updates; .github/workflows/preview.yml publishes branch pr-<number> and comments a QR code on every PR touching family-packing/; .github/workflows/update.yml publishes main to the EAS channel main after every merge, with a fixed QR code in family-packing/README.md; preview step added to the session-end and pr-checklist skills, the PR template and the Commands table.
 - 2026-11-22: W2-23: Decided synced from the Decisions tab: decision 17 added, decision 36 listed as open, sync date 2026-11-22.
 - 2026-11-22: W2-07: Expo SDK 58 app scaffold (TypeScript, Expo Router, phones first); theme read only from design/tokens.json with bundled Archivo files; core components and a /gallery screen; a placeholder for all 19 routes in design/screens.md; scripts/check.sh gate (tokens, Decided date, routes, design drift, type check, lint, tests with a 4.5:1 contrast test, expo-doctor) and .github/workflows/check.yml; EAS build profiles and the link to the Expo project @kitfactory/kitmunk; icon sizes limited to 20 and 24 through the theme; Commands section in CLAUDE.md.
