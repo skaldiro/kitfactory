@@ -7,7 +7,7 @@ Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The
 ## Where things live
 
 - This folder holds technical work only: code, the requirements spec, designs exported from the design canvas, the design system, test trips, lessons and the changelog.
-- The plan, the task tracker, decisions and accounts live in the shared Google Drive (KitFactory). The tracker always wins a conflict.
+- The plan, the task tracker, decisions and accounts live in the shared Google Drive folder Kitmunk. The tracker always wins a conflict.
 - Every build task has a GitHub issue titled with its tracker ID (for example `W3-01 · ...`), labeled `build`, in a weekly milestone. The issue holds the task contract.
 - Decisions that change how the app is built are copied into "Decided" below after each weekly meeting, with a sync date. Once `docs/spec-v2.md` exists, they move into the spec and this section points there.
 
@@ -31,7 +31,7 @@ Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than
 - 15 · No cap on adults in a household.
 - 29 · Orange means Scout. A main button is orange only when it hands work to Scout or applies what Scout proposed: Plan a trip (S01), Create our packing list (S04), Ask Scout and its send button (S08), Apply N changes (S08), Create the list from a past trip (S12), Sort them for me (S10). Every other main button is ink on light screens and mist on dark screens. At most one orange button per screen. Progress, tags and links use ink and crew colors, never orange.
 - 35 · Contrast: inputs and unselected chips are outlined in edge #7D8B85, never line #D9DFD6. Done green is #0B7A54; crew mint keeps #0F8A5F. The outline button on ink uses #5E8A7C.
-- Still open, do not assume: 6 monetization, 7 weather source, 8 voice, 9 tablets and OS versions, 10 country, language and units, 11 cost ceiling, 12 web, 13 child data and usage events.
+- Still open, do not assume: 6 monetization, 7 weather source, 8 voice, 9 tablets and OS versions, 10 country, language and units, 11 cost ceiling, 12 web, 13 child data and usage events, 30 which Claude models build the app, 31 Scout's model per job, 32 when a Scout run counts as failed, 33 how this section stays current, 34 clean session-start rule (the harness already follows 33 and 34 as proposed).
 
 ## Stack
 
@@ -48,7 +48,7 @@ Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than
 - When Scout fails, the app falls back to the rule-based list from the catalog. The user never loses input. Every Scout run is logged with its outcome and reason (see `docs/architecture.md`); a fallback is never silent in the logs.
 - Progress counts item lines, not units. An item is done when packed quantity is at least the required quantity.
 - Packing state and shopping state ("to buy", "bought") are independent.
-- Children are profiles with a first name and age only. No child accounts.
+- Children are profiles, never accounts. What is stored about a child (first name plus age, or first name plus birth month and year) is decision 13, still open: don't build child fields beyond a first name until it closes.
 - The data model is shared-household from day one, with any number of adults.
 - Packing assignment ("who packs it") is out of scope for launch.
 
