@@ -2,6 +2,7 @@
 
 One line per merged task, newest first.
 
+- 2026-11-22: W2-23: Decided synced from the Decisions tab: decision 17 added, decision 36 listed as open, sync date 2026-11-22.
 - 2026-11-22: W2-07: Expo SDK 58 app scaffold (TypeScript, Expo Router, phones first); theme read only from design/tokens.json with bundled Archivo files; core components and a /gallery screen; a placeholder for all 19 routes in design/screens.md; scripts/check.sh gate (tokens, Decided date, routes, design drift, type check, lint, tests with a 4.5:1 contrast test, expo-doctor) and .github/workflows/check.yml; EAS build profiles and the link to the Expo project @kitfactory/kitmunk; icon sizes limited to 20 and 24 through the theme; Commands section in CLAUDE.md.
 - 2026-11-21: Drift fixes: Drive folder name Kitmunk, decision 13 marked open in the child rule, open decisions 30 to 34 listed, development builds in week 11.
 - 2026-11-21: W1-14 follow-up: design/source/ refreshed to the v1.0 canvas (System and Logo boards removed, six files added); screens re-rendered at 2x; canvas fixed for decision 35 outlines and colors and for avatar initials.

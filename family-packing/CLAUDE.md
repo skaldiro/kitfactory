@@ -21,7 +21,7 @@ Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The
 
 ## Decided
 
-Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than 8 days old, or a decision your task needs is not here, stop and ask.
+Synced from the tracker's Decisions tab on 2026-11-22. If this date is more than 8 days old, or a decision your task needs is not here, stop and ask.
 
 - 1 · Name: Kitmunk, for the app and the company. Domain kitmunk.com.
 - 2 · Logo: A, "the Case" (suitcase with four ribs in the crew colors, on an orange tile, lowercase kitmunk wordmark). Scout keeps the blaze. Assets: `design/system/assets/Logos/`.
@@ -29,9 +29,10 @@ Synced from the tracker's Decisions tab on 2026-11-21. If this date is more than
 - 5 · No packing assignment at launch; bags are off the main view.
 - 14 · A new trip starts with 2 adults; no upper limit.
 - 15 · No cap on adults in a household.
+- 17 · Where things live: one home each. Drive holds the tracker, the overview doc, business, legal, brand and notes; GitHub holds technical work only; Claude holds the design canvas. No copies, except the Repo = Y decisions mirrored here with a sync date. The full map is `docs/architecture.md`, "Where each fact lives".
 - 29 · Orange means Scout. A main button is orange only when it hands work to Scout or applies what Scout proposed: Plan a trip (S01), Create our packing list (S04), Ask Scout and its send button (S08), Apply N changes (S08), Create the list from a past trip (S12), Sort them for me (S10). Every other main button is ink on light screens and mist on dark screens. At most one orange button per screen. Progress, tags and links use ink and crew colors, never orange.
 - 35 · Contrast: inputs and unselected chips are outlined in edge #7D8B85, never line #D9DFD6. Done green is #0B7A54; crew mint keeps #0F8A5F. The outline button on ink uses #5E8A7C.
-- Still open, do not assume: 6 monetization, 7 weather source, 8 voice, 9 tablets and OS versions, 10 country, language and units, 11 cost ceiling, 12 web, 13 child data and usage events, 30 which Claude models build the app, 31 Scout's model per job, 32 when a Scout run counts as failed, 33 how this section stays current, 34 clean session-start rule (the harness already follows 33 and 34 as proposed).
+- Still open, do not assume: 6 monetization, 7 weather source, 8 voice, 9 tablets and OS versions, 10 country, language and units, 11 cost ceiling, 12 web, 13 child data and usage events, 30 which Claude models build the app, 31 Scout's model per job, 32 when a Scout run counts as failed, 33 how this section stays current, 34 clean session-start rule, 36 how iPhones and Android phones run the app before the store accounts (the harness already follows 33 and 34 as proposed).
 
 ## Stack
 
