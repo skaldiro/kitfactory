@@ -126,4 +126,4 @@ Rule: no code path returns an empty or trimmed Scout result as a success. `scout
 | Scout prompts and quality | `supabase/functions` and `eval/` | None | `scout-change` skill |
 | Lessons | `docs/lessons.md` | None | `session-end` skill |
 
-Every session opens with the `session-start` skill and closes with `session-end`. A weekly audit, the day before the founders' meeting, compares every home with its copies and puts conflicts at the top of the agenda.
+Every session opens with the `session-start` skill and closes with `session-end`. Once a week, the first session after the last audit is 7 or more days old also runs the full drift audit (session-start step 5): it compares every home with its copies and appends each finding to the tracker's Drift log tab, which the founders settle at step 0 of the weekly meeting.
