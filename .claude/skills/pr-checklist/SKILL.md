@@ -11,6 +11,6 @@ Use `.github/pull_request_template.md`. Every section filled, none deleted:
 - Not verified: what could not run here (for example a real Android phone, a store build).
 - Decisions made: anything decided or assumed during the work, proposed as a tracker Decisions row.
 - Risks.
-- Check on your phone: 2 to 4 steps a founder can do in under 5 minutes.
+- Check on your phone: 2 to 4 steps a founder can do in under 5 minutes. When the PR touches `family-packing/`, step 1 is opening the Expo Go preview from the QR code the `preview` workflow comments on the PR.
 
 The title starts with the tracker ID, for example `W2-07 · Scaffold the Expo app`.

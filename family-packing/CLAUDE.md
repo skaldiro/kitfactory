@@ -114,6 +114,9 @@ Run from `family-packing/`. Add packages with `npx expo install <package>` (neve
 | Lint (no warnings) | `npm run lint` |
 | Test | `npm test` |
 | Gate (must print `GATE: PASS`) | `bash scripts/check.sh` |
+| Preview on any phone, no Mac running | Automatic: every PR touching `family-packing/` gets an EAS Update on branch `pr-<number>` and a QR code comment (`.github/workflows/preview.yml`, needs the `EXPO_TOKEN` repo secret). Open it in Expo Go. |
+| Latest `main` on any phone | Automatic: every merge touching `family-packing/` publishes to the EAS branch and channel `main` (`.github/workflows/update.yml`). The fixed QR code is in `README.md`. |
+| Publish a preview by hand | `npx eas-cli@latest update --branch <name> --environment preview --message "<what changed>"` |
 | Development build (needs a founder's yes, and `expo-dev-client` added first) | `npx eas-cli@latest build --profile development --platform ios` |
 
 Code layout: routes in `app/`, components in `src/components/`, the theme in `src/theme/` (the only reader of `design/tokens.json`), shared helpers in `src/lib/`. `src/lib/routes.ts` lists every route in `design/screens.md`.

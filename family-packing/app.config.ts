@@ -1,6 +1,14 @@
 import type { ExpoConfig } from 'expo/config';
 
+import expoPackage from 'expo/package.json';
+
 import tokens from './design/tokens.json';
+
+const PROJECT_ID = 'd9327ad3-f3b5-45fe-9615-1d64c6647675';
+// Expo Go loads an EAS Update only when the update's runtime version names
+// the SDK Expo Go runs. Derived from the installed expo package, so an SDK
+// upgrade moves it too.
+const EXPO_GO_RUNTIME = `exposdk:${expoPackage.version.split('.')[0]}.0.0`;
 
 // Phones first (founder's call, Nov 21): tablets and web wait for decisions 9 and 12.
 const config: ExpoConfig = {
@@ -29,6 +37,10 @@ const config: ExpoConfig = {
     output: 'static',
     favicon: './assets/images/favicon.png',
   },
+  runtimeVersion: EXPO_GO_RUNTIME,
+  updates: {
+    url: `https://u.expo.dev/${PROJECT_ID}`,
+  },
   plugins: [
     'expo-router',
     'expo-font',
@@ -44,7 +56,7 @@ const config: ExpoConfig = {
   extra: {
     eas: {
       // The kitmunk project in the kitfactory Expo organization. Not a secret.
-      projectId: 'd9327ad3-f3b5-45fe-9615-1d64c6647675',
+      projectId: PROJECT_ID,
     },
   },
   experiments: {
