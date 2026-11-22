@@ -1,0 +1,59 @@
+# Publishes the app on main as an EAS Update after every merge that touches
+# family-packing/, to the EAS branch "main" (channel "main"). The fixed QR code
+# in family-packing/README.md always opens the latest main in Expo Go, with no
+# Mac running (tracker W2-10).
+name: update
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'family-packing/**'
+      - '.github/workflows/update.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: update-main
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: Publish main
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    defaults:
+      run:
+        working-directory: family-packing
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: family-packing/package-lock.json
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          packager: npm
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - run: npm ci
+
+      # --auto takes the message from the merge commit; the branch is fixed.
+      - name: Publish to the main branch
+        run: eas update --auto --branch main --environment preview --non-interactive
+
+      - name: Link in the job summary
+        run: |
+          {
+            echo "### Latest main is published"
+            echo ""
+            echo "Open it in Expo Go: \`exp://u.expo.dev/d9327ad3-f3b5-45fe-9615-1d64c6647675?runtime-version=exposdk%3A58.0.0&channel-name=main\`"
+            echo ""
+            echo "![QR](https://qr.expo.dev/eas-update?projectId=d9327ad3-f3b5-45fe-9615-1d64c6647675&runtimeVersion=exposdk:58.0.0&channel=main)"
+          } >> "$GITHUB_STEP_SUMMARY"

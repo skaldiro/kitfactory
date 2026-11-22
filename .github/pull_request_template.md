@@ -25,4 +25,5 @@ GATE output here
 -
 
 **Check on your phone**
-1.
+1. Open the QR code in the "EAS Update" comment on this PR in Expo Go (iPhone camera, or Expo Go's scanner on Android). No Mac needs to be running.
+2.

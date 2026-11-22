@@ -1,0 +1,67 @@
+# Publishes an EAS Update for every pull request that touches family-packing/
+# and comments a QR code on the pull request. Both founders open it in Expo Go
+# on their phones, from anywhere, without the build Mac running (tracker W2-10).
+#
+# Needs the repository secret EXPO_TOKEN (an Expo access token for the
+# kitfactory organization). Secrets are never passed to pull requests from
+# forks, so the job runs only for branches in this repository.
+name: preview
+
+on:
+  pull_request:
+    paths:
+      - 'family-packing/**'
+      - '.github/workflows/preview.yml'
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  update:
+    name: EAS Update preview
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pull-requests: write # comment the QR code on the pull request
+    defaults:
+      run:
+        working-directory: family-packing
+    steps:
+      - name: Check for EXPO_TOKEN
+        working-directory: . # runs before checkout, so family-packing/ doesn't exist yet
+        env:
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+        run: |
+          if [ -z "$EXPO_TOKEN" ]; then
+            echo "Add the EXPO_TOKEN repository secret: GitHub, Settings, Secrets and variables, Actions."
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: family-packing/package-lock.json
+
+      - name: Set up EAS CLI
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          packager: npm
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - run: npm ci
+
+      # One EAS Update branch per pull request (pr-<number>). The QR code opens
+      # in Expo Go; runtimeVersion in app.config.ts matches Expo Go's SDK.
+      - name: Publish preview and comment the QR code
+        uses: expo/expo-github-action/preview@v8
+        with:
+          working-directory: family-packing
+          qr-target: expo-go
+          command: eas update --auto --branch pr-${{ github.event.pull_request.number }} --environment preview --non-interactive
