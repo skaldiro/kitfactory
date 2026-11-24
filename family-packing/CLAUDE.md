@@ -9,30 +9,45 @@ Naming: the app and the company are **Kitmunk** (decision 1, closed Nov 17). The
 - This folder holds technical work only: code, the requirements spec, designs exported from the design canvas, the design system, test trips, lessons and the changelog.
 - The plan, the task tracker, decisions and accounts live in the shared Google Drive folder Kitmunk. The tracker always wins a conflict.
 - Every build task has a GitHub issue titled with its tracker ID (for example `W3-01 · ...`), labeled `build`, in a weekly milestone. The issue holds the task contract.
-- Decisions that change how the app is built are copied into "Decided" below after each weekly meeting, with a sync date. Once `docs/spec-v2.md` exists, they move into the spec and this section points there.
+- Decisions that change how the app is built are copied into "Decided" below after each weekly meeting, with a sync date, and applied in `docs/spec-v2.md` by pull request the same week.
 
 ## Read these first, in this order
 
 1. The GitHub issue you were asked to work on (its contract).
-2. "Decided" below, then `docs/spec-v2.md` once it exists (until then `design/screens.md` plus `docs/prd.md`).
+2. "Decided" below, then `docs/spec-v2.md` (signed in W2-09; it replaces `docs/prd.md`).
 3. `docs/lessons.md`: mistakes not to repeat.
 4. `docs/architecture.md`: how the parts fit, how Scout fails safely, where each fact lives.
 5. `design/DESIGN.md` once it exists, else `design/tokens.json`; then `design/screens.md` and `design/README.md`.
 
 ## Decided
 
-Synced from the tracker's Decisions tab on 2026-11-22. If this date is more than 8 days old, or a decision your task needs is not here, stop and ask.
+Synced from the tracker's Decisions tab on 2026-11-23 (after W2-09, spec v2 signed). If this date is more than 8 days old, or a decision your task needs is not here, stop and ask. `docs/spec-v2.md` has the detail; where this list and the spec differ, the tracker wins, then the spec.
 
 - 1 · Name: Kitmunk, for the app and the company. Domain kitmunk.com.
 - 2 · Logo: A, "the Case" (suitcase with four ribs in the crew colors, on an orange tile, lowercase kitmunk wordmark). Scout keeps the blaze. Assets: `design/system/assets/Logos/`.
 - 4 · A guest gets a full list before signing up.
 - 5 · No packing assignment at launch; bags are off the main view.
+- 6 · Free at launch ("Free while we're new"). Build the seams now: one access check before each Scout build and change, trips counted per household, change requests counted per household and per account, Scout limits and the spend stop as app settings. Paywall and purchases are Later; going back to free never deletes or locks data.
+- 7 · Weather: climate averages from NASA POWER, cached per place and month, labeled as usual weather, never a forecast. Forecasts Later.
+- 8 · Voice: in-app voice only on S02 "Rather just talk?" (V1, V2), recognized on the phone, audio never uploaded or saved; built in W10-07 on development builds (W9-10). Every other field uses keyboard dictation; no other mics.
+- 9 · Phones only, portrait; iPads run the phone layout. Oldest OS: iOS 16.4 and Android 7 (SDK 58).
+- 10 · US only, US English, °F by default with the °C switch in A1; home plug US.
+- 12 · Web: Later.
+- 13 · First names only for everyone. Kids: age set in S02 (minus and plus stepper, months under 2) with the date it was set, so it ages forward; birth month and year optional in S09b. Adults have no age. No photos, no full birth dates, no gender. Usage events: the fixed list in spec 4.4.5. Crash reporting: EAS Observe. Staff don't open household data except for that household's support request.
 - 14 · A new trip starts with 2 adults; no upper limit.
 - 15 · No cap on adults in a household.
 - 17 · Where things live: one home each. Drive holds the tracker, the overview doc, business, legal, brand and notes; GitHub holds technical work only; Claude holds the design canvas. No copies, except the Repo = Y decisions mirrored here with a sync date. The full map is `docs/architecture.md`, "Where each fact lives".
-- 29 · Orange means Scout. A main button is orange only when it hands work to Scout or applies what Scout proposed: Plan a trip (S01), Create our packing list (S04), Ask Scout and its send button (S08), Apply N changes (S08), Create the list from a past trip (S12), Sort them for me (S10). Every other main button is ink on light screens and mist on dark screens. At most one orange button per screen. Progress, tags and links use ink and crew colors, never orange.
+- 29 · Orange means Scout. A main button is orange only when it hands work to Scout or applies what Scout proposed: Plan a trip (S01), Create our packing list (S04), Ask Scout and its send button (S08), Apply N changes (S08), Create the list from a past trip (S12). Every other main button is ink on light screens and mist on dark screens. At most one orange button per screen. Progress, tags and links use ink and crew colors, never orange.
+- 30 · Build sessions use Opus for build and spec work, Haiku for read-only repo search; anything else case by case.
+- 32 · A Scout run fails (rule list with a notice) when more than 20% of its lines are dropped or it runs past the job's latency budget. Starting value, retuned in W7-03.
+- 33 · This section is synced after each weekly meeting; `scripts/check.sh` fails when the date is more than 8 days old.
+- 34 · Every session runs the session-start check first; any conflict goes to a founder before work starts.
 - 35 · Contrast: inputs and unselected chips are outlined in edge #7D8B85, never line #D9DFD6. Done green is #0B7A54; crew mint keeps #0F8A5F. The outline button on ink uses #5E8A7C.
-- Still open, do not assume: 6 monetization, 7 weather source, 8 voice, 9 tablets and OS versions, 10 country, language and units, 11 cost ceiling, 12 web, 13 child data and usage events, 30 which Claude models build the app, 31 Scout's model per job, 32 when a Scout run counts as failed, 33 how this section stays current, 34 clean session-start rule, 36 how iPhones and Android phones run the app before the store accounts (the harness already follows 33 and 34 as proposed).
+- 36 · Expo Go plus EAS Update previews on both phones until development builds in week 9 (W9-10).
+- 37 · The household's creator is its admin: pays (when there is a plan), invites and removes accounts, deletes the household. Every account creates, edits and deletes trips, packs, uses Scout and edits the crew. Invites name the crew person they are for. The admin's account delete deletes the household after offering "Make <name> the admin first".
+- 38 · Accounts are for adults 18 and over. Kids are profiles. Teen accounts Later.
+- 39 · No health data: never asked; Scout never saves health details in a fact, reason, memory or log, and never proposes a memory with a medicine name. Parent-typed items are stored as typed.
+- Still open, do not assume: 11 cost ceiling per list (week 8; working targets in spec 4.2.5), 31 Scout's model per job (week 8; starting models in spec 4.2.1).
 
 ## Stack
 
@@ -49,7 +64,8 @@ Synced from the tracker's Decisions tab on 2026-11-22. If this date is more than
 - When Scout fails, the app falls back to the rule-based list from the catalog. The user never loses input. Every Scout run is logged with its outcome and reason (see `docs/architecture.md`); a fallback is never silent in the logs.
 - Progress counts item lines, not units. An item is done when packed quantity is at least the required quantity.
 - Packing state and shopping state ("to buy", "bought") are independent.
-- Children are profiles, never accounts. What is stored about a child (first name plus age, or first name plus birth month and year) is decision 13, still open: don't build child fields beyond a first name until it closes.
+- Children are profiles, never accounts; accounts are for adults 18 and over (decision 38). A child is a first name, a color and an age with the date it was set, plus birth month and year only if a parent adds them (decision 13).
+- The household's creator is its admin (decision 37). Never store health information as a fact about a person (decision 39).
 - The data model is shared-household from day one, with any number of adults.
 - Packing assignment ("who packs it") is out of scope for launch.
 
