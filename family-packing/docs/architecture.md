@@ -51,7 +51,7 @@ flowchart LR
   Phones -. "issues with screenshots" .-> GH
 ```
 
-Until the Apple and Google store accounts exist (week 9 to 11), iPhone testing runs in Expo Go. Every change passes `scripts/check.sh` in CI before a founder can merge it. Anything that needs a native module Expo Go doesn't include waits for the development build in week 11 (W11-02, issue #26).
+Until the Apple and Google store accounts exist (week 9 to 11), iPhone testing runs in Expo Go. Every change passes `scripts/check.sh` in CI before a founder can merge it. Anything that needs a native module Expo Go doesn't include waits for the development builds in week 9 (W9-10): Android first, iPhone once the company Apple Developer account exists (decision 8, W2-09).
 
 ## Rules
 

@@ -2,6 +2,7 @@
 
 One line per merged task, newest first.
 
+- 2026-11-23: W2-09: spec v2 signed. Every Q1 to Q34 answered in section 1 and applied; decisions 6 to 10, 12, 13, 30, 32 to 34, 36 closed and 37 (household admin), 38 (adults-only accounts), 39 (no health data) added; Decided synced 2026-11-23; dates only (no length mode); Scout writes up to 6 skippable questions; per-day counts without style caps; voice on S02 only (W10-07) with development builds in week 9 (W9-10); free at launch with an access check, usage counts and limits as app settings; architecture.md week 9 development builds.
 - 2026-11-22: W2-10 follow-up: .github/workflows/preview-cleanup.yml deletes a PR's EAS branch pr-<number> when the PR is merged or closed.
 - 2026-11-21: W2-24: the weekly drift audit moves from a scheduled task into the session-start skill (step 5); findings go to the tracker's Drift log tab, the only tracker write a session may make.
 - 2026-11-21: W2-16, W2-17, W2-18, W2-26: spec v2 section 4 (intake and data model, Scout, memory and context, privacy), Q20 to Q34, docs/scout-design.md.
